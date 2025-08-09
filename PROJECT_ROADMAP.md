@@ -29,6 +29,10 @@ Placeholder home page deployed on custom domain
 
 [2025-08-08] Homepage v1 completed with navigation, hero section, adventure schedule, and placeholder pages
 
+[2025-08-08] Schedule page v1 completed with detailed daily itinerary and individual event RSVPs
+
+[2025-08-08] Hero video background added using venue footage from Vimeo
+
 Work Completed:
 
 Repo created and scaffolded with Next.js + Tailwind
@@ -37,23 +41,29 @@ GitHub + Vercel deployment pipeline functional
 
 Homepage with complete design including:
 - Fixed navigation with couple's name and menu
-- Hero section with wedding date and location
+- Hero section with Vimeo video background (venue footage)
 - Adventure schedule overview (Aug 19-23, 2026)
 - Our Story preview section
 - Event details section
 - Footer
 - Mobile-responsive design
 
+Detailed schedule page with:
+- Day-by-day adventure itinerary
+- Individual RSVP options for each activity
+- Detailed descriptions and timing for all events
+- Special wedding day highlighting
+- Mobile-responsive cards for each day
+
 Placeholder pages created for navigation:
 - /our-story (with navigation)
-- /schedule (with navigation) 
+- /schedule (COMPLETED - detailed schedule with RSVPs) 
 - /venue (with navigation)
 - /rsvp (with navigation)
 
 Pending Features
 Pages & Content
 
-/schedule – Week-of events with RSVP buttons, adventure details (rafting, horseback, yoga, Yellowstone tour, BBQ)
 /venue – Ceremony & reception details, maps, travel info
 /rsvp – RSVP form (names, events attending, dietary needs, plus-one & kids names)
 /registry – Registry info (URLs, display preferences)
