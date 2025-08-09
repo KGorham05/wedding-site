@@ -27,10 +27,32 @@ Placeholder home page deployed on custom domain
 
 [2025-08-08] Initial info gathering from couple completed (see angie_info.md)
 
+[2025-08-08] Homepage v1 completed with navigation, hero section, adventure schedule, and placeholder pages
+
+Work Completed:
+
+Repo created and scaffolded with Next.js + Tailwind
+
+GitHub + Vercel deployment pipeline functional
+
+Homepage with complete design including:
+- Fixed navigation with couple's name and menu
+- Hero section with wedding date and location
+- Adventure schedule overview (Aug 19-23, 2026)
+- Our Story preview section
+- Event details section
+- Footer
+- Mobile-responsive design
+
+Placeholder pages created for navigation:
+- /our-story (with navigation)
+- /schedule (with navigation) 
+- /venue (with navigation)
+- /rsvp (with navigation)
+
 Pending Features
 Pages & Content
 
-/ – Homepage: Couple intro, hero image, schedule of adventures, RSVP button
 /schedule – Week-of events with RSVP buttons, adventure details (rafting, horseback, yoga, Yellowstone tour, BBQ)
 /venue – Ceremony & reception details, maps, travel info
 /rsvp – RSVP form (names, events attending, dietary needs, plus-one & kids names)
