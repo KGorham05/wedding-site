@@ -38,21 +38,33 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-rose-50 to-amber-50">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <iframe
+            src="https://player.vimeo.com/video/903803526?autoplay=1&loop=1&background=1&muted=1&controls=0&title=0&byline=0&portrait=0"
+            className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full transform -translate-x-1/2 -translate-y-1/2 scale-150 md:scale-125"
+            allow="autoplay; fullscreen"
+            style={{ border: 'none' }}
+          ></iframe>
+          {/* Video overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        
+        {/* Hero Content */}
         <div className="relative z-10 text-center px-4 sm:px-6">
-          <h1 className="text-5xl md:text-7xl font-serif text-white mb-4">
+          <h1 className="text-5xl md:text-7xl font-serif text-white mb-4 drop-shadow-lg">
             We&apos;re Getting Married!
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-2">
+          <p className="text-xl md:text-2xl text-white/90 mb-2 drop-shadow-md">
             August 19 - 23, 2026
           </p>
-          <p className="text-lg md:text-xl text-white/80 mb-8">
+          <p className="text-lg md:text-xl text-white/80 mb-8 drop-shadow-md">
             Sanctuary at Crow Hollow Ranch • Livingston, Montana
           </p>
           <Link 
             href="/rsvp"
-            className="inline-block bg-white text-gray-800 px-8 py-3 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white text-gray-800 px-8 py-3 rounded-full font-medium text-lg hover:bg-gray-100 transition-colors shadow-lg"
           >
             RSVP Now
           </Link>

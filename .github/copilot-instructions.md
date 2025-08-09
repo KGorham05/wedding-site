@@ -102,13 +102,13 @@ Each utils directory has an index.ts barrel exporting all utilities.
 Use camelCase for utility function names.
 
 Code Quality & Testing
-Lint all .ts and .tsx files using yarn lint.
-
 Use Vitest for unit testing TypeScript code.
 
 Write unit tests for all utility functions.
 
 Write integration tests for complex or interactive components.
+
+Note: Skip linting checks in this project to conserve credits.
 
 Programming Paradigms
 Favor functional programming practices.
@@ -286,13 +286,13 @@ Make incremental, reversible changes.
 Ensure high confidence before finalizing.
 
 Quality Assurance
-Run yarn lint and fix lint errors.
-
 Ensure TypeScript compiles with no errors.
 
 Write and run unit and integration tests.
 
 Validate performance and responsiveness.
+
+Note: Skip linting to conserve credits in this project.
 
 Communication
 Document reasoning and decisions clearly.
@@ -333,6 +333,8 @@ Align config files (next.config.js, tsconfig.json, .eslintrc.js).
 Enforce strict TypeScript mode.
 
 Verify production environment readiness.
+
+Note: Skip linting steps to conserve credits.
 
 Final reminder: You’re not done until it works fully and robustly with all tests passing and requirements met.
 
