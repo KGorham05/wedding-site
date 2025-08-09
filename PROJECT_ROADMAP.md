@@ -69,16 +69,21 @@ Comprehensive venue & travel page with:
 Interactive RSVP form with:
 - Wedding day attendance (required)
 - Guest count and dietary restrictions
-- Individual adventure event selections
+- Individual adventure event selections (needs enhancement - currently yes/no buttons)
 - Optional features (song requests, custom hat making)
 - Form validation and success page
 - Mobile-responsive design
+
+RSVP Form Enhancement Needed:
+- Adventure event RSVPs should collect participant names and quantities
+- Each activity needs individual guest counts, not just attendance confirmation
+- Should track who specifically is attending each adventure (names required)
 
 Placeholder pages created for navigation:
 - /our-story (with navigation)
 - /schedule (COMPLETED - detailed schedule with RSVPs) 
 - /venue (COMPLETED - comprehensive travel info)
-- /rsvp (COMPLETED - full RSVP form)
+- /rsvp (COMPLETED - full RSVP form, needs enhancement for adventure participant details)
 
 Pending Features
 Pages & Content
@@ -87,6 +92,11 @@ Pages & Content
 /registry – Registry info (URLs, display preferences) (optional)
 
 Functionality
+
+RSVP Form Enhancements:
+- Update adventure event RSVPs to collect participant names and quantities for each activity
+- Replace yes/no buttons with detailed forms (names + guest counts per adventure)
+- Ensure proper data collection for activity planning and logistics
 
 Google Sheets API integration for RSVP form submissions
 Email confirmation to guests after RSVP
