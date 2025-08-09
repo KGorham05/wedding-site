@@ -33,6 +33,10 @@ Placeholder home page deployed on custom domain
 
 [2025-08-08] Hero video background added using venue footage from Vimeo
 
+[2025-08-08] Venue & travel page completed with maps, accommodation, and packing info
+
+[2025-08-08] RSVP form v1 completed with comprehensive event selections and form handling
+
 Work Completed:
 
 Repo created and scaffolded with Next.js + Tailwind
@@ -55,25 +59,37 @@ Detailed schedule page with:
 - Special wedding day highlighting
 - Mobile-responsive cards for each day
 
+Comprehensive venue & travel page with:
+- Detailed venue information and maps
+- Flight and driving directions
+- Accommodation recommendations
+- Montana weather guide and packing checklist
+- Transportation requirements
+
+Interactive RSVP form with:
+- Wedding day attendance (required)
+- Guest count and dietary restrictions
+- Individual adventure event selections
+- Optional features (song requests, custom hat making)
+- Form validation and success page
+- Mobile-responsive design
+
 Placeholder pages created for navigation:
 - /our-story (with navigation)
 - /schedule (COMPLETED - detailed schedule with RSVPs) 
-- /venue (with navigation)
-- /rsvp (with navigation)
+- /venue (COMPLETED - comprehensive travel info)
+- /rsvp (COMPLETED - full RSVP form)
 
 Pending Features
 Pages & Content
 
-/venue – Ceremony & reception details, maps, travel info
-/rsvp – RSVP form (names, events attending, dietary needs, plus-one & kids names)
-/registry – Registry info (URLs, display preferences)
-/our-story – Couple's story, bios, photos
+/our-story – Couple's story, bios, photos (placeholder page exists)
+/registry – Registry info (URLs, display preferences) (optional)
 
 Functionality
 
 Google Sheets API integration for RSVP form submissions
 Email confirmation to guests after RSVP
-Event filtering (RSVP to multiple events)
 
 Styling & UX
 
