@@ -194,8 +194,8 @@ export default function Schedule() {
                   ✨ Wedding Day ✨
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  The moment we&apos;ve all been waiting for! Join us as we exchange vows in the 
-                  beautiful Montana wilderness, followed by cocktails, dinner, and dancing under the stars.
+                  The moment we&apos;ve all been waiting for! Join us for our wedding celebration 
+                  in the beautiful Montana wilderness, with cocktails, dinner, and dancing under the stars.
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 mb-4">
                   <div className="bg-white/70 rounded-lg p-4 text-center">
