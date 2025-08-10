@@ -1,4 +1,5 @@
 import Link from "next/link";
+import OptimizedHeroVideo from "@/components/OptimizedHeroVideo";
 
 export default function Home() {
   return (
@@ -38,21 +39,8 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
-        <div className="absolute inset-0 z-0">
-          <iframe
-            src="https://player.vimeo.com/video/903803526?autoplay=1&loop=1&background=1&muted=1&controls=0&title=0&byline=0&portrait=0"
-            className="absolute top-1/2 left-1/2 w-full h-full min-w-full min-h-full transform -translate-x-1/2 -translate-y-1/2 scale-150 md:scale-125"
-            allow="autoplay; fullscreen"
-            style={{ border: 'none' }}
-          ></iframe>
-          {/* Video overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/40"></div>
-        </div>
-        
-        {/* Hero Content */}
-        <div className="relative z-10 text-center px-4 sm:px-6">
+      <OptimizedHeroVideo>
+        <div className="text-center px-4 sm:px-6">
           <h1 className="text-5xl md:text-7xl font-serif text-white mb-4 drop-shadow-lg">
             We&apos;re Getting Married!
           </h1>
@@ -69,7 +57,7 @@ export default function Home() {
             RSVP Now
           </Link>
         </div>
-      </section>
+      </OptimizedHeroVideo>
 
       {/* Adventure Schedule Section */}
       <section className="py-16 bg-white">

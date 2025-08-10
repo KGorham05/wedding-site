@@ -1,0 +1,37 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sky gradient -->
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#E0F6FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B0E0E6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B7355;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5D4E37;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grassGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#90EE90;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#228B22;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="1920" height="1080" fill="url(#skyGradient)"/>
+  
+  <!-- Mountains -->
+  <polygon points="0,600 400,300 800,400 1200,250 1600,350 1920,300 1920,1080 0,1080" fill="url(#mountainGradient)"/>
+  
+  <!-- Foreground hills -->
+  <polygon points="0,800 300,650 600,700 900,600 1200,650 1500,700 1920,650 1920,1080 0,1080" fill="url(#grassGradient)"/>
+  
+  <!-- Trees -->
+  <ellipse cx="200" cy="750" rx="15" ry="60" fill="#2F4F2F"/>
+  <ellipse cx="500" cy="720" rx="12" ry="50" fill="#2F4F2F"/>
+  <ellipse cx="800" cy="680" rx="18" ry="70" fill="#2F4F2F"/>
+  <ellipse cx="1200" cy="720" rx="14" ry="55" fill="#2F4F2F"/>
+  <ellipse cx="1500" cy="750" rx="16" ry="65" fill="#2F4F2F"/>
+  
+  <!-- Sun -->
+  <circle cx="1600" cy="200" r="80" fill="#FFD700" opacity="0.8"/>
+</svg>
