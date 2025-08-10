@@ -38,15 +38,15 @@ export default function Schedule() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-8 bg-gradient-to-br from-rose-50 to-amber-50">
+      <section className="pt-24 pb-8 bg-gradient-to-br from-sage-50 to-cream-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif text-gray-800 mb-4">
+          <h1 className="text-4xl md:text-5xl font-serif text-warm-gray-800 mb-4">
             Adventure Schedule
           </h1>
-          <p className="text-lg text-gray-600 mb-6">
+          <p className="text-lg text-warm-gray-600 mb-6">
             Five days of unforgettable experiences in Montana&apos;s wilderness
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-warm-gray-500">
             August 19 - 23, 2026 • Sanctuary at Crow Hollow Ranch, Livingston, MT
           </p>
         </div>
@@ -57,22 +57,22 @@ export default function Schedule() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           
           {/* Tuesday, August 19th */}
-          <div className="mb-12 bg-gradient-to-r from-rose-50 to-pink-50 rounded-2xl p-8">
+          <div className="mb-12 bg-gradient-to-r from-sage-50 to-sage-100 rounded-2xl p-8 border border-sage-200">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
               <div className="lg:w-2/3">
-                <h2 className="text-3xl font-serif text-gray-800 mb-2">
+                <h2 className="text-3xl font-serif text-warm-gray-800 mb-2">
                   Tuesday, August 19th
                 </h2>
-                <h3 className="text-xl font-semibold text-rose-600 mb-4">
+                <h3 className="text-xl font-semibold text-sage-600 mb-4">
                   Sunset and Sound • Golden Hour Gathering
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-warm-gray-600 mb-4">
                   Welcome to Montana! Join us for a peaceful evening of sound bath nature yoga 
                   with crystal bowls as the sun sets over the beautiful ranch landscape. 
                   This gentle introduction to our week together will help you unwind from travel 
                   and connect with the serene Montana wilderness.
                 </p>
-                <div className="space-y-2 text-sm text-gray-500">
+                <div className="space-y-2 text-sm text-warm-gray-500">
                   <p><strong>Time:</strong> 6:00 PM - 9:00 PM</p>
                   <p><strong>Activity:</strong> Sound bath nature yoga with crystal bowls</p>
                   <p><strong>Attire:</strong> Comfortable clothes for outdoor yoga</p>
@@ -80,15 +80,15 @@ export default function Schedule() {
                 </div>
               </div>
               <div className="lg:w-1/3 lg:pl-8 mt-6 lg:mt-0">
-                <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <h4 className="font-semibold text-gray-800 mb-4">RSVP for this Event</h4>
-                  <button className="w-full bg-rose-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-rose-700 transition-colors mb-3">
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-sage-200">
+                  <h4 className="font-semibold text-warm-gray-800 mb-4">RSVP for this Event</h4>
+                  <button className="w-full bg-sage-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-sage-700 transition-colors mb-3">
                     I&apos;ll Be There
                   </button>
-                  <button className="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                  <button className="w-full border border-warm-gray-300 text-warm-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-warm-gray-50 transition-colors">
                     Can&apos;t Make It
                   </button>
-                  <p className="text-xs text-gray-500 mt-3 text-center">
+                  <p className="text-xs text-warm-gray-500 mt-3 text-center">
                     Individual RSVPs help us plan better
                   </p>
                 </div>
@@ -97,37 +97,37 @@ export default function Schedule() {
           </div>
 
           {/* Wednesday, August 20th */}
-          <div className="mb-12 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-8">
+          <div className="mb-12 bg-gradient-to-r from-cream-50 to-cream-100 rounded-2xl p-8 border border-cream-200">
             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between">
               <div className="lg:w-2/3">
-                <h2 className="text-3xl font-serif text-gray-800 mb-2">
+                <h2 className="text-3xl font-serif text-warm-gray-800 mb-2">
                   Wednesday, August 20th
                 </h2>
-                <h3 className="text-xl font-semibold text-blue-600 mb-4">
+                <h3 className="text-xl font-semibold text-cream-700 mb-4">
                   Water & Wilderness Adventures
                 </h3>
                 
                 {/* Morning Activity */}
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-gray-800 mb-2">Morning: River Adventures</h4>
-                  <p className="text-gray-600 mb-3">
+                  <h4 className="text-lg font-semibold text-warm-gray-800 mb-2">Morning: River Adventures</h4>
+                  <p className="text-warm-gray-600 mb-3">
                     Choose your Montana river experience! Thrill-seekers can tackle white water rafting 
                     (ages 6+), while those preferring a more relaxed pace can enjoy our scenic float 
                     suitable for all ages. Both trips showcase Montana&apos;s stunning river valleys.
                   </p>
                   <div className="grid md:grid-cols-2 gap-4 mb-4">
-                    <div className="bg-white/50 rounded-lg p-4">
-                      <h5 className="font-semibold text-gray-800 mb-2">White Water Rafting</h5>
-                      <p className="text-sm text-gray-600 mb-2">Ages 6+ • Moderate difficulty</p>
-                      <p className="text-sm text-gray-500">Experience the thrill of Montana rapids with experienced guides</p>
+                    <div className="bg-white/50 rounded-lg p-4 border border-cream-200">
+                      <h5 className="font-semibold text-warm-gray-800 mb-2">White Water Rafting</h5>
+                      <p className="text-sm text-warm-gray-600 mb-2">Ages 6+ • Moderate difficulty</p>
+                      <p className="text-sm text-warm-gray-500">Experience the thrill of Montana rapids with experienced guides</p>
                     </div>
-                    <div className="bg-white/50 rounded-lg p-4">
-                      <h5 className="font-semibold text-gray-800 mb-2">Scenic Float</h5>
-                      <p className="text-sm text-gray-600 mb-2">All ages • Relaxing pace</p>
-                      <p className="text-sm text-gray-500">Peaceful river journey perfect for families and photography</p>
+                    <div className="bg-white/50 rounded-lg p-4 border border-cream-200">
+                      <h5 className="font-semibold text-warm-gray-800 mb-2">Scenic Float</h5>
+                      <p className="text-sm text-warm-gray-600 mb-2">All ages • Relaxing pace</p>
+                      <p className="text-sm text-warm-gray-500">Peaceful river journey perfect for families and photography</p>
                     </div>
                   </div>
-                  <div className="text-sm text-gray-500 mb-4">
+                  <div className="text-sm text-warm-gray-500 mb-4">
                     <p><strong>Time:</strong> 8:00 AM - 12:00 PM</p>
                     <p><strong>Includes:</strong> Professional guides, safety equipment, light snacks</p>
                   </div>
@@ -135,13 +135,13 @@ export default function Schedule() {
 
                 {/* Evening Activity */}
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-800 mb-2">Evening: Sunset Horseback Ride</h4>
-                  <p className="text-gray-600 mb-3">
+                  <h4 className="text-lg font-semibold text-warm-gray-800 mb-2">Evening: Sunset Horseback Ride</h4>
+                  <p className="text-warm-gray-600 mb-3">
                     End the day with a magical horseback ride through Montana&apos;s rolling hills 
                     as the sun sets. Our gentle horses and experienced wranglers make this perfect 
                     for both beginners and experienced riders.
                   </p>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-warm-gray-500">
                     <p><strong>Time:</strong> 5:00 PM - 8:00 PM</p>
                     <p><strong>Experience:</strong> All levels welcome</p>
                     <p><strong>Includes:</strong> Horses, helmets, guides, sunset viewing</p>
@@ -149,8 +149,8 @@ export default function Schedule() {
                 </div>
               </div>
               <div className="lg:w-1/3 lg:pl-8 mt-6 lg:mt-0">
-                <div className="bg-white rounded-lg p-6 shadow-sm mb-4">
-                  <h4 className="font-semibold text-gray-800 mb-4">Morning River Adventure</h4>
+                <div className="bg-white rounded-lg p-6 shadow-sm mb-4 border border-cream-200">
+                  <h4 className="font-semibold text-warm-gray-800 mb-4">Morning River Adventure</h4>
                   <div className="space-y-2 mb-4">
                     <label className="flex items-center">
                       <input type="radio" name="morning-activity" className="mr-2" />
@@ -165,17 +165,17 @@ export default function Schedule() {
                       <span className="text-sm">Skip Morning Activity</span>
                     </label>
                   </div>
-                  <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors text-sm">
+                  <button className="w-full bg-cream-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-cream-700 transition-colors text-sm">
                     Confirm Morning Choice
                   </button>
                 </div>
                 
-                <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <h4 className="font-semibold text-gray-800 mb-4">Evening Horseback Ride</h4>
-                  <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors mb-3">
+                <div className="bg-white rounded-lg p-6 shadow-sm border border-cream-200">
+                  <h4 className="font-semibold text-warm-gray-800 mb-4">Evening Horseback Ride</h4>
+                  <button className="w-full bg-cream-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-cream-700 transition-colors mb-3">
                     Count Me In
                   </button>
-                  <button className="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                  <button className="w-full border border-warm-gray-300 text-warm-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-warm-gray-50 transition-colors">
                     I&apos;ll Pass
                   </button>
                 </div>
@@ -184,52 +184,52 @@ export default function Schedule() {
           </div>
 
           {/* Thursday, August 21st - Wedding Day */}
-          <div className="mb-12 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-8 border-2 border-amber-200">
+          <div className="mb-12 bg-gradient-to-r from-dusty-rose-50 to-dusty-rose-100 rounded-2xl p-8 border-2 border-dusty-rose-200">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
               <div className="lg:w-2/3">
-                <h2 className="text-3xl font-serif text-gray-800 mb-2">
+                <h2 className="text-3xl font-serif text-warm-gray-800 mb-2">
                   Thursday, August 21st
                 </h2>
-                <h3 className="text-xl font-semibold text-amber-600 mb-4">
+                <h3 className="text-xl font-semibold text-dusty-rose-600 mb-4">
                   ✨ Wedding Day ✨
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-warm-gray-600 mb-4">
                   The moment we&apos;ve all been waiting for! Join us for our wedding celebration 
                   in the beautiful Montana wilderness, with cocktails, dinner, and dancing under the stars.
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 mb-4">
-                  <div className="bg-white/70 rounded-lg p-4 text-center">
-                    <h5 className="font-semibold text-gray-800 mb-1">Cocktail Hour</h5>
-                    <p className="text-sm text-gray-600">3:00 PM</p>
-                    <p className="text-xs text-gray-500 mt-1">Drinks & mingling</p>
+                  <div className="bg-white/70 rounded-lg p-4 text-center border border-dusty-rose-200">
+                    <h5 className="font-semibold text-warm-gray-800 mb-1">Cocktail Hour</h5>
+                    <p className="text-sm text-warm-gray-600">3:00 PM</p>
+                    <p className="text-xs text-warm-gray-500 mt-1">Drinks & mingling</p>
                   </div>
-                  <div className="bg-white/70 rounded-lg p-4 text-center">
-                    <h5 className="font-semibold text-gray-800 mb-1">Dinner</h5>
-                    <p className="text-sm text-gray-600">4:30 PM</p>
-                    <p className="text-xs text-gray-500 mt-1">Multi-course meal</p>
+                  <div className="bg-white/70 rounded-lg p-4 text-center border border-dusty-rose-200">
+                    <h5 className="font-semibold text-warm-gray-800 mb-1">Dinner</h5>
+                    <p className="text-sm text-warm-gray-600">4:30 PM</p>
+                    <p className="text-xs text-warm-gray-500 mt-1">Multi-course meal</p>
                   </div>
-                  <div className="bg-white/70 rounded-lg p-4 text-center">
-                    <h5 className="font-semibold text-gray-800 mb-1">Dancing</h5>
-                    <p className="text-sm text-gray-600">7:00 PM</p>
-                    <p className="text-xs text-gray-500 mt-1">Until late!</p>
+                  <div className="bg-white/70 rounded-lg p-4 text-center border border-dusty-rose-200">
+                    <h5 className="font-semibold text-warm-gray-800 mb-1">Dancing</h5>
+                    <p className="text-sm text-warm-gray-600">7:00 PM</p>
+                    <p className="text-xs text-warm-gray-500 mt-1">Until late!</p>
                   </div>
                 </div>
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-warm-gray-500">
                   <p><strong>Dress Code:</strong> Cocktail Attire</p>
                   <p><strong>Location:</strong> Sanctuary at Crow Hollow Ranch</p>
                   <p><strong>Note:</strong> This is the main event - we hope everyone can join us!</p>
                 </div>
               </div>
               <div className="lg:w-1/3 lg:pl-8 mt-6 lg:mt-0">
-                <div className="bg-white rounded-lg p-6 shadow-lg border-2 border-amber-200">
-                  <h4 className="font-semibold text-gray-800 mb-4 text-center">Wedding Day RSVP</h4>
-                  <button className="w-full bg-amber-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-amber-700 transition-colors mb-3 text-lg">
+                <div className="bg-white rounded-lg p-6 shadow-lg border-2 border-dusty-rose-200">
+                  <h4 className="font-semibold text-warm-gray-800 mb-4 text-center">Wedding Day RSVP</h4>
+                  <button className="w-full bg-dusty-rose-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-dusty-rose-700 transition-colors mb-3 text-lg">
                     We&apos;ll Be There! ✨
                   </button>
-                  <button className="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                  <button className="w-full border border-warm-gray-300 text-warm-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-warm-gray-50 transition-colors">
                     Unfortunately Can&apos;t Attend
                   </button>
-                  <p className="text-xs text-gray-500 mt-3 text-center">
+                  <p className="text-xs text-warm-gray-500 mt-3 text-center">
                     Main wedding RSVP - required for all guests
                   </p>
                 </div>
@@ -238,13 +238,13 @@ export default function Schedule() {
           </div>
 
           {/* Friday, August 22nd */}
-          <div className="mb-12 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8">
+          <div className="mb-12 bg-gradient-to-r from-sage-100 to-sage-50 rounded-2xl p-8 border border-sage-200">
             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between">
               <div className="lg:w-2/3">
-                <h2 className="text-3xl font-serif text-gray-800 mb-2">
+                <h2 className="text-3xl font-serif text-warm-gray-800 mb-2">
                   Friday, August 22nd
                 </h2>
-                <h3 className="text-xl font-semibold text-green-600 mb-4">
+                <h3 className="text-xl font-semibold text-sage-600 mb-4">
                   Yellowstone & Cowboy Send-off
                 </h3>
                 
@@ -358,24 +358,24 @@ export default function Schedule() {
       </section>
 
       {/* Final RSVP Call to Action */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-cream-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl font-serif text-gray-800 mb-4">
+          <h2 className="text-3xl font-serif text-warm-gray-800 mb-4">
             Ready to Adventure with Us?
           </h2>
-          <p className="text-lg text-gray-600 mb-8">
+          <p className="text-lg text-warm-gray-600 mb-8">
             Complete your RSVP for the full week or individual events. We can&apos;t wait to explore Montana with you!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/rsvp"
-              className="bg-rose-600 text-white px-8 py-3 rounded-full font-medium hover:bg-rose-700 transition-colors"
+              className="bg-sage-600 text-white px-8 py-3 rounded-full font-medium hover:bg-sage-700 transition-colors"
             >
               Complete Full RSVP
             </Link>
             <Link 
               href="/venue"
-              className="border border-gray-300 text-gray-700 px-8 py-3 rounded-full font-medium hover:bg-gray-50 transition-colors"
+              className="border border-warm-gray-300 text-warm-gray-700 px-8 py-3 rounded-full font-medium hover:bg-warm-gray-50 transition-colors"
             >
               View Venue & Travel Info
             </Link>
@@ -384,10 +384,10 @@ export default function Schedule() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8">
+      <footer className="bg-warm-gray-800 text-cream-100 py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <p className="text-lg font-serif mb-2">Angela & Jeff</p>
-          <p className="text-gray-400 text-sm">August 19 - 23, 2026 • Livingston, Montana</p>
+          <p className="text-warm-gray-300 text-sm">August 19 - 23, 2026 • Livingston, Montana</p>
         </div>
       </footer>
     </div>
