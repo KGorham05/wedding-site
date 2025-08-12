@@ -55,34 +55,33 @@ export default function AdventureDay4() {
 
   return (
     <div className="min-h-screen bg-warm-gray-900 relative">
-      {/* Montana Horseback Riding Background - Rotating Images */}
+      {/* Yellowstone National Park Background */}
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-25"
         style={{
-          backgroundImage: `url("https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"), url("https://images.unsplash.com/photo-1570991069311-d914a7b3d3a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80")`,
-          animation: 'backgroundRotate 20s infinite'
+          backgroundImage: `url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80")`,
         }}
       />
       
-      {/* Sunset Overlay for Golden Hour Effect */}
+      {/* Geothermal Steam Overlay */}
       <div 
-        className="fixed inset-0 bg-gradient-to-b from-orange-200/20 via-amber-200/15 to-yellow-300/10"
+        className="fixed inset-0 bg-gradient-to-b from-blue-200/10 via-cyan-200/10 to-emerald-300/10"
       />
       
-      {/* Mountain Range Backdrop */}
+      {/* Mountain Range Backdrop for Yellowstone */}
       <div 
-        className="fixed inset-0 bg-cover bg-bottom bg-no-repeat opacity-30"
+        className="fixed inset-0 bg-cover bg-bottom bg-no-repeat opacity-20"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400'%3E%3Cpath d='M0,300L100,250L200,280L300,200L400,230L500,150L600,180L700,120L800,160L900,100L1000,140L1100,80L1200,120V400H0V300Z' fill='%23374151' opacity='0.8'/%3E%3Cpath d='M0,350L120,320L240,340L360,290L480,310L600,260L720,280L840,240L960,260L1080,220L1200,240V400H0V350Z' fill='%232d3748' opacity='0.6'/%3E%3C/svg%3E")`
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400'%3E%3Cpath d='M0,300L100,250L200,280L300,200L400,230L500,150L600,180L700,120L800,160L900,100L1000,140L1100,80L1200,120V400H0V300Z' fill='%234a5568' opacity='0.8'/%3E%3Cpath d='M0,350L120,320L240,340L360,290L480,310L600,260L720,280L840,240L960,260L1080,220L1200,240V400H0V350Z' fill='%232d3748' opacity='0.6'/%3E%3C/svg%3E")`
         }}
       />
 
-      {/* Grass Pattern */}
+      {/* Geothermal Pools Pattern */}
       <div 
-        className="fixed inset-0 bg-repeat-x bg-bottom opacity-15"
+        className="fixed inset-0 bg-repeat-x bg-bottom opacity-10"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 20'%3E%3Cpath d='M5,20 L5,5 M10,20 L10,3 M15,20 L15,7 M20,20 L20,4 M25,20 L25,6 M30,20 L30,2 M35,20 L35,8 M40,20 L40,5 M45,20 L45,3' stroke='%2322543d' stroke-width='1'/%3E%3C/svg%3E")`,
-          backgroundSize: '50px 20px'
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Ccircle cx='20' cy='15' r='3' fill='%236366f1' opacity='0.6'/%3E%3Ccircle cx='50' cy='12' r='2' fill='%233b82f6' opacity='0.4'/%3E%3Ccircle cx='80' cy='16' r='2.5' fill='%2310b981' opacity='0.5'/%3E%3C/svg%3E")`,
+          backgroundSize: '100px 20px'
         }}
       />
 
@@ -94,7 +93,7 @@ export default function AdventureDay4() {
               Angela & Jeff
             </Link>
             <div className="text-sm text-cream-300">
-              Day 4 of 5 - Horseback Riding
+              Day 4 of 5 - Yellowstone & BBQ
             </div>
           </div>
         </div>
@@ -109,7 +108,7 @@ export default function AdventureDay4() {
               Thursday, August 22nd, 2026
             </h1>
             <h2 className="text-xl md:text-2xl text-amber-300 mb-6">
-              �️ Yellowstone Explorer Day
+              🏞️ Yellowstone & Cowboy BBQ Day
             </h2>
             <p className="text-lg text-cream-200 max-w-3xl mx-auto">
               Discover the wonders of Yellowstone National Park with our private guided tour (8 AM - 2 PM), 
@@ -119,34 +118,48 @@ export default function AdventureDay4() {
 
           {/* Day Preview */}
           <div className="bg-amber-900 rounded-2xl p-8 border border-amber-700 mb-8">
-            <h3 className="text-2xl font-serif text-cream-100 mb-6">Sunset Horseback Adventure Schedule</h3>
+            <h3 className="text-2xl font-serif text-cream-100 mb-6">Yellowstone & BBQ Adventure Schedule</h3>
             
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-amber-800 rounded-xl p-6 border border-amber-600">
-                <h4 className="text-lg font-semibold text-cream-100 mb-3">� 4:30 PM - Ranch Arrival</h4>
+                <h4 className="text-lg font-semibold text-cream-100 mb-3">🌅 8:00 AM - Yellowstone Tour</h4>
                 <p className="text-cream-200 text-sm">
-                  Arrive at Sanctuary at Crow Hollow Ranch, meet your gentle companion, and receive riding instruction.
+                  Private guided tour of Yellowstone National Park begins. See geysers, hot springs, and wildlife!
                 </p>
               </div>
               
               <div className="bg-amber-800 rounded-xl p-6 border border-amber-600">
-                <h4 className="text-lg font-semibold text-cream-100 mb-3">🐎 5:00 PM - Sunset Trail Ride</h4>
+                <h4 className="text-lg font-semibold text-cream-100 mb-3">🦌 10:00 AM - Wildlife Viewing</h4>
                 <p className="text-cream-200 text-sm">
-                  3-hour guided sunset ride through Montana&apos;s breathtaking wilderness with golden hour views.
+                  Experience the incredible wildlife of Yellowstone with expert guide commentary and photo opportunities.
                 </p>
               </div>
               
               <div className="bg-amber-800 rounded-xl p-6 border border-amber-600">
-                <h4 className="text-lg font-semibold text-cream-100 mb-3">� 6:30 PM - Golden Hour Magic</h4>
+                <h4 className="text-lg font-semibold text-cream-100 mb-3">🍽️ 12:00 PM - Park Lunch</h4>
                 <p className="text-cream-200 text-sm">
-                  Experience the most beautiful time of day on horseback with stunning sunset photography opportunities.
+                  Enjoy lunch at one of Yellowstone&apos;s scenic spots while taking in the natural beauty.
                 </p>
               </div>
               
               <div className="bg-amber-800 rounded-xl p-6 border border-amber-600">
-                <h4 className="text-lg font-semibold text-cream-100 mb-3">🏕️ 8:00 PM - Ranch Farewell</h4>
+                <h4 className="text-lg font-semibold text-cream-100 mb-3">🏠 2:00 PM - Return to Ranch</h4>
                 <p className="text-cream-200 text-sm">
-                  Return to the ranch for light refreshments and sharing stories of your magical sunset adventure.
+                  Return to the ranch with time to rest and prepare for the cowboy BBQ send-off dinner.
+                </p>
+              </div>
+              
+              <div className="bg-amber-800 rounded-xl p-6 border border-amber-600">
+                <h4 className="text-lg font-semibold text-cream-100 mb-3">🤠 6:00 PM - Cowboy BBQ</h4>
+                <p className="text-cream-200 text-sm">
+                  Cowboy-themed BBQ send-off dinner! Dress in Montana attire if you like - boots, hats, and all!
+                </p>
+              </div>
+              
+              <div className="bg-amber-800 rounded-xl p-6 border border-amber-600">
+                <h4 className="text-lg font-semibold text-cream-100 mb-3">🎩 Optional: Hat Making</h4>
+                <p className="text-cream-200 text-sm">
+                  Custom cowboy hat making available for purchase - create your own Montana souvenir!
                 </p>
               </div>
             </div>
@@ -154,13 +167,13 @@ export default function AdventureDay4() {
 
           {/* Simple Guest Count Form */}
           <div className="bg-orange-900 rounded-2xl p-8 border border-orange-700">
-            <h3 className="text-2xl font-serif text-cream-100 mb-6">Confirm Your Riding Party</h3>
+            <h3 className="text-2xl font-serif text-cream-100 mb-6">Confirm Your Yellowstone & BBQ Party</h3>
             
             <div className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-cream-100 mb-2">
-                    Number of Adults (Ages 13+)
+                    Number of Adults
                   </label>
                   <select
                     value={preferences.adults}
@@ -175,7 +188,7 @@ export default function AdventureDay4() {
                 
                 <div>
                   <label className="block text-sm font-medium text-cream-100 mb-2">
-                    Number of Children (Ages 8-12)
+                    Number of Children
                   </label>
                   <select
                     value={preferences.children}
@@ -191,10 +204,10 @@ export default function AdventureDay4() {
 
               <div className="text-center p-4 bg-orange-800 rounded-lg">
                 <p className="text-cream-100">
-                  <span className="font-semibold">Total Riding Party:</span> {preferences.adults + preferences.children} riders
+                  <span className="font-semibold">Total Yellowstone & BBQ Party:</span> {preferences.adults + preferences.children} adventurers
                 </p>
                 <p className="text-orange-200 text-sm mt-2">
-                  Younger children will enjoy pony rides and ranch activities with our wranglers
+                  Perfect finale to our Montana adventure with natural wonders and cowboy culture!
                 </p>
               </div>
 
@@ -203,7 +216,7 @@ export default function AdventureDay4() {
                   href="/adventure/day-3"
                   className="text-cream-300 hover:text-cream-100 transition-colors"
                 >
-                  ← Back to Rafting Adventure
+                  ← Back to Wedding Day
                 </Link>
                 
                 <button

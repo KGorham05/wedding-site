@@ -8,10 +8,6 @@ import { type GuestData } from "@/lib/guest-list";
 export default function AdventureDay5() {
   const router = useRouter();
   const [guestData, setGuestData] = useState<GuestData | null>(null);
-  const [preferences, setPreferences] = useState({
-    adults: 1,
-    children: 0
-  });
 
   useEffect(() => {
     const stored = localStorage.getItem('montana-adventure-guest');
@@ -25,11 +21,6 @@ export default function AdventureDay5() {
       return;
     }
     setGuestData(data);
-    // Set initial values from existing data
-    setPreferences({
-      adults: data.adults || 1,
-      children: data.children || 0
-    });
   }, [router]);
 
   const handleComplete = () => {
@@ -37,12 +28,9 @@ export default function AdventureDay5() {
     
     const updatedData = {
       ...guestData,
-      day5: preferences,
+      day5: { completed: true },
       lastCompletedDay: 5,
-      completedAt: new Date().toISOString(),
-      adults: preferences.adults,
-      children: preferences.children,
-      totalGuests: preferences.adults + preferences.children
+      completedAt: new Date().toISOString()
     };
     localStorage.setItem('montana-adventure-guest', JSON.stringify(updatedData));
     router.push('/adventure/complete');
@@ -136,67 +124,34 @@ export default function AdventureDay5() {
             </div>
           </div>
 
-          {/* Simple Guest Count Form */}
-          <div className="bg-indigo-900 rounded-2xl p-8 border border-indigo-700">
-            <h3 className="text-2xl font-serif text-cream-100 mb-6">Final Head Count for Departures</h3>
+          {/* Farewell Message */}
+          <div className="bg-indigo-900 rounded-2xl p-8 border border-indigo-700 text-center">
+            <h3 className="text-2xl font-serif text-cream-100 mb-6">Thank You for an Amazing Adventure!</h3>
             
-            <div className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-cream-100 mb-2">
-                    Number of Adults Departing
-                  </label>
-                  <select
-                    value={preferences.adults}
-                    onChange={(e) => setPreferences(prev => ({ ...prev, adults: parseInt(e.target.value) }))}
-                    className="w-full px-4 py-3 rounded-lg border border-indigo-600 bg-indigo-800 text-cream-100 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                  >
-                    {Array.from({ length: 10 }, (_, i) => (
-                      <option key={i + 1} value={i + 1}>{i + 1}</option>
-                    ))}
-                  </select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-cream-100 mb-2">
-                    Number of Children Departing
-                  </label>
-                  <select
-                    value={preferences.children}
-                    onChange={(e) => setPreferences(prev => ({ ...prev, children: parseInt(e.target.value) }))}
-                    className="w-full px-4 py-3 rounded-lg border border-indigo-600 bg-indigo-800 text-cream-100 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-                  >
-                    {Array.from({ length: 8 }, (_, i) => (
-                      <option key={i} value={i}>{i}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
+            <p className="text-lg text-cream-200 mb-6">
+              What an incredible journey we&apos;ve shared together in beautiful Montana! From the sound bath under the stars 
+              to river adventures, celebrating Angela & Jeff&apos;s love, exploring Yellowstone, and enjoying cowboy BBQ - 
+              these memories will last a lifetime.
+            </p>
+            
+            <p className="text-cream-300 mb-8">
+              Safe travels to everyone, and thank you for making this wedding celebration so special! 💕
+            </p>
 
-              <div className="text-center p-4 bg-indigo-800 rounded-lg">
-                <p className="text-cream-100">
-                  <span className="font-semibold">Total Departure Party:</span> {preferences.adults + preferences.children} guests
-                </p>
-                <p className="text-indigo-200 text-sm mt-2">
-                  Thank you for sharing this incredible adventure with us! 💕
-                </p>
-              </div>
-
-              <div className="flex justify-between items-center pt-6">
-                <Link 
-                  href="/adventure/day-4"
-                  className="text-cream-300 hover:text-cream-100 transition-colors"
-                >
-                  ← Back to Horseback Riding
-                </Link>
-                
-                <button
-                  onClick={handleComplete}
-                  className="bg-indigo-600 text-white py-3 px-8 rounded-lg font-medium hover:bg-indigo-700 transition-colors"
-                >
-                  Complete Adventure Journey →
-                </button>
-              </div>
+            <div className="flex justify-between items-center">
+              <Link 
+                href="/adventure/day-4"
+                className="text-cream-300 hover:text-cream-100 transition-colors"
+              >
+                ← Back to Yellowstone & BBQ Day
+              </Link>
+              
+              <button
+                onClick={handleComplete}
+                className="bg-indigo-600 text-white py-3 px-8 rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+              >
+                Complete Adventure Journey →
+              </button>
             </div>
           </div>
 
