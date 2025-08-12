@@ -23,7 +23,7 @@ export default function AdventureDay5() {
     setGuestData(data);
   }, [router]);
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
     if (!guestData) return;
     
     const updatedData = {
@@ -32,6 +32,33 @@ export default function AdventureDay5() {
       lastCompletedDay: 5,
       completedAt: new Date().toISOString()
     };
+    
+    try {
+      // Submit RSVP data to Google Sheets
+      console.log('Submitting RSVP data to Google Sheets...');
+      const response = await fetch('/api/rsvp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedData),
+      });
+
+      const result = await response.json();
+      
+      if (!result.success) {
+        console.error('Failed to submit RSVP:', result.message);
+        // Still proceed to completion page even if submission fails
+        // The data is saved locally and can be manually retrieved
+      } else {
+        console.log('RSVP submitted successfully to Google Sheets!');
+      }
+    } catch (error) {
+      console.error('Error submitting RSVP:', error);
+      // Still proceed to completion page even if submission fails
+    }
+    
+    // Update local storage and proceed to completion
     localStorage.setItem('montana-adventure-guest', JSON.stringify(updatedData));
     router.push('/adventure/complete');
   };

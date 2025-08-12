@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { findGuest, type Guest } from "@/lib/guest-list";
+import { type Guest } from "@/lib/guest-list";
 
 export default function GuestCheckIn() {
   const router = useRouter();
@@ -21,10 +21,52 @@ export default function GuestCheckIn() {
   });
   const [guest, setGuest] = useState<Guest | null>(null);
   const [error, setError] = useState('');
+  const [guestList, setGuestList] = useState<Guest[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  // Fetch guest list from Google Sheets on component mount
+  useEffect(() => {
+    const fetchGuestList = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('/api/guests');
+        const data = await response.json();
+        
+        if (data.success) {
+          setGuestList(data.guests);
+        } else {
+          setError('Failed to load guest list. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error fetching guest list:', error);
+        setError('Failed to load guest list. Please try again.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGuestList();
+  }, []);
+
+  // Find guest function that works with the fetched guest list
+  const findGuest = (firstName: string, lastName: string): Guest | null => {
+    const normalizedFirst = firstName.toLowerCase().trim();
+    const normalizedLast = lastName.toLowerCase().trim();
+    
+    return guestList.find(guest => 
+      guest.firstName.toLowerCase().trim() === normalizedFirst &&
+      guest.lastName.toLowerCase().trim() === normalizedLast
+    ) || null;
+  };
 
   const handleGuestLookup = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    
+    if (loading) {
+      setError('Still loading guest list, please wait...');
+      return;
+    }
     
     const foundGuest = findGuest(formData.firstName, formData.lastName);
     
