@@ -38,7 +38,7 @@ export default function Venue() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-8 bg-gradient-to-br from-green-50 to-emerald-50">
+      <section className="pt-24 pb-8 bg-gradient-to-br from-sage-50 to-sage-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h1 className="text-4xl md:text-5xl font-serif text-gray-800 mb-4">
             Venue & Travel
@@ -71,7 +71,7 @@ export default function Venue() {
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-start">
-                    <svg className="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-5 h-5 text-sage-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                     </svg>
                     <div>
@@ -80,7 +80,7 @@ export default function Venue() {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <svg className="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-5 h-5 text-sage-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
                     <div>
@@ -93,7 +93,7 @@ export default function Venue() {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <svg className="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-5 h-5 text-sage-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <div>
@@ -123,7 +123,7 @@ export default function Venue() {
                     href="https://maps.google.com/?q=187+Suce+Creek+Rd,+Livingston,+MT+59047"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block bg-green-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-green-700 transition-colors"
+                    className="inline-block bg-sage-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-sage-700 transition-colors"
                   >
                     Open in Google Maps
                   </a>
@@ -138,9 +138,9 @@ export default function Venue() {
             
             <div className="grid md:grid-cols-2 gap-8">
               {/* Flying */}
-              <div className="bg-blue-50 rounded-lg p-6">
+              <div className="bg-dusty-rose-50 rounded-lg p-6">
                 <div className="flex items-center mb-4">
-                  <svg className="w-6 h-6 text-blue-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-6 h-6 text-dusty-rose-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
                   </svg>
                   <h3 className="text-xl font-semibold text-gray-800">Flying to Montana</h3>
@@ -162,7 +162,7 @@ export default function Venue() {
               </div>
 
               {/* Driving */}
-              <div className="bg-amber-50 rounded-lg p-6">
+              <div className="bg-cream-50 rounded-lg p-6">
                 <div className="flex items-center mb-4">
                   <svg className="w-6 h-6 text-amber-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
@@ -228,7 +228,7 @@ export default function Venue() {
                 </div>
                 <a 
                   href="tel:406-222-1350"
-                  className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                  className="text-dusty-rose-600 hover:text-blue-800 text-sm font-medium"
                 >
                   Call: (406) 222-1350
                 </a>
@@ -245,7 +245,7 @@ export default function Venue() {
                 </div>
                 <a 
                   href="tel:406-222-6320"
-                  className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                  className="text-dusty-rose-600 hover:text-blue-800 text-sm font-medium"
                 >
                   Call: (406) 222-6320
                 </a>
@@ -295,47 +295,47 @@ export default function Venue() {
                 </div>
               </div>
 
-              <div className="bg-blue-50 rounded-lg p-6">
+              <div className="bg-dusty-rose-50 rounded-lg p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">Packing Checklist</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-4 h-4 text-dusty-rose-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     <span>Cocktail attire for wedding</span>
                   </div>
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-4 h-4 text-dusty-rose-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     <span>Warm layers for evenings</span>
                   </div>
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-4 h-4 text-dusty-rose-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     <span>Comfortable hiking shoes</span>
                   </div>
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-4 h-4 text-dusty-rose-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     <span>Western/Montana attire (optional)</span>
                   </div>
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-4 h-4 text-dusty-rose-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     <span>Yoga/comfortable clothes</span>
                   </div>
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-4 h-4 text-dusty-rose-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     <span>Sunscreen & sunglasses</span>
                   </div>
                   <div className="flex items-center">
-                    <svg className="w-4 h-4 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-4 h-4 text-dusty-rose-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     <span>Camera for amazing views!</span>
@@ -360,7 +360,7 @@ export default function Venue() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/rsvp"
-              className="bg-green-600 text-white px-8 py-3 rounded-full font-medium hover:bg-green-700 transition-colors"
+              className="bg-sage-600 text-white px-8 py-3 rounded-full font-medium hover:bg-sage-700 transition-colors"
             >
               RSVP Now
             </Link>

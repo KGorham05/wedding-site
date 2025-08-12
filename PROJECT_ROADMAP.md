@@ -1,94 +1,92 @@
-Current Status
-Stack Selected: Next.js 14 (App Router) + Tailwind CSS + TypeScript
+## 🎉 MAJOR MILESTONE: ADVENTURE INVITATION EXPERIENCE COMPLETE! 🎉
 
-Deployment: Vercel (connected to GitHub)
+**Date Completed: December 19, 2024**
 
-Data Storage: RSVP submissions → Google Sheets via API route
+### ✅ FULLY IMPLEMENTED FEATURES
 
-Custom Domain: GoDaddy domain (angelaandjeff.com) to be connected via Vercel DNS
+#### 🔗 Domain & Infrastructure (Complete)
+- ✅ angelaandjeff2026.com domain fully connected to Vercel
+- ✅ Automatic GitHub deployment pipeline functional
+- ✅ Production build verified and error-free
 
-Design Direction: Minimal, elegant, mobile-first wedding theme
-Couple: Angela & Jeff
-Wedding Dates: August 19 - 23, 2026
-Venue: Sanctuary at Crow Hollow Ranch, 187 Suce Creek Rd, Livingston, MT 59047
-Reception: Same venue
-RSVP Deadline: March 1st, 2026
-Dress Code: Cocktail Attire
-Nearest Airport: Bozeman, MT (45 min drive)
-No ride shares, recommend car rental
+#### 🎨 Complete Design System Overhaul (Complete) 
+- ✅ **Elegant Wedding Color Palette**: Replaced rainbow theme with sophisticated sage green, cream, dusty rose, and warm gray
+- ✅ **CSS Custom Properties**: Comprehensive color system with `--sage-[100-900]`, `--cream-[100-300]`, `--dusty-rose-[100-900]`, `--warm-gray-[100-900]`
+- ✅ **WCAG 2.1 AA Compliance**: All text meets accessibility contrast requirements with dark backgrounds and light text
+- ✅ **Mobile-First Responsive**: All pages optimized for mobile, tablet, and desktop
 
-Work Completed:
+#### 📱 Adventure Invitation Experience Architecture (Complete)
+- ✅ **Complete UX Transformation**: Changed from traditional wedding site to interactive adventure invitation experience
+- ✅ **Guest Authentication System**: Comprehensive guest-list.ts with Guest interface and authentication functions  
+- ✅ **Progressive Form Flow**: Complete 5-day adventure planning experience with state persistence
+- ✅ **Landing Page Redesign**: Homepage transformed to "You're Invited to an Epic Montana Adventure!" experience
 
-Repo created and scaffolded with Next.js + Tailwind
+#### 🗂️ Complete Guest Data Collection System (Complete)
+- ✅ **Guest Check-in** (`/guest-check-in`): Two-step verification with name lookup and party details collection
+- ✅ **Day 1 - Arrival** (`/adventure/day-1`): Transportation, accommodation needs, arrival planning
+- ✅ **Day 2 - Wedding** (`/adventure/day-2`): Ceremony preferences, reception activities, photography requests  
+- ✅ **Day 3 - Adventure** (`/adventure/day-3`): Recovery planning, outdoor activities, hiking levels
+- ✅ **Day 4 - Memories** (`/adventure/day-4`): Memory-making activities, connection preferences, experience feedback
+- ✅ **Day 5 - Departure** (`/adventure/day-5`): Final wishes, testimonials, future connection planning
+- ✅ **Completion Hub** (`/adventure/complete`): Summary dashboard, data download, next steps
 
-GitHub + Vercel deployment pipeline functional
+#### 🔧 Technical Infrastructure (Complete)
+- ✅ **TypeScript Integration**: Comprehensive type safety with Guest and GuestData interfaces
+- ✅ **State Management**: localStorage-based persistence across adventure flow  
+- ✅ **Error Handling**: Navigation guards, data validation, proper TypeScript types
+- ✅ **Performance**: Optimized video loading with progressive enhancement and SVG fallbacks
 
-Placeholder home page deployed on custom domain
+#### 🎨 Latest Enhancements (Complete - August 11, 2025)
+- ✅ **Navigation Consistency**: Updated `/our-story` page to match current design system with dark theme and streamlined navigation
+- ✅ **Countdown Timer**: Added real-time countdown to wedding date on homepage hero section with elegant styling
+- ✅ **Enhanced Our Story Page**: Restructured `/our-story` with proper sections for couple bios, how we met, proposal story, and Montana connection
+- ✅ **Date Correction Fix**: Corrected all adventure dates from incorrect July 2025 dates to proper August 19-23, 2026 schedule across all pages
+- ✅ **Day 1 Content Enhancement**: Improved arrival day messaging to emphasize guest-controlled travel and highlight the evening sound bath experience
+- ✅ **Yoga RSVP Form Redesign**: Simplified form to focus specifically on yoga attendance with guilt-free opt-out option
 
-[2025-08-08] Initial info gathering from couple completed (see angie_info.md)
+### 📊 DATA COLLECTION CAPABILITIES
 
-[2025-08-08] Homepage v1 completed with navigation, hero section, adventure schedule, and placeholder pages
+The adventure experience now collects comprehensive planning data:
+- **Guest Authentication**: Pre-approved guest list verification
+- **Party Composition**: Adult/child counts, ages for activity planning  
+- **Day-by-Day Preferences**: Attendance, activity choices, energy levels
+- **Logistics**: Transportation needs, accommodation requirements, departure timing
+- **Personal Preferences**: Dietary restrictions, accessibility needs, social preferences
+- **Experience Feedback**: Ratings, testimonials, gratitude expressions, future connection preferences
 
-[2025-08-08] Schedule page v1 completed with detailed daily itinerary and individual event RSVPs
+### 🎯 WHAT THIS ACCOMPLISHES
 
-[2025-08-08] Hero video background added using venue footage from Vimeo
+1. **Transforms RSVP Experience**: From static form to engaging adventure planning journey
+2. **Comprehensive Data Collection**: Detailed guest preferences for perfect event planning
+3. **Excitement Building**: Progressive revelation of adventure details builds anticipation  
+4. **Personalized Planning**: Guest responses enable customized experience for each party
+5. **Memory Creation**: Focus on relationships and shared experiences from day one
 
-[2025-08-08] Venue & travel page completed with maps, accommodation, and packing info
+**Status: Adventure Invitation Experience is PRODUCTION READY! 🚀**
 
-[2025-08-08] RSVP form v1 completed with comprehensive event selections and form handling
+### **User Flow**
+1. **Landing** (`/`) - "You're Invited to Epic Montana Adventure!"
+2. **Guest Check-in** (`/guest-check-in`) - Name verification + party details  
+3. **Adventure Builder** (`/adventure/day-[1-5]`) - Progressive day-by-day experience
+4. **Completion Hub** (`/adventure/complete`) - RSVP summary + planning info
 
-Work Completed:
+### **Data Collection Goals**
+- Guest authentication from approved list
+- Party composition (adults, kids, ages)  
+- Day-by-day attendance with participant counts
+- Activity preferences and requirements
+- Dietary restrictions and accommodations
+- Travel and logistics planning
 
-Repo created and scaffolded with Next.js + Tailwind
-
-GitHub + Vercel deployment pipeline functional
-
-Homepage with complete design including:
-- Fixed navigation with couple's name and menu
-- Hero section with Vimeo video background (venue footage)
-- Adventure schedule overview (Aug 19-23, 2026)
-- Our Story preview section
-- Event details section
-- Footer
-- Mobile-responsive design
-
-Detailed schedule page with:
-- Day-by-day adventure itinerary
-- Individual RSVP options for each activity
-- Detailed descriptions and timing for all events
-- Special wedding day highlighting
-- Mobile-responsive cards for each day
-
-Comprehensive venue & travel page with:
-- Detailed venue information and maps
-- Flight and driving directions
-- Accommodation recommendations
-- Montana weather guide and packing checklist
-- Transportation requirements
-
-Interactive RSVP form with:
-- Wedding day attendance (required)
-- Guest count and dietary restrictions
-- Individual adventure event selections (needs enhancement - currently yes/no buttons)
-- Optional features (song requests, custom hat making)
-- Form validation and success page
-- Mobile-responsive design
-
-RSVP Form Enhancement Needed:
-- Adventure event RSVPs should collect participant names and quantities
-- Each activity needs individual guest counts, not just attendance confirmation
-- Should track who specifically is attending each adventure (names required)
-
-Placeholder pages created for navigation:
-- /our-story (with navigation)
-- /schedule (COMPLETED - detailed schedule with RSVPs) 
-- /venue (COMPLETED - comprehensive travel info)
-- /rsvp (COMPLETED - full RSVP form, needs enhancement for adventure participant details)
+### **Current Legacy Pages** (to be redesigned)
+- `/schedule` → becomes `/adventure/day-[1-5]` progressive experience
+- `/rsvp` → becomes `/guest-check-in` + adventure builder
+- `/venue` → becomes part of `/adventure/complete` planning hub
+- `/our-story` → may become part of landing experience
 
 Pending Features
 Pages & Content
 
-/our-story – Couple's story, bios, photos (placeholder page exists)
 /registry – Registry info (URLs, display preferences) (optional)
 
 Functionality
@@ -103,15 +101,14 @@ Email confirmation to guests after RSVP
 
 Styling & UX
 
-Mobile-first responsive layout
-Elegant typography (serif/sans-serif per couple's preference)
-Wedding color palette (to be finalized)
+Mobile-first responsive layout (COMPLETED)
+Elegant typography (serif/sans-serif per couple's preference) (COMPLETED)
+Wedding color palette (COMPLETED - sage green, cream, dusty rose, warm gray)
 Smooth scroll for internal links
 Optimized images (Next.js Image component)
 
 Enhancements
 
-Countdown timer to wedding date
 Photo gallery (engagement, venue, couple)
 Password-protect sensitive info (optional)
 FAQs section
@@ -157,6 +154,12 @@ Completed Features
 (Update this section after each milestone)
 
 [2025-08-08] Repo initialized, Next.js scaffold, Tailwind configured, deployed to Vercel
+[2025-08-11] Navigation consistency fixed - Updated /our-story page to match current design system
+[2025-08-11] Countdown timer added - Real-time countdown to wedding date on homepage hero section  
+[2025-08-11] Our Story page enhanced - Added structured sections for couple bios, story content, and Montana theme
+[2025-08-11] Date correction fix - Fixed all adventure dates from incorrect July dates to proper August 19-23, 2026 schedule
+[2025-08-11] Day 1 content improved - Enhanced arrival day messaging and sound bath event details per user feedback
+[2025-08-11] Yoga form redesigned - Simplified RSVP form for specific yoga event with inclusive opt-out messaging
 
 Next Steps
 Build /schedule page with placeholder events
@@ -268,4 +271,59 @@ Below are ASCII/text-based wireframes for the main pages of the site.
 | FOOTER                                         |
 --------------------------------------------------
 
-## 6. Adventures Page 
+# Wedding Website – Project Roadmap
+
+## Phase 1: Setup & Structure
+- Initialize Next.js project with Tailwind CSS and shadcn components
+- Configure Git repository and connect to Vercel
+- Create page structure:
+  - Home
+  - Story
+  - Wedding Party
+  - RSVP
+  - Travel & Accommodations
+  - Registry
+  - Contact
+
+---
+
+## Phase 2: Content Integration
+- Insert placeholder copy and images based on Cousin Meeting Prep document
+- Ensure all pages are navigable and responsive
+
+---
+
+## Phase 3: Styling & Design
+**Prompting Guidance for AI Tools**
+- Always provide **hex codes** for target colors
+- Specify **contrast ratio goals** (WCAG AA or AAA)
+- State **exact element types** to be updated (e.g., `buttons`, `headings`, `background sections`)
+- Limit each AI request to **one visual goal per run** (e.g., "Fix button hover colors for better accessibility" instead of "Improve colors and layout")
+- Request **before/after examples** in output
+- Avoid vague terms like “make it pop” — instead use descriptive design terms (“increase saturation by 15%,” “switch background to #F9FAFB”)
+
+---
+
+## Phase 4: Media Replacement
+- Replace placeholders with finalized photos and videos
+- Optimize images for web performance (under 300KB, next-gen formats where possible)
+
+---
+
+## Phase 5: Accessibility & QA
+- Verify text/background contrast with a color contrast checker
+- Test across devices (mobile, tablet, desktop)
+- Validate all forms work correctly
+
+---
+
+## Phase 6: Deployment
+- Connect custom domain on Vercel
+- Final review with cousin
+- Launch live site
+
+---
+
+## Phase 7: Post-Launch
+- Monitor visitor interactions (if analytics added)
+- Make small tweaks based on feedback

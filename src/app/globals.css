@@ -1,10 +1,16 @@
 @import "tailwindcss";
 
+/* Animation for water ripples */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
   
-  /* Elegant Wedding Color Palette */
+  /* Elegant Wedding Color Palette - Improved Contrast */
   --sage-50: #f7f9f7;
   --sage-100: #edf2ed;
   --sage-200: #d9e4d9;
@@ -23,9 +29,9 @@
   --cream-400: #f8ebd4;
   --cream-500: #f4e2c1;
   --cream-600: #e6d0a3;
-  --cream-700: #d4b882;
-  --cream-800: #b8956b;
-  --cream-900: #9c7c58;
+  --cream-700: #c8a882;
+  --cream-800: #a8824d;
+  --cream-900: #8b6c3d;
   
   --dusty-rose-50: #faf8f8;
   --dusty-rose-100: #f5f0f0;
@@ -43,8 +49,8 @@
   --warm-gray-200: #e7e5e4;
   --warm-gray-300: #d6d3d1;
   --warm-gray-400: #a8a29e;
-  --warm-gray-500: #78716c;
-  --warm-gray-600: #57534e;
+  --warm-gray-500: #6b645f;
+  --warm-gray-600: #54504c;
   --warm-gray-700: #44403c;
   --warm-gray-800: #292524;
   --warm-gray-900: #1c1917;
@@ -139,4 +145,5 @@ body {
 
 .hover\:bg-sage-700:hover { background-color: var(--sage-700); }
 .hover\:bg-cream-700:hover { background-color: var(--cream-700); }
+.hover\:bg-cream-800:hover { background-color: var(--cream-800); }
 .hover\:bg-dusty-rose-700:hover { background-color: var(--dusty-rose-700); }
