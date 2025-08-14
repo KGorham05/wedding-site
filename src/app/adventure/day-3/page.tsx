@@ -25,23 +25,33 @@ export default function AdventureDay3() {
       return;
     }
     setGuestData(data);
-    // Set initial values from existing data
+    // Set initial values from existing data, but don't exceed original party size
+    const maxAdults = Math.min(data.adults || 1, data.totalGuests || 1);
+    const maxChildren = Math.min(data.children || 0, Math.max(0, (data.totalGuests || 1) - maxAdults));
     setPreferences({
-      adults: data.adults || 1,
-      children: data.children || 0
+      adults: data.day3?.adults || maxAdults,
+      children: data.day3?.children || maxChildren
     });
   }, [router]);
 
   const handleContinue = () => {
     if (!guestData) return;
     
+    // Validate that we don't exceed original party size
+    const totalRSVP = preferences.adults + preferences.children;
+    if (totalRSVP > guestData.totalGuests) {
+      alert(`You can only RSVP for ${guestData.totalGuests} ${guestData.totalGuests === 1 ? 'person' : 'people'} (your original party size).`);
+      return;
+    }
+    
     const updatedData = {
       ...guestData,
       day3: preferences,
       lastCompletedDay: 3,
+      // Keep original party size, but allow updating current RSVP counts
       adults: preferences.adults,
       children: preferences.children,
-      totalGuests: preferences.adults + preferences.children
+      totalGuests: guestData.totalGuests // Keep original total, don't update
     };
     localStorage.setItem('montana-adventure-guest', JSON.stringify(updatedData));
     router.push('/adventure/day-4');
@@ -162,7 +172,15 @@ export default function AdventureDay3() {
 
           {/* Simple Guest Count Form */}
           <div className="bg-cyan-900 rounded-2xl p-8 border border-cyan-700">
-            <h3 className="text-2xl font-serif text-cream-100 mb-6">Confirm Your Wedding Celebration Party</h3>
+            <h3 className="text-2xl font-serif text-cream-100 mb-4">Confirm Your Wedding Celebration Party</h3>
+            
+            <div className="bg-cyan-800 rounded-lg p-4 mb-6">
+              <p className="text-sm text-cream-200">
+                <span className="font-medium">Your Original Party Size:</span> {guestData.totalGuests} {guestData.totalGuests === 1 ? 'person' : 'people'}
+                <br />
+                <span className="text-cream-300">You can only RSVP for the number of guests you registered during check-in.</span>
+              </p>
+            </div>
             
             <div className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
@@ -172,10 +190,18 @@ export default function AdventureDay3() {
                   </label>
                   <select
                     value={preferences.adults}
-                    onChange={(e) => setPreferences(prev => ({ ...prev, adults: parseInt(e.target.value) }))}
+                    onChange={(e) => {
+                      const newAdults = parseInt(e.target.value);
+                      const maxChildren = Math.max(0, guestData.totalGuests - newAdults);
+                      setPreferences(prev => ({ 
+                        ...prev, 
+                        adults: newAdults,
+                        children: Math.min(prev.children, maxChildren)
+                      }));
+                    }}
                     className="w-full px-4 py-3 rounded-lg border border-cyan-600 bg-cyan-800 text-cream-100 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500 focus:outline-none"
                   >
-                    {Array.from({ length: 10 }, (_, i) => (
+                    {Array.from({ length: Math.min(10, guestData.totalGuests) }, (_, i) => (
                       <option key={i + 1} value={i + 1}>{i + 1}</option>
                     ))}
                   </select>
@@ -187,10 +213,13 @@ export default function AdventureDay3() {
                   </label>
                   <select
                     value={preferences.children}
-                    onChange={(e) => setPreferences(prev => ({ ...prev, children: parseInt(e.target.value) }))}
+                    onChange={(e) => {
+                      const newChildren = parseInt(e.target.value);
+                      setPreferences(prev => ({ ...prev, children: newChildren }));
+                    }}
                     className="w-full px-4 py-3 rounded-lg border border-cyan-600 bg-cyan-800 text-cream-100 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500 focus:outline-none"
                   >
-                    {Array.from({ length: 6 }, (_, i) => (
+                    {Array.from({ length: Math.min(6, Math.max(0, guestData.totalGuests - preferences.adults) + 1) }, (_, i) => (
                       <option key={i} value={i}>{i}</option>
                     ))}
                   </select>
