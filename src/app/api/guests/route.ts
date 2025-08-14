@@ -17,7 +17,8 @@ export async function GET() {
     return NextResponse.json(
       { 
         success: false, 
-        message: 'Failed to fetch guest list' 
+        message: 'Failed to fetch guest list',
+        error: error instanceof Error ? error.message : 'Unknown error'
       },
       { status: 500 }
     );
