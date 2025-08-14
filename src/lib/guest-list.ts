@@ -17,6 +17,10 @@ export interface GuestData {
   lastName: string;
   email: string;
   totalGuests: number;
+  // Original party composition from check-in (immutable constraints)
+  maxAdults: number;
+  maxChildren: number;
+  // Current RSVP selections (can vary per day, but <= max values)
   adults: number;
   children: number;
   childrenAges: number[];
@@ -31,6 +35,9 @@ export interface GuestData {
     transportationHelp: boolean;
     specialRequests: string;
     excitement: number;
+    // RSVP counts for arrival day
+    adults: number;
+    children: number;
   };
   day2?: {
     weddingAttendance: string;
@@ -39,6 +46,9 @@ export interface GuestData {
     photographyPreferences: string;
     specialMoments: string;
     energyLevel: number;
+    // RSVP counts for adventure day  
+    adults: number;
+    children: number;
   };
   day3?: {
     recoveryPlan: string;
@@ -47,6 +57,9 @@ export interface GuestData {
     groupActivities: string[];
     relaxationPreference: string;
     energyRecovery: number;
+    // RSVP counts for wedding day
+    adults: number;
+    children: number;
   };
   day4?: {
     farewellStyle: string;
@@ -56,6 +69,9 @@ export interface GuestData {
     futureConnections: string;
     overallExperience: number;
     specialMoments: string;
+    // RSVP counts for Yellowstone & BBQ day
+    adults: number;
+    children: number;
   };
   day5?: {
     departureTime: string;

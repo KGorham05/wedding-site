@@ -62,6 +62,13 @@
 - ✅ **Environment Variable Audit**: Added `/api/debug` endpoint for troubleshooting environment configurations
 - ✅ **Production Deployment**: Successfully deployed all fixes and confirmed Google Sheets integration working in production
 
+#### 🛡️ Guest Validation & Security (Complete - August 13, 2025)
+- ✅ **Guest Party Size Limits**: Enforced RSVP limits based on original party size from check-in
+- ✅ **Adventure Day Constraints**: Updated Days 2, 3, and 4 to respect original guest count limits
+- ✅ **Form Validation**: Added real-time validation to prevent exceeding registered party size
+- ✅ **User Experience**: Added clear messaging showing original party size and current limits
+- ✅ **Data Integrity**: Prevented guests from inflating party sizes beyond their initial registration
+
 ### 📊 DATA COLLECTION CAPABILITIES
 
 The adventure experience now collects comprehensive planning data through Google Sheets integration:
@@ -103,7 +110,25 @@ The adventure experience now collects comprehensive planning data through Google
 - `/venue` → becomes part of `/adventure/complete` planning hub
 - `/our-story` → may become part of landing experience
 
-Pending Features
+### 🔄 **PENDING IMPROVEMENTS**
+
+#### 📝 Form State Management (In Progress - August 13, 2025)
+- ❌ **Formik Integration**: Replace useState with Formik for all adventure forms
+- ❌ **Independent Adult/Children Tracking**: Track max adults and max children as separate constraints
+- ❌ **Precise RSVP Limits**: Only allow RSVPs up to original adult/children counts (not combined total)
+- ❌ **Zero-Guest Options**: Allow guests to select 0 people for any event
+- ❌ **Day 1 Form Updates**: Apply party size constraints to arrival day form
+
+#### 🏠 Content Fixes (In Progress - August 13, 2025)  
+- ✅ **Homepage Ceremony Reference**: Corrected description to remove ceremony mention
+- ❌ **Source of Truth Alignment**: Ensure all content matches angie_info.md specifications
+
+#### 🔧 Technical Debt
+- ❌ **Form Validation**: Replace alert() with proper form validation UI
+- ❌ **Error Handling**: Implement consistent error messaging across all forms
+- ❌ **Type Safety**: Add proper TypeScript interfaces for Formik form values
+
+### **Pending Features**
 Pages & Content
 
 /registry – Registry info (URLs, display preferences) (optional)
@@ -139,6 +164,7 @@ Technical Architecture
 Framework: Next.js 14, App Router
 Styling: Tailwind CSS
 Language: TypeScript
+Form State Management: Formik with Yup validation
 Hosting: Vercel
 Data Handling: Google Sheets API (Service Account authentication)
 Routing: File-based routing under src/app

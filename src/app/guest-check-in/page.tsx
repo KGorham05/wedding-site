@@ -90,6 +90,9 @@ export default function GuestCheckIn() {
     const guestData = {
       guest,
       ...formData,
+      // Set maximum constraints from check-in (these cannot be exceeded)
+      maxAdults: formData.adults,
+      maxChildren: formData.children,
       checkedInAt: new Date().toISOString()
     };
     

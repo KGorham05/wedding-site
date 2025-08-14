@@ -9,7 +9,8 @@ export default function AdventureDay1() {
   const router = useRouter();
   const [guestData, setGuestData] = useState<GuestData | null>(null);
   const [preferences, setPreferences] = useState({
-    yogaAttendees: 1
+    adults: 1,
+    children: 0
   });
 
   useEffect(() => {
@@ -18,16 +19,35 @@ export default function AdventureDay1() {
       router.push('/guest-check-in');
       return;
     }
-    setGuestData(JSON.parse(stored));
+    const data = JSON.parse(stored);
+    setGuestData(data);
+    // Set initial values from existing data, but don't exceed original party size
+    const maxAdults = Math.min(data.maxAdults || data.adults || 1, data.totalGuests || 1);
+    const maxChildren = Math.min(data.maxChildren || data.children || 0, Math.max(0, (data.totalGuests || 1) - maxAdults));
+    setPreferences({
+      adults: data.day1?.adults || maxAdults,
+      children: data.day1?.children || maxChildren
+    });
   }, [router]);
 
   const handleContinue = () => {
+    if (!guestData) return;
+    
+    // Validate that we don't exceed original party size
+    const totalRSVP = preferences.adults + preferences.children;
+    if (totalRSVP > guestData.totalGuests) {
+      alert(`You can only RSVP for ${guestData.totalGuests} ${guestData.totalGuests === 1 ? 'person' : 'people'} (your original party size).`);
+      return;
+    }
+    
     // Store day 1 preferences
     const updatedData = {
       ...guestData,
       day1: preferences,
       lastCompletedDay: 1,
-      yogaAttendees: preferences.yogaAttendees
+      // Keep original party size, but allow updating current RSVP counts
+      adults: preferences.adults,
+      children: preferences.children
     };
     localStorage.setItem('montana-adventure-guest', JSON.stringify(updatedData));
     router.push('/adventure/day-2');
@@ -110,36 +130,73 @@ export default function AdventureDay1() {
             </div>
           </div>
 
-          {/* Simple Guest Count Form */}
+          {/* Guest Count Form */}
           <div className="bg-dusty-rose-900 rounded-2xl p-8 border border-dusty-rose-700">
-            <h3 className="text-2xl font-serif text-cream-100 mb-6">Golden Hour Yoga & Sound Bath</h3>
+            <h3 className="text-2xl font-serif text-cream-100 mb-4">Golden Hour Yoga & Sound Bath</h3>
             <p className="text-cream-200 mb-6">How many from your party will be joining us for tonight&apos;s peaceful yoga and sound bath experience?</p>
             
+            <div className="bg-dusty-rose-800 rounded-lg p-4 mb-6">
+              <p className="text-sm text-cream-200">
+                <span className="font-medium">Your Original Party Size:</span> {guestData.totalGuests} {guestData.totalGuests === 1 ? 'person' : 'people'}
+                <br />
+                <span className="text-cream-300">You can only RSVP for the number of guests you registered during check-in.</span>
+              </p>
+            </div>
+            
             <div className="space-y-6">
-              <div className="max-w-sm mx-auto">
-                <label className="block text-sm font-medium text-cream-100 mb-2">
-                  Number of Attendees
-                </label>
-                <select
-                  value={preferences.yogaAttendees}
-                  onChange={(e) => setPreferences(prev => ({ ...prev, yogaAttendees: parseInt(e.target.value) }))}
-                  className="w-full px-4 py-3 rounded-lg border border-dusty-rose-600 bg-dusty-rose-800 text-cream-100 focus:border-dusty-rose-500 focus:ring-2 focus:ring-dusty-rose-500 focus:outline-none"
-                >
-                  <option value={0}>May not attend this event</option>
-                  {Array.from({ length: 12 }, (_, i) => (
-                    <option key={i + 1} value={i + 1}>{i + 1} {i + 1 === 1 ? 'person' : 'people'}</option>
-                  ))}
-                </select>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-cream-100 mb-2">
+                    Number of Adults
+                  </label>
+                  <select
+                    value={preferences.adults}
+                    onChange={(e) => {
+                      const newAdults = parseInt(e.target.value);
+                      const maxChildren = Math.max(0, guestData.totalGuests - newAdults);
+                      setPreferences(prev => ({ 
+                        ...prev, 
+                        adults: newAdults,
+                        children: Math.min(prev.children, maxChildren)
+                      }));
+                    }}
+                    className="w-full px-4 py-3 rounded-lg border border-dusty-rose-600 bg-dusty-rose-800 text-cream-100 focus:border-dusty-rose-500 focus:ring-2 focus:ring-dusty-rose-500 focus:outline-none"
+                  >
+                    {Array.from({ length: Math.min(10, guestData.totalGuests) + 1 }, (_, i) => (
+                      <option key={i} value={i}>{i}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-cream-100 mb-2">
+                    Number of Children
+                  </label>
+                  <select
+                    value={preferences.children}
+                    onChange={(e) => {
+                      const newChildren = parseInt(e.target.value);
+                      setPreferences(prev => ({ ...prev, children: newChildren }));
+                    }}
+                    className="w-full px-4 py-3 rounded-lg border border-dusty-rose-600 bg-dusty-rose-800 text-cream-100 focus:border-dusty-rose-500 focus:ring-2 focus:ring-dusty-rose-500 focus:outline-none"
+                  >
+                    {Array.from({ length: Math.min(8, Math.max(0, guestData.totalGuests - preferences.adults) + 1) }, (_, i) => (
+                      <option key={i} value={i}>{i}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div className="text-center p-4 bg-dusty-rose-800 rounded-lg">
-                <p className="text-cream-100">
-                  {preferences.yogaAttendees === 0 ? (
-                    <span className="text-cream-200">No worries! Each adventure is completely optional. We&apos;ll miss you but hope to see you for other activities!</span>
-                  ) : (
-                    <span><span className="font-semibold">Yoga Attendees:</span> {preferences.yogaAttendees} {preferences.yogaAttendees === 1 ? 'person' : 'people'}</span>
-                  )}
-                </p>
+                {preferences.adults + preferences.children === 0 ? (
+                  <p className="text-cream-200">No worries! Each adventure is completely optional. We&apos;ll miss you but hope to see you for other activities!</p>
+                ) : (
+                  <p className="text-cream-100">
+                    <span className="font-semibold">Yoga & Sound Bath Attendees:</span> {preferences.adults + preferences.children} {preferences.adults + preferences.children === 1 ? 'person' : 'people'}
+                    <br />
+                    <span className="text-dusty-rose-200 text-sm">A perfect way to ease into your Montana adventure!</span>
+                  </p>
+                )}
               </div>
 
               <div className="flex justify-between items-center pt-6">

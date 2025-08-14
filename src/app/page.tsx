@@ -107,7 +107,7 @@ export default function Home() {
                   Wedding Celebration
                 </h3>
                 <p className="text-cream-200 text-sm">
-                  An intimate ceremony followed by dinner and dancing under the Montana stars
+                  Cocktail hour, dinner, and dancing under the Montana stars at Sanctuary at Crow Hollow Ranch
                 </p>
               </div>
             </div>
