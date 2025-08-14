@@ -26,8 +26,8 @@ export default function AdventureDay4() {
     }
     setGuestData(data);
     // Set initial values from existing data, but don't exceed original party size
-    const maxAdults = Math.min(data.adults || 1, data.totalGuests || 1);
-    const maxChildren = Math.min(data.children || 0, Math.max(0, (data.totalGuests || 1) - maxAdults));
+    const maxAdults = Math.min(data.maxAdults || data.adults || 1, data.totalGuests || 1);
+    const maxChildren = Math.min(data.maxChildren || data.children || 0, Math.max(0, (data.totalGuests || 1) - maxAdults));
     setPreferences({
       adults: data.day4?.adults || maxAdults,
       children: data.day4?.children || maxChildren
@@ -37,10 +37,17 @@ export default function AdventureDay4() {
   const handleContinue = () => {
     if (!guestData) return;
     
-    // Validate that we don't exceed original party size
-    const totalRSVP = preferences.adults + preferences.children;
-    if (totalRSVP > guestData.totalGuests) {
-      alert(`You can only RSVP for ${guestData.totalGuests} ${guestData.totalGuests === 1 ? 'person' : 'people'} (your original party size).`);
+    // Validate that we don't exceed original party limits  
+    const maxAdultsAllowed = guestData.maxAdults || guestData.adults || 1;
+    const maxChildrenAllowed = guestData.maxChildren || guestData.children || 0;
+    
+    if (preferences.adults > maxAdultsAllowed) {
+      alert(`You can only RSVP for up to ${maxAdultsAllowed} ${maxAdultsAllowed === 1 ? 'adult' : 'adults'}.`);
+      return;
+    }
+    
+    if (preferences.children > maxChildrenAllowed) {
+      alert(`You can only RSVP for up to ${maxChildrenAllowed} ${maxChildrenAllowed === 1 ? 'child' : 'children'}.`);
       return;
     }
     
@@ -181,9 +188,9 @@ export default function AdventureDay4() {
             
             <div className="bg-orange-800 rounded-lg p-4 mb-6">
               <p className="text-sm text-cream-200">
-                <span className="font-medium">Your Original Party Size:</span> {guestData.totalGuests} {guestData.totalGuests === 1 ? 'person' : 'people'}
+                <span className="font-medium">Your Party Limits:</span> Max {guestData.maxAdults || guestData.adults} adults, {guestData.maxChildren || guestData.children} children
                 <br />
-                <span className="text-cream-300">You can only RSVP for the number of guests you registered during check-in.</span>
+                <span className="text-cream-300">You can only RSVP for the number of adults and children you registered during check-in.</span>
               </p>
             </div>
             
@@ -197,17 +204,17 @@ export default function AdventureDay4() {
                     value={preferences.adults}
                     onChange={(e) => {
                       const newAdults = parseInt(e.target.value);
-                      const maxChildren = Math.max(0, guestData.totalGuests - newAdults);
+                      const maxChildrenAllowed = guestData.maxChildren || guestData.children || 0;
                       setPreferences(prev => ({ 
                         ...prev, 
                         adults: newAdults,
-                        children: Math.min(prev.children, maxChildren)
+                        children: Math.min(prev.children, maxChildrenAllowed)
                       }));
                     }}
                     className="w-full px-4 py-3 rounded-lg border border-orange-600 bg-orange-800 text-cream-100 focus:border-orange-500 focus:ring-2 focus:ring-orange-500 focus:outline-none"
                   >
-                    {Array.from({ length: Math.min(10, guestData.totalGuests) }, (_, i) => (
-                      <option key={i + 1} value={i + 1}>{i + 1}</option>
+                    {Array.from({ length: Math.min(10, (guestData.maxAdults || guestData.adults || 1)) + 1 }, (_, i) => (
+                      <option key={i} value={i}>{i}</option>
                     ))}
                   </select>
                 </div>
@@ -224,7 +231,7 @@ export default function AdventureDay4() {
                     }}
                     className="w-full px-4 py-3 rounded-lg border border-orange-600 bg-orange-800 text-cream-100 focus:border-orange-500 focus:ring-2 focus:ring-orange-500 focus:outline-none"
                   >
-                    {Array.from({ length: Math.min(6, Math.max(0, guestData.totalGuests - preferences.adults) + 1) }, (_, i) => (
+                    {Array.from({ length: Math.min(6, (guestData.maxChildren || guestData.children || 0)) + 1 }, (_, i) => (
                       <option key={i} value={i}>{i}</option>
                     ))}
                   </select>
