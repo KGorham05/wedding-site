@@ -30,25 +30,16 @@ export interface GuestData {
   lastCompletedDay?: number;
   completedAt?: string;
   day1?: {
-    arrivalTime: string;
-    accommodationNeeds: string;
-    transportationHelp: boolean;
-    specialRequests: string;
-    excitement: number;
-    // RSVP counts for arrival day
+    // Sound bath/yoga attendee counts
     adults: number;
     children: number;
   };
   day2?: {
-    weddingAttendance: string;
-    ceremonySeating: string;
-    receptionActivities: string[];
-    photographyPreferences: string;
-    specialMoments: string;
-    energyLevel: number;
-    // RSVP counts for adventure day  
-    adults: number;
-    children: number;
+    // Adventure selections
+    whitewaterRafting: number;
+    scenicFloat: number;
+    horsebackRiding: number;
+    hatMaking: number;
   };
   day3?: {
     recoveryPlan: string;

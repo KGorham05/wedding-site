@@ -88,56 +88,31 @@ export async function submitRSVPToSheets(guestData: GuestData): Promise<void> {
       guestData.children,
       guestData.childrenAges.join(', '),
       guestData.dietaryRestrictions,
-      guestData.specialRequests,
       
-      // Day 1 - Arrival
-      guestData.day1?.arrivalTime || '',
-      guestData.day1?.accommodationNeeds || '',
-      guestData.day1?.transportationHelp || false,
-      guestData.day1?.specialRequests || '',
-      guestData.day1?.excitement || '',
-      
-      // Day 2 - Wedding
-      guestData.day2?.weddingAttendance || '',
-      guestData.day2?.ceremonySeating || '',
-      guestData.day2?.receptionActivities?.join(', ') || '',
-      guestData.day2?.photographyPreferences || '',
-      guestData.day2?.specialMoments || '',
-      guestData.day2?.energyLevel || '',
-      
-      // Day 3 - Adventure
-      guestData.day3?.recoveryPlan || '',
-      guestData.day3?.outdoorActivities?.join(', ') || '',
-      guestData.day3?.hikingLevel || '',
-      guestData.day3?.groupActivities?.join(', ') || '',
-      guestData.day3?.relaxationPreference || '',
-      guestData.day3?.energyRecovery || '',
-      
-      // Day 4 - Memories
-      guestData.day4?.farewellStyle || '',
-      guestData.day4?.groupMemories?.join(', ') || '',
-      guestData.day4?.finalActivities?.join(', ') || '',
-      guestData.day4?.memorabilia || '',
-      guestData.day4?.futureConnections || '',
-      guestData.day4?.overallExperience || '',
-      guestData.day4?.specialMoments || '',
-      
-      // Day 5 - Departure
-      guestData.day5?.departureTime || '',
-      guestData.day5?.transportationNeeds || false,
-      guestData.day5?.finalWishes || '',
-      guestData.day5?.testimonial || '',
-      guestData.day5?.futureEvents?.join(', ') || '',
-      guestData.day5?.gratitude || '',
-      guestData.day5?.stayConnected || '',
-      guestData.day5?.finalRating || '',
+      // Day 1 - Arrival & Welcome (yoga/sound bath attendees)
+      (guestData.day1?.adults || 0) + (guestData.day1?.children || 0),
+
+      // Day 2 - Adventures
+      guestData.day2?.whitewaterRafting || 0,
+      guestData.day2?.scenicFloat || 0,
+      guestData.day2?.horsebackRiding || 0,
+      guestData.day2?.hatMaking || 0,
+
+      // Day 3 - Reception (TODO: Update when day3 structure is defined)
+      0, // guestData.day3?.receptionAttendees || 0,
+
+      // Day 4 - Yellowstone (TODO: Update when day4 structure is defined)
+      0, // guestData.day4?.yellowstoneAttendees || 0,
+
+      // Day 5 - Farewell (TODO: Update when day5 structure is defined)
+      0, // guestData.day5?.farewellAttendees || 0,
       
       guestData.completedAt || '',
     ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'RSVP_Responses!A:ZZ',
+      range: 'RSVP_Responses!A:S', // Adjusted range
       valueInputOption: 'RAW',
       requestBody: {
         values: [rowData],
@@ -159,7 +134,7 @@ export async function fetchAllRSVPResponses(): Promise<RSVPResponse[]> {
     
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: 'RSVP_Responses!A2:ZZ', // Skip header row
+      range: 'RSVP_Responses!A2:S', // Adjusted range
     });
 
     const rows = response.data.values || [];
