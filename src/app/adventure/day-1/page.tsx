@@ -101,32 +101,32 @@ export default function AdventureDay1() {
           
           {/* Welcome Back */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-5xl font-serif text-cream-100 mb-4">
+            <h1 className="text-3xl md:text-5xl font-serif text-white mb-4">
               Monday, August 19th, 2026
             </h1>
-            <h2 className="text-xl md:text-2xl text-sage-300 mb-6">
+            <h2 className="text-xl md:text-2xl text-white/90 mb-6">
               🛬 Arrival Day: Welcome to Big Sky Country!
             </h2>
-            <p className="text-lg text-cream-200 max-w-3xl mx-auto">
+            <p className="text-lg text-white/80 max-w-3xl mx-auto">
               The adventure begins, {guestData.guest.firstName}! Let&apos;s make sure your arrival goes smoothly 
               and get you settled in for an amazing week.
             </p>
           </div>
 
           {/* Day Preview */}
-          <div className="bg-sage-900 rounded-2xl p-8 border border-sage-700 mb-8">
-            <h3 className="text-2xl font-serif text-cream-100 mb-6">What&apos;s Happening Monday</h3>
+          <div className="bg-cream-100/95 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-2xl mb-8">
+            <h3 className="text-2xl font-serif text-white mb-6">What&apos;s Happening Monday</h3>
             
             <div className="grid md:grid-cols-1 gap-6">
-              <div className="bg-sage-800 rounded-xl p-6 border border-sage-600">
-                <h4 className="text-lg font-semibold text-cream-100 mb-3">✈️ Arrive in Style at Your Leisure</h4>
-                <p className="text-cream-200 text-sm mb-4">
+              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/30">
+                <h4 className="text-lg font-semibold text-white mb-3">✈️ Arrive in Style at Your Leisure</h4>
+                <p className="text-white/90 text-sm mb-4">
                   Travel arrangements are entirely up to you - arrive whenever works best for your schedule! 
                   Get settled into your accommodations, meet other guests, and get oriented with the beautiful ranch area.
                 </p>
-                <div className="border-t border-sage-600 pt-4 mt-4">
-                  <h4 className="text-lg font-semibold text-cream-100 mb-3">🧘‍♀️ Golden Hour Sound Bath & Yoga (6-9 PM)</h4>
-                  <p className="text-cream-200 text-sm">
+                <div className="border-t border-white/30 pt-4 mt-4">
+                  <h4 className="text-lg font-semibold text-white mb-3">🧘‍♀️ Golden Hour Sound Bath & Yoga (6-9 PM)</h4>
+                  <p className="text-white/90 text-sm">
                     Join us for a magical evening of sound bath nature yoga with crystal bowls as the Montana sun sets 
                     over the ranch. This peaceful gathering will help you unwind from travel and connect with the 
                     serene wilderness that surrounds us.
