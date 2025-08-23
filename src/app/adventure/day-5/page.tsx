@@ -90,10 +90,10 @@ export default function AdventureDay5() {
       <nav className="fixed top-0 left-0 right-0 bg-warm-gray-900/95 backdrop-blur-sm border-b border-warm-gray-700 z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex justify-between items-center py-4">
-            <Link href="/" className="text-2xl font-serif text-cream-100">
+            <Link href="/" className="text-2xl font-serif text-white">
               Angela & Jeff
             </Link>
-            <div className="text-sm text-cream-300">
+            <div className="text-sm text-white">
               Day 5 of 5 - Farewell
             </div>
           </div>
