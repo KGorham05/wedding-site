@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { type GuestData } from "@/lib/guest-list";
 
 export default function AdventureDay1() {
@@ -67,22 +68,20 @@ export default function AdventureDay1() {
   }
 
   return (
-    <div className="min-h-screen bg-warm-gray-900 relative">
-      {/* Background Image */}
-      <div 
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Cpath d='M0,400L48,380C96,360,192,320,288,310C384,300,480,320,576,335C672,350,768,360,864,350C960,340,1056,310,1152,300L1200,295L1200,600L1152,600C1056,600,960,600,864,600C768,600,672,600,576,600C480,600,384,600,288,600C192,600,96,600,48,600L0,600Z' fill='%234a5d23'/%3E%3Cpath d='M0,480L48,460C96,440,192,400,288,380C384,360,480,360,576,375C672,390,768,420,864,420C960,420,1056,390,1152,375L1200,365L1200,600L1152,600C1056,600,960,600,864,600C768,600,672,600,576,600C480,600,384,600,288,600C192,600,96,600,48,600L0,600Z' fill='%23374151'/%3E%3C/svg%3E")`
-        }}
-      />
-      
-      {/* Mountains Silhouette */}
-      <div 
-        className="fixed inset-0 bg-cover bg-bottom bg-no-repeat opacity-30"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400'%3E%3Cpath d='M0,300L100,250L200,280L300,200L400,230L500,150L600,180L700,120L800,160L900,100L1000,140L1100,80L1200,120V400H0V300Z' fill='%232d3748' opacity='0.8'/%3E%3Cpath d='M0,350L120,320L240,340L360,290L480,310L600,260L720,280L840,240L960,260L1080,220L1200,240V400H0V350Z' fill='%231a202c' opacity='0.6'/%3E%3C/svg%3E")`
-        }}
-      />
+    <div className="min-h-screen relative">
+      {/* Background Image with Dark Overlay */}
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="/montana-1829251.jpg"
+          alt="Montana landscape welcome scene"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
+        {/* 20% Dark Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/25 to-black/35"></div>
+      </div>
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-warm-gray-900/95 backdrop-blur-sm border-b border-warm-gray-700 z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -138,22 +137,22 @@ export default function AdventureDay1() {
           </div>
 
           {/* Guest Count Form */}
-          <div className="bg-dusty-rose-900 rounded-2xl p-8 border border-dusty-rose-700">
-            <h3 className="text-2xl font-serif text-cream-100 mb-4">Golden Hour Yoga & Sound Bath</h3>
-            <p className="text-cream-200 mb-6">How many from your party will be joining us for tonight&apos;s peaceful yoga and sound bath experience?</p>
+          <div className="bg-cream-100/95 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-2xl">
+            <h3 className="text-2xl font-serif text-white mb-4">Golden Hour Yoga & Sound Bath</h3>
+            <p className="text-white/90 mb-6">How many from your party will be joining us for tonight&apos;s peaceful yoga and sound bath experience?</p>
             
-            <div className="bg-dusty-rose-800 rounded-lg p-4 mb-6">
-              <p className="text-sm text-cream-200">
+            <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4 mb-6 border border-white/30">
+              <p className="text-sm text-white/90">
                 <span className="font-medium">Your Party Limits:</span> Max {guestData.maxAdults || guestData.adults} adults, {guestData.maxChildren || guestData.children} children
                 <br />
-                <span className="text-cream-300">You can only RSVP for the number of adults and children you registered during check-in.</span>
+                <span className="text-white/80">You can only RSVP for the number of adults and children you registered during check-in.</span>
               </p>
-            </div>
+            </div>∑
             
             <div className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-cream-100 mb-2">
+                  <label className="block text-sm font-medium text-white mb-2">
                     Number of Adults
                   </label>
                   <select
@@ -167,7 +166,7 @@ export default function AdventureDay1() {
                         children: Math.min(prev.children, maxChildrenAllowed)
                       }));
                     }}
-                    className="w-full px-4 py-3 rounded-lg border border-dusty-rose-600 bg-dusty-rose-800 text-cream-100 focus:border-dusty-rose-500 focus:ring-2 focus:ring-dusty-rose-500 focus:outline-none"
+                    className="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white focus:border-white/50 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-200"
                   >
                     {Array.from({ length: Math.min(10, (guestData.maxAdults || guestData.adults || 1)) + 1 }, (_, i) => (
                       <option key={i} value={i}>{i}</option>
@@ -176,7 +175,7 @@ export default function AdventureDay1() {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-cream-100 mb-2">
+                  <label className="block text-sm font-medium text-white mb-2">
                     Number of Children
                   </label>
                   <select
@@ -185,7 +184,7 @@ export default function AdventureDay1() {
                       const newChildren = parseInt(e.target.value);
                       setPreferences(prev => ({ ...prev, children: newChildren }));
                     }}
-                    className="w-full px-4 py-3 rounded-lg border border-dusty-rose-600 bg-dusty-rose-800 text-cream-100 focus:border-dusty-rose-500 focus:ring-2 focus:ring-dusty-rose-500 focus:outline-none"
+                    className="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white focus:border-white/50 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-200"
                   >
                     {Array.from({ length: Math.min(8, (guestData.maxChildren || guestData.children || 0)) + 1 }, (_, i) => (
                       <option key={i} value={i}>{i}</option>
@@ -194,14 +193,14 @@ export default function AdventureDay1() {
                 </div>
               </div>
 
-              <div className="text-center p-4 bg-dusty-rose-800 rounded-lg">
+              <div className="text-center p-4 bg-white/20 backdrop-blur-sm rounded-lg border border-white/30">
                 {preferences.adults + preferences.children === 0 ? (
-                  <p className="text-cream-200">No worries! Each adventure is completely optional. We&apos;ll miss you but hope to see you for other activities!</p>
+                  <p className="text-white/90">No worries! Each adventure is completely optional. We&apos;ll miss you but hope to see you for other activities!</p>
                 ) : (
-                  <p className="text-cream-100">
+                  <p className="text-white">
                     <span className="font-semibold">Yoga & Sound Bath Attendees:</span> {preferences.adults + preferences.children} {preferences.adults + preferences.children === 1 ? 'person' : 'people'}
                     <br />
-                    <span className="text-dusty-rose-200 text-sm">A perfect way to ease into your Montana adventure!</span>
+                    <span className="text-white/80 text-sm">A perfect way to ease into your Montana adventure!</span>
                   </p>
                 )}
               </div>
@@ -209,14 +208,14 @@ export default function AdventureDay1() {
               <div className="flex justify-between items-center pt-6">
                 <Link 
                   href="/guest-check-in"
-                  className="text-cream-300 hover:text-cream-100 transition-colors"
+                  className="text-white/80 hover:text-white transition-colors"
                 >
                   ← Back to check-in
                 </Link>
                 
                 <button
                   onClick={handleContinue}
-                  className="bg-dusty-rose-600 text-white py-3 px-8 rounded-lg font-medium hover:bg-dusty-rose-700 transition-colors"
+                  className="bg-sage-600 hover:bg-sage-700 text-white py-3 px-8 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
                   Continue to River Adventures →
                 </button>

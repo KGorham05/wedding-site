@@ -2,7 +2,32 @@
 
 **IMPORTANT: Always start by reading PROJECT_ROADMAP.md**
 
-Before beginning any work session, read the PROJECT_ROADMAP.md file in the root directory. This file contains:
+Before beginning any work session, read the PROJECT_ROADMAP.md file in the root direCSS & Styling
+Use Tailwind CSS exclusively; no separate CSS files.
+
+Follow mobile-first responsive design.
+
+Use Tailwind's responsive prefixes (sm:, md:, lg:, xl:).
+
+Prefer utility classes and Tailwind's design tokens for spacing, color, and typography.
+
+Avoid custom CSS unless absolutely necessary.
+
+**Accessibility & Contrast Requirements (CRITICAL):**
+
+ALWAYS ensure text contrast meets WCAG AA standards (4.5:1 for normal text, 3:1 for large text).
+
+Test all text/background combinations, especially over images and videos.
+
+Use text shadows, overlays, or background cards when text appears over complex backgrounds.
+
+Verify readability across different devices and lighting conditions.
+
+Consider users with visual impairments - contrast is non-negotiable.
+
+Use tools like WebAIM Contrast Checker to validate color combinations before implementation.
+
+Mobile-First Designfile contains:
 - Current project status and completed features
 - Pending tasks and priorities
 - Known issues and bugs

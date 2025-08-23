@@ -89,6 +89,8 @@ export default function AdventureDay2() {
           alt="Glacier National Park by Joshua Woroniecki"
           fill
           className="object-cover"
+          sizes="100vw"
+          priority
         />
         {/* 20% Dark Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/15 to-black/25"></div>

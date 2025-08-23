@@ -118,6 +118,8 @@ export default function GuestCheckIn() {
           alt="Montana river landscape"
           fill
           className="object-cover"
+          sizes="100vw"
+          priority
         />
         {/* 20% Dark Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/25 to-black/35"></div>

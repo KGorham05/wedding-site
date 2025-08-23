@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { type GuestData } from "@/lib/guest-list";
 
 export default function AdventureComplete() {
@@ -63,13 +64,36 @@ export default function AdventureComplete() {
   };
 
   if (!guestData) {
-    return <div className="min-h-screen bg-warm-gray-900 flex items-center justify-center">
-      <div className="text-cream-100">Loading your adventure...</div>
+    return <div className="min-h-screen relative flex items-center justify-center">
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="/lake-4888504.jpg"
+          alt="Montana lake celebration"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/25 to-black/35"></div>
+      </div>
+      <div className="relative z-10 text-cream-100">Loading your adventure...</div>
     </div>;
   }
 
   return (
-    <div className="min-h-screen bg-warm-gray-900">
+    <div className="min-h-screen relative">
+      {/* Background Image with Dark Overlay */}
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="/lake-4888504.jpg"
+          alt="Montana lake celebration"
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        {/* 20% Dark Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/25 to-black/35"></div>
+      </div>
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-warm-gray-900/90 backdrop-blur-sm border-b border-warm-gray-700 z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">

@@ -1,3 +1,22 @@
+## 🚀 CURRENT SPRINT: Integrating New Content & Features (August 22, 2025)
+
+Based on the latest information from `angie_info_3.md`, we are initiating a new phase of development to fully align the website with the couple's vision.
+
+### **Phase 1: Content & Information Architecture**
+1.  **Create General Info Page**: Build a new `/info` page to house all logistical details (What to Wear, Travel, Hotels, Local Activities).
+2.  **Update Our Story**: Replace placeholder content on `/our-story` with the official story and photo.
+3.  **Revamp Homepage**: Update homepage content to introduce the "Wedding Week" schedule and theme.
+4.  **Update Navigation**: Add a link to the new `/info` page in the main navigation.
+
+### **Phase 2: RSVP Flow Enhancement**
+1.  **Refactor Adventure Forms**: Update adventure day forms to allow guests to RSVP for specific, optional, paid activities.
+2.  **Update Google Sheets Logic**: Enhance the backend to capture detailed activity selections in the Google Sheet.
+
+### **Phase 3: Design System Update**
+1.  **Implement New Palette & Fonts**: Update Tailwind CSS config and global styles to match the "earthy, romantic, and timeless" design specification.
+
+---
+
 ## 🎉 MAJOR MILESTONE: COMPREHENSIVE WEBSITE IMPROVEMENTS COMPLETE! 🎉
 
 **Date Completed: August 11, 2025**
@@ -35,6 +54,19 @@
 - ✅ **State Management**: localStorage-based persistence across adventure flow  
 - ✅ **Error Handling**: Navigation guards, data validation, proper TypeScript types
 - ✅ **Performance**: Optimized video loading with progressive enhancement and SVG fallbacks
+
+#### 🎨 Latest Design Improvements (Complete - August 23, 2025)
+- ✅ **Frosted Glass Styling Consistency**: Updated Day 1 and Day 5 adventure forms to use consistent frosted glass styling
+- ✅ **Eliminated Purple Theme Elements**: Replaced purple/indigo backgrounds with elegant frosted glass design matching guest check-in and info pages
+- ✅ **Enhanced Visual Hierarchy**: Applied consistent white text on frosted backgrounds with proper transparency and backdrop blur effects
+- ✅ **Improved Button Styling**: Updated all action buttons to use sage green theme with hover effects and smooth transitions
+- ✅ **Accessibility Maintained**: Ensured all text contrast meets WCAG standards with frosted glass backgrounds
+- ✅ **Fixed RSVP Button Styling**: Updated homepage "RSVP Now" button to use dark text for proper contrast on light background
+- ✅ **Added Day 1 Background Image**: Replaced SVG backgrounds with optimized Montana landscape image
+- ✅ **Image Optimization System**: Implemented comprehensive Next.js image optimization with responsive sizing
+- ✅ **Responsive Image Loading**: Added proper `sizes` attributes and priority loading for all background images
+- ✅ **Performance Enhancement**: Configured Next.js for WebP/AVIF format conversion and multiple device sizes
+- ✅ **Removed Package Lock Conflict**: Fixed lockfile warning by removing duplicate package-lock.json file
 
 #### 🎨 Latest Enhancements (Complete - August 11, 2025)
 - ✅ **Navigation Consistency**: Updated `/our-story` page to match current design system with dark theme and streamlined navigation
@@ -104,25 +136,27 @@ The adventure experience now collects comprehensive planning data through Google
 - Dietary restrictions and accommodations
 - Travel and logistics planning
 
-### **Current Legacy Pages** (to be redesigned)
-- `/schedule` → becomes `/adventure/day-[1-5]` progressive experience
-- `/rsvp` → becomes `/guest-check-in` + adventure builder
-- `/venue` → becomes part of `/adventure/complete` planning hub
-- `/our-story` → may become part of landing experience
+### **Current Legacy Pages** (to be redesigned or integrated)
+- `/schedule` → Integrated into the new adventure flow and upcoming `/info` page.
+- `/rsvp` → Replaced by `/guest-check-in` and the adventure builder.
+- `/venue` → Content will be part of the new `/info` page.
+- `/our-story` → To be updated with new content.
 
 ### 🔄 **PENDING IMPROVEMENTS**
 
-#### 📝 Form State Management (Complete - August 13, 2025)
-- ✅ **Formik Integration**: Added Formik and Yup dependencies for enhanced form state management
-- ✅ **Independent Adult/Children Tracking**: Track max adults and max children as separate constraints
-- ✅ **Precise RSVP Limits**: Only allow RSVPs up to original adult/children counts (not combined total)
-- ✅ **Zero-Guest Options**: Allow guests to select 0 people for any event
-- ✅ **Day 1 Form Updates**: Applied party size constraints to arrival day form
-- ✅ **Days 2-4 Form Updates**: Updated all adventure day forms with independent constraints
+#### 🎨 New Content & Feature Integration (In Progress)
+-   **New Page (`/info`)**: Create a comprehensive general information page.
+-   **Content Update (`/our-story`)**: Integrate the final "Our Story" text and photo.
+-   **Homepage Update**: Revise content to reflect the full week's schedule.
+-   **RSVP Enhancement**: Update forms to allow selection of specific, costed adventures.
+-   **Design System Update**: Implement the new color palette (lilac, wildflower pink, etc.) and typography.
 
-#### 🏠 Content Fixes (Complete - August 13, 2025)  
-- ✅ **Homepage Ceremony Reference**: Corrected description to remove ceremony mention
-- ✅ **Source of Truth Alignment**: Ensure all content matches angie_info.md specifications
+#### 🎨 UI/UX Overhaul for Adventure Forms (In Progress)
+-   **Redesign Form Containers**: Replace solid white backgrounds with a semi-transparent "frosted glass" effect for a more modern and integrated look.
+-   **Enhance Text Readability**: Ensure all header text over background images is white with a text shadow for accessibility and visual pop.
+-   **Standardize Buttons & Links**: Create a consistent, accessible style for all buttons and navigation links.
+-   **Ensure Color Consistency**: Remove inconsistent colors on the final pages and align all forms with the website's primary color palette.
+-   **Improve User Flow**: Redirect users to the `/info` page upon successful completion of the adventure RSVP.
 
 #### 🔧 Technical Debt (Pending)
 - ❌ **Formik Implementation**: Replace useState with actual Formik forms (dependencies installed)
