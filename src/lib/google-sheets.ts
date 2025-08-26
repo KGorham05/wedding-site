@@ -19,8 +19,25 @@ interface RSVPResponse {
 
 // Initialize Google Sheets API
 const getGoogleSheetsClient = async (): Promise<sheets_v4.Sheets> => {
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n') || '';
-  
+  const requiredEnv = [
+    'GOOGLE_PROJECT_ID',
+    'GOOGLE_PRIVATE_KEY_ID',
+    'GOOGLE_PRIVATE_KEY',
+    'GOOGLE_CLIENT_EMAIL',
+    'GOOGLE_CLIENT_ID'
+  ] as const;
+  const missing = requiredEnv.filter(k => !process.env[k]);
+  if (missing.length) {
+    throw new Error(`Missing Google service account env vars: ${missing.join(', ')}`);
+  }
+
+  // Normalize private key (handle escaped newlines & optional surrounding quotes)
+  let privateKey = process.env.GOOGLE_PRIVATE_KEY as string;
+  privateKey = privateKey.replace(/\\n/g, '\n');
+  if (privateKey.startsWith('"') && privateKey.endsWith('"')) {
+    privateKey = privateKey.slice(1, -1);
+  }
+
   const credentials = {
     type: 'service_account' as const,
     project_id: process.env.GOOGLE_PROJECT_ID!,
@@ -122,68 +139,86 @@ export async function fetchGuestListFromSheets(): Promise<Guest[]> {
 
 // RSVP Submission Functions
 export async function submitRSVPToSheets(guestData: GuestData): Promise<void> {
+  const startedAt = Date.now();
   try {
-    const sheets = await getGoogleSheetsClient();
     const spreadsheetId = process.env.RSVP_RESPONSES_SHEET_ID;
-    
-    // Define the column structure for the Google Sheet
-    // Column headers should be:
-    // A: Timestamp, B: Guest ID, C: First Name, D: Last Name, E: Email
-    // F: Total Guests, G: Adults, H: Children, I: Children Ages, J: Dietary Restrictions
-    // K: Special Requests, L: Day 1 Attendees, M: Day 2 Whitewater Rafting
-    // N: Day 2 Scenic Float, O: Day 2 Horseback Riding, P: Day 2 Hat Making
-    // Q: Day 3 Adults, R: Day 3 Children, S: Day 4 Adults, T: Day 4 Children
-    // U: Day 5 Departure Time, V: Completed At
-    
+    if (!spreadsheetId) {
+      throw new Error('Missing RSVP_RESPONSES_SHEET_ID env var');
+    }
+  const sheetName = process.env.RSVP_RESPONSES_SHEET_NAME || 'RSVP_Responses';
+    const sheets = await getGoogleSheetsClient();
+
+    const safeChildrenAges = Array.isArray(guestData.childrenAges) ? guestData.childrenAges : [];
+
     const rowData = [
-      new Date().toISOString(), // A: Timestamp
-      guestData.guest.id, // B: Guest ID
-      guestData.guest.firstName, // C: First Name
-      guestData.guest.lastName, // D: Last Name
-      guestData.email, // E: Email
-      guestData.totalGuests, // F: Total Guests
-      guestData.adults, // G: Adults
-      guestData.children, // H: Children
-      guestData.childrenAges.join(', '), // I: Children Ages
-      guestData.dietaryRestrictions, // J: Dietary Restrictions
-      guestData.specialRequests || '', // K: Special Requests
-      
-      // Day 1 - Arrival & Welcome (yoga/sound bath attendees)
-      (guestData.day1?.adults || 0) + (guestData.day1?.children || 0), // L: Day 1 Attendees
-
-      // Day 2 - Adventures
-      guestData.day2?.whitewaterRafting || 0, // M: Day 2 Whitewater Rafting
-      guestData.day2?.scenicFloat || 0, // N: Day 2 Scenic Float
-      guestData.day2?.horsebackRiding || 0, // O: Day 2 Horseback Riding
-      guestData.day2?.hatMaking || 0, // P: Day 2 Hat Making
-
-      // Day 3 - Wedding Reception
-      guestData.day3?.adults || 0, // Q: Day 3 Adults
-      guestData.day3?.children || 0, // R: Day 3 Children
-
-      // Day 4 - Yellowstone & BBQ
-      guestData.day4?.adults || 0, // S: Day 4 Adults
-      guestData.day4?.children || 0, // T: Day 4 Children
-
-      // Day 5 - Farewell
-      guestData.day5?.departureTime || '', // U: Day 5 Departure Time
-      
-      guestData.completedAt || '', // V: Completed At
+      new Date().toISOString(),
+      guestData.guest.id,
+      guestData.guest.firstName,
+      guestData.guest.lastName,
+      guestData.email,
+      guestData.totalGuests,
+      guestData.adults,
+      guestData.children,
+      safeChildrenAges.join(', '),
+      guestData.dietaryRestrictions || '',
+      guestData.specialRequests || '',
+      (guestData.day1?.adults || 0) + (guestData.day1?.children || 0),
+      guestData.day2?.whitewaterRafting || 0,
+      guestData.day2?.scenicFloat || 0,
+      guestData.day2?.horsebackRiding || 0,
+      guestData.day2?.hatMaking || 0,
+      guestData.day3?.adults || 0,
+      guestData.day3?.children || 0,
+      guestData.day4?.adults || 0,
+      guestData.day4?.children || 0,
+      guestData.day5?.departureTime || '',
+      guestData.completedAt || ''
     ];
 
-    await sheets.spreadsheets.values.append({
-      spreadsheetId,
-      range: 'RSVP_Responses!A:V', // Updated range to match new column structure
-      valueInputOption: 'RAW',
-      requestBody: {
-        values: [rowData],
-      },
-    });
+  const escapedName = sheetName.replace(/'/g, "''").trim();
+  const sheetRef = /[\s!]/.test(escapedName) ? `'${escapedName}'` : escapedName; // quote if spaces or special
+  const primaryRange = `${sheetRef}!A:V`;
+    try {
+      await sheets.spreadsheets.values.append({
+        spreadsheetId,
+        range: primaryRange,
+        valueInputOption: 'RAW',
+        requestBody: { values: [rowData] },
+      });
+    } catch (appendErr: unknown) {
+      // Retry with sheet name only (let API auto-find range) if parse error
+      const message = appendErr instanceof Error ? appendErr.message : String(appendErr);
+      if (/Unable to parse range/i.test(message)) {
+        console.warn(`[RSVP→Sheets] Range parse failed for "${primaryRange}" – retrying with sheet name only.`);
+        await sheets.spreadsheets.values.append({
+          spreadsheetId,
+            range: sheetName,
+            valueInputOption: 'RAW',
+            requestBody: { values: [rowData] },
+        });
+      } else {
+        throw appendErr;
+      }
+    }
 
-    console.log('RSVP data submitted to Google Sheets successfully');
-  } catch (error) {
-    console.error('Error submitting RSVP to sheets:', error);
-    throw error;
+  console.log('[RSVP→Sheets] Success in', Date.now() - startedAt, 'ms for guest', guestData.guest.id);
+  } catch (error: unknown) {
+    type PossibleError = { response?: { data?: unknown }; message?: string } | string | undefined | null;
+    const extract = (e: PossibleError): string => {
+      if (!e) return 'Unknown error';
+      if (typeof e === 'string') return e;
+      if (typeof e === 'object') {
+        const respData = (e as { response?: { data?: unknown } }).response?.data;
+        if (respData) return typeof respData === 'string' ? respData : JSON.stringify(respData);
+        const msg = (e as { message?: string }).message;
+        if (msg) return msg;
+        return JSON.stringify(e);
+      }
+      return String(e);
+    };
+    const details = extract(error as PossibleError);
+    console.error('[RSVP→Sheets] Failure:', details);
+    throw new Error(details);
   }
 }
 
@@ -218,4 +253,11 @@ export async function fetchAllRSVPResponses(): Promise<RSVPResponse[]> {
     console.error('Error fetching RSVP responses from sheets:', error);
     throw error;
   }
+}
+
+// Utility: list sheet titles for a spreadsheet (troubleshooting aid)
+export async function listSheetTitles(spreadsheetId: string): Promise<string[]> {
+  const sheets = await getGoogleSheetsClient();
+  const meta = await sheets.spreadsheets.get({ spreadsheetId });
+  return (meta.data.sheets || []).map(s => s.properties?.title || '');
 }

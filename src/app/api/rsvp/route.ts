@@ -12,12 +12,13 @@ export async function POST(request: NextRequest) {
       success: true, 
       message: 'RSVP submitted successfully' 
     });
-  } catch (error) {
-    console.error('Error submitting RSVP:', error);
+  } catch (error: unknown) {
+    const msg = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error submitting RSVP:', msg);
     return NextResponse.json(
       { 
         success: false, 
-        message: 'Failed to submit RSVP' 
+        message: `Failed to submit RSVP: ${msg}` 
       },
       { status: 500 }
     );

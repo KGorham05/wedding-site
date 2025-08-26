@@ -43,7 +43,8 @@ export default function AdventureDay2() {
   const handleContinue = () => {
     if (!guestData) return;
 
-    const totalGuests = (guestData.adults || 0) + (guestData.children || 0);
+    // Use immutable original party size from check-in
+    const totalGuests = (guestData.maxAdults ?? guestData.adults ?? 0) + (guestData.maxChildren ?? guestData.children ?? 0);
 
     // Basic validation, can be enhanced
     if (selections.whitewaterRafting > totalGuests || selections.scenicFloat > totalGuests || selections.horsebackRiding > totalGuests || selections.hatMaking > totalGuests) {
@@ -64,7 +65,8 @@ export default function AdventureDay2() {
     return <div className="min-h-screen bg-cream-100 flex items-center justify-center"><div className="text-warm-gray-800">Loading your adventure...</div></div>;
   }
   
-  const totalGuests = (guestData.adults || 0) + (guestData.children || 0);
+  // Display and selection range should reflect full original party size, not reduced prior-day attendance
+  const totalGuests = (guestData.maxAdults ?? guestData.adults ?? 0) + (guestData.maxChildren ?? guestData.children ?? 0);
 
   const renderActivitySelector = (activity: keyof AdventureSelections, label: string, price: string) => (
     <div>
