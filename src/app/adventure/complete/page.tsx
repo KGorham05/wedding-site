@@ -69,15 +69,16 @@ export default function AdventureComplete() {
 
   return (
     <div className="min-h-screen flex flex-col relative">
-      <Navigation dark />
+      <Navigation variant="overlay" />
       <HeroHeader
         title="Adventure Complete!"
         subtitle={`Thank you, ${guestData.guest.firstName}, for planning this incredible Montana celebration with us!`}
         media={{ type: 'image', src: '/lake-4888504.jpg', alt: 'Montana lake celebration', priority: true }}
         overlay="strong"
-      />
-      <main className="flex-1 -mt-10 md:-mt-16 relative z-10 pb-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        extendBackground
+        align="center"
+      >
+        <div className="max-w-4xl mx-auto">
           
           {/* Celebration Marker */}
           <div className="text-center mb-10">
@@ -211,7 +212,7 @@ export default function AdventureComplete() {
           </div>
 
         </div>
-      </main>
+      </HeroHeader>
     </div>
   );
 }

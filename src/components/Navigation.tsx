@@ -1,28 +1,27 @@
 import Link from 'next/link';
 
 interface NavigationProps {
-  transparent?: boolean;
-  dark?: boolean;
+  variant?: 'dark' | 'light' | 'overlay';
 }
 
-export const Navigation = ({ transparent = false, dark = false }: NavigationProps) => {
-  const baseClasses = dark
-    ? "fixed top-0 left-0 right-0 bg-warm-gray-900/95 backdrop-blur-sm border-b border-warm-gray-700 z-50"
-    : transparent 
-    ? "fixed top-0 left-0 right-0 bg-cream-100/95 backdrop-blur-sm border-b border-white/30 z-50"
-    : "bg-cream-100/95 backdrop-blur-sm border-b border-white/20 sticky top-0";
+export const Navigation = ({ variant = 'light' }: NavigationProps) => {
+  const baseClasses = {
+    dark: 'fixed top-0 left-0 right-0 bg-warm-gray-900/95 backdrop-blur-sm border-b border-warm-gray-700 z-50',
+    light: 'sticky top-0 left-0 right-0 bg-cream-100/95 backdrop-blur-sm border-b border-warm-gray-300/60',
+    overlay: 'fixed top-0 left-0 right-0 bg-gradient-to-b from-black/70 via-black/40 to-black/0 backdrop-blur-sm border-b border-white/10 z-50'
+  }[variant];
 
-  const textClasses = dark
-    ? "text-white"
-    : transparent
-    ? "text-white"
-    : "text-white";
+  const textClasses = {
+    dark: 'text-white',
+    light: 'text-warm-gray-900',
+    overlay: 'text-white'
+  }[variant];
 
-  const linkClasses = dark
-    ? "text-white/90 hover:text-white transition-colors"
-    : transparent
-    ? "text-white/90 hover:text-white transition-colors"
-    : "text-white/90 hover:text-white transition-colors";
+  const linkClasses = {
+    dark: 'text-white/85 hover:text-white transition-colors',
+    light: 'text-warm-gray-800 hover:text-warm-gray-900 transition-colors',
+    overlay: 'text-white/85 hover:text-white transition-colors'
+  }[variant];
 
   return (
     <nav className={baseClasses}>

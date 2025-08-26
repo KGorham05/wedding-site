@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+// Removed placeholder Image fallback per design update
 
 interface NavigatorWithConnection extends Navigator {
   connection?: {
@@ -58,20 +58,9 @@ export default function OptimizedHeroVideo({ children }: OptimizedHeroVideoProps
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Hero Image Fallback - Always loads first */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/hero-fallback.svg"
-          alt="Montana landscape"
-          fill
-          className="object-cover"
-          priority
-          quality={85}
-        />
-        {/* Always show overlay for text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
-      </div>
+    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Removed static hero image fallback; using solid dark background until video loads */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
 
       {/* Video Layer - Only loads when appropriate */}
       {showVideo && userPreference === 'auto' && (

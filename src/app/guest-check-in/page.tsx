@@ -112,15 +112,16 @@ export default function GuestCheckIn() {
 
   return (
     <div className="min-h-screen flex flex-col relative">
-      <Navigation dark />
+      <Navigation variant="overlay" />
       <HeroHeader
         title="Guest Check-In"
         subtitle="Find your invitation and register your party for the Montana wedding adventure week."
         media={{ type: 'image', src: '/montana-river.jpg', alt: 'Montana river landscape', priority: true }}
-        overlay="strong"
-      />
-      <main className="flex-1 -mt-10 md:-mt-16 relative z-10 pb-16">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6">
+  overlay="strong"
+  extendBackground
+  align="center"
+      >
+        <div className="max-w-2xl mx-auto">
           {step === 'lookup' && (
             <div className="surface-glass-1 rounded-2xl p-8 shadow-2xl border border-white/10">
               <div className="text-center mb-8">
@@ -299,7 +300,7 @@ export default function GuestCheckIn() {
             </div>
           )}
         </div>
-      </main>
+      </HeroHeader>
     </div>
   );
 }

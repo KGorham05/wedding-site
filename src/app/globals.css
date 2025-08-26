@@ -91,9 +91,9 @@ p, a, li, span, div {
 }
 
 /* Hero image wrapper to ensure gradient overlay layering */
-.hero-media-wrapper {
-  position: relative;
-}
+/* Hero media wrapper: keep absolutely positioned from Tailwind utility in component. 
+  Previously a position:relative override here canceled absolute positioning, collapsing height (image hidden). */
+/* .hero-media-wrapper { position: relative; } -- removed to allow absolute fill */
 .hero-media-wrapper::after {
   content: "";
   position: absolute;

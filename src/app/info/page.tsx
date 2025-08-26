@@ -4,26 +4,26 @@ import { Navigation, HeroHeader } from '@/components';
 const InfoPage = () => {
   return (
     <div className="min-h-screen flex flex-col relative">
-      <Navigation />
+      <Navigation variant="overlay" />
       <HeroHeader
         title="General Information"
-        subtitle="Everything you need to know to prepare for an unforgettable week in Montana."
+        subtitle="Everything you need to know for an unforgettable week in Montana."
         media={{ type: 'image', src: '/lake-4888504.jpg', alt: 'Montana lake scene', priority: true }}
-        overlay="soft"
-      />
-      <main className="flex-1 -mt-10 md:-mt-16 relative z-10 pb-24 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="surface-glass-1 backdrop-blur-sm rounded-2xl shadow-2xl p-8 md:p-12 border border-white/10 mt-4">
-            <h2 className="text-3xl font-serif text-center text-white mb-8">What to Know</h2>
+        overlay="strong"
+        extendBackground
+        align="center"
+      >
+        <div className="surface-glass-1 rounded-2xl shadow-2xl p-8 md:p-12 border border-white/10 max-w-4xl mx-auto">
+          <h2 className="text-3xl font-serif text-center mb-8 text-white">What to Know</h2>
 
             <section className="mb-12">
               <h3 className="text-2xl font-serif text-white mb-4">What to Wear</h3>
               <p className="mb-4 text-white/85">Our wedding week is all about comfort, style, and Montana charm. Here&apos;s a little guidance so you can pack just right:</p>
               <ul className="list-disc list-inside space-y-2 text-white/85">
-                <li><strong className="text-warm-gray-800">Daytime + Adventures:</strong> Keep it casual and comfy—swimsuits for the lake, shorts and tees for lounging at the ranch, and activewear for rafting, floating, or hiking. Don&apos;t forget water shoes or sandals you can get wet.</li>
-                <li><strong className="text-warm-gray-800">BBQ Cowboy Night at the Ranch:</strong> This one calls for Montana chic with a western twist. Boots, denim, hats, flowy skirts, or casual dresses all fit right in.</li>
-                <li><strong className="text-warm-gray-800">Reception Night – Montana Cocktail:</strong> Our reception is outdoors on the grass. Think cocktail hour meets the mountains: flowy dresses, jumpsuits, chinos, boots, or nice shirts. Skip the stilettos - flats, boots, sandals, or block heels will keep you happy.</li>
-                <li><strong className="text-warm-gray-800">Montana Nights:</strong> Even in August, the evenings can cool down. Bring a sweater, shawl, or jacket.</li>
+                <li><strong className="text-white">Daytime + Adventures:</strong> Keep it casual and comfy—swimsuits for the lake, shorts and tees for lounging at the ranch, and activewear for rafting, floating, or hiking. Don&apos;t forget water shoes or sandals you can get wet.</li>
+                <li><strong className="text-white">BBQ Cowboy Night at the Ranch:</strong> This one calls for Montana chic with a western twist. Boots, denim, hats, flowy skirts, or casual dresses all fit right in.</li>
+                <li><strong className="text-white">Reception Night – Montana Cocktail:</strong> Our reception is outdoors on the grass. Think cocktail hour meets the mountains: flowy dresses, jumpsuits, chinos, boots, or nice shirts. Skip the stilettos - flats, boots, sandals, or block heels will keep you happy.</li>
+                <li><strong className="text-white">Montana Nights:</strong> Even in August, the evenings can cool down. Bring a sweater, shawl, or jacket.</li>
               </ul>
             </section>
 
@@ -55,11 +55,11 @@ const InfoPage = () => {
               <h3 className="text-2xl font-serif text-white mb-4">Recommended Hotels</h3>
               <p className="mb-4 text-white/85">We&apos;re still finalizing group room blocks. In the meantime, here are some of our favorite local spots:</p>
               <ul className="list-disc list-inside space-y-2 text-white/85">
-                <li><strong className="text-warm-gray-800">Home2 Suites by Hilton Livingston:</strong> Modern all-suite hotel with kitchenettes.</li>
-                <li><strong className="text-warm-gray-800">Fairfield Inn & Suites by Marriott Livingston:</strong> Reliable, modern stay.</li>
-                <li><strong className="text-warm-gray-800">Sage Lodge:</strong> Luxury lodge with spa services and fine dining.</li>
-                <li><strong className="text-warm-gray-800">Under Canvas North Yellowstone (Paradise Valley):</strong> A luxury glamping experience.</li>
-                <li><strong className="text-warm-gray-800">Local Airbnb/VRBOs & KeyMontana Homes:</strong> Great for families or groups.</li>
+                <li><strong className="text-white">Home2 Suites by Hilton Livingston:</strong> Modern all-suite hotel with kitchenettes.</li>
+                <li><strong className="text-white">Fairfield Inn & Suites by Marriott Livingston:</strong> Reliable, modern stay.</li>
+                <li><strong className="text-white">Sage Lodge:</strong> Luxury lodge with spa services and fine dining.</li>
+                <li><strong className="text-white">Under Canvas North Yellowstone (Paradise Valley):</strong> A luxury glamping experience.</li>
+                <li><strong className="text-white">Local Airbnb/VRBOs & KeyMontana Homes:</strong> Great for families or groups.</li>
               </ul>
             </section>
 
@@ -86,9 +86,8 @@ const InfoPage = () => {
               <h3 className="text-2xl font-serif text-white mb-4">A Note on Wildlife & Nature</h3>
               <p className="text-white/85">We&apos;ll be celebrating in nature&apos;s backyard. Please be mindful of wildlife (deer, elk, bears, moose, and more). Keep food secured, don&apos;t approach animals, and be aware of your surroundings. Also, pack bug spray!</p>
             </section>
-          </div>
         </div>
-      </main>
+      </HeroHeader>
     </div>
   );
 };

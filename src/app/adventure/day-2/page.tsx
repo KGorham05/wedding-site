@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import { HeroHeader, Navigation } from "@/components";
 import { type GuestData } from "@/lib/guest-list";
 
 interface AdventureSelections {
@@ -82,45 +82,17 @@ export default function AdventureDay2() {
   );
 
   return (
-    <div className="min-h-screen relative">
-      <div className="absolute inset-0 z-0">
-        <Image 
-          src="/glacier-national-park-7443329.jpg"
-          alt="Glacier National Park by Joshua Woroniecki"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
-        {/* 20% Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/15 to-black/25"></div>
-      </div>
-
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-warm-gray-900/95 backdrop-blur-sm border-b border-warm-gray-700 z-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="flex justify-between items-center py-4">
-            <Link href="/" className="text-2xl font-serif text-white">
-              Angela & Jeff
-            </Link>
-            <div className="text-sm text-white">
-              Day 2 of 5 - Adventure Day
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <div className="pt-24 pb-12 relative z-10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-
-          <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-5xl font-serif text-white mb-4">Thursday, Aug 20: Adventure Day + Ranch BBQ</h1>
-            <p className="text-lg text-white/80 max-w-3xl mx-auto">
-              Choose your morning adventure, {guestData.guest.firstName}! Everyone will gather for horseback riding and BBQ in the evening.
-            </p>
-          </div>
-
-          <div className="glass-dark rounded-2xl p-8 shadow-2xl mb-8">
+    <div className="min-h-screen relative flex flex-col">
+      <Navigation variant="overlay" />
+      <HeroHeader
+        title="Thursday, Aug 20: Adventure Day + Ranch BBQ"
+        subtitle={`Choose your morning adventure, ${guestData.guest.firstName}! Everyone will gather for horseback riding and BBQ in the evening.`}
+  media={{ type: 'image', src: '/glacier-national-park-7443329.jpg', alt: 'Glacier National Park by Joshua Woroniecki', priority: true }}
+  extendBackground
+  align="center"
+      >
+        <div className="max-w-4xl mx-auto pb-20">
+          <div className="surface-glass-1 rounded-2xl p-8 shadow-2xl mb-8 border border-white/10">
             <h3 className="text-2xl font-serif text-white mb-6">Choose Your Adventures</h3>
             <p className="text-white/90 mb-6">Adventures are optional. Reserve your spots now, and we&apos;ll settle up on costs later via Venmo. Your party has a total of {totalGuests} guest(s).</p>
             
@@ -131,21 +103,20 @@ export default function AdventureDay2() {
               {renderActivitySelector("hatMaking", "Custom Cowboy Hat-Making", "$150–$200 per hat")}
             </div>
 
-            <div className="flex justify-between items-center pt-6">
-              <Link href="/adventure/day-1" className="btn-glass text-white py-2 px-4 rounded-lg transition-all duration-300">
+            <div className="flex flex-col sm:flex-row justify-between gap-4 items-stretch pt-6">
+              <Link href="/adventure/day-1" className="btn-glass text-white py-2 px-4 rounded-lg text-center transition-all duration-300 focus-ring">
                 ← Back to Day 1
               </Link>
               <button
                 onClick={handleContinue}
-                className="btn-glass text-white py-3 px-8 rounded-lg font-medium transition-all duration-300"
+                className="btn-glass text-white py-3 px-8 rounded-lg font-medium transition-all duration-300 focus-ring"
               >
                 Continue to Day 3 →
               </button>
             </div>
           </div>
-
         </div>
-      </div>
+      </HeroHeader>
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import { HeroHeader, Navigation } from "@/components";
 import { type GuestData } from "@/lib/guest-list";
 
 export default function AdventureDay5() {
@@ -71,54 +71,17 @@ export default function AdventureDay5() {
   }
 
   return (
-    <div className="min-h-screen relative">
-      {/* Background Image with Dark Overlay */}
-      <div className="absolute inset-0 z-0">
-        <Image 
-          src="/bear-4337697.jpg"
-          alt="Montana wilderness farewell scene"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
-        {/* 20% Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/15 to-black/25"></div>
-      </div>
-
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-warm-gray-900/95 backdrop-blur-sm border-b border-warm-gray-700 z-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="flex justify-between items-center py-4">
-            <Link href="/" className="text-2xl font-serif text-white">
-              Angela & Jeff
-            </Link>
-            <div className="text-sm text-white">
-              Day 5 of 5 - Farewell
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <div className="pt-24 pb-12 relative z-10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          
-          {/* Welcome Back */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-5xl font-serif text-white/90 mb-4">
-              Friday, August 23rd, 2026
-            </h1>
-            <h2 className="text-xl md:text-2xl text-white/90 mb-6">
-              ✈️ Farewell & Safe Travels
-            </h2>
-            <p className="text-lg text-white/90 max-w-3xl mx-auto">
-              As our incredible Montana adventure comes to an end, let&apos;s make sure everyone 
-              has a smooth departure and carries these memories forever. Check out by 10 AM.
-            </p>
-          </div>
-
-          {/* Combined Departure Day Content */}
-          <div className="glass-dark rounded-2xl p-8 shadow-2xl mb-8">
+    <div className="min-h-screen relative flex flex-col">
+      <Navigation variant="overlay" />
+      <HeroHeader
+        title="Sunday, Aug 23: Farewell & Safe Travels"
+        subtitle="As our Montana adventure wraps up, let’s ensure a smooth departure and carry these memories forward. Check out by 10 AM."
+  media={{ type: 'image', src: '/bear-4337697.jpg', alt: 'Montana wilderness farewell scene', priority: true }}
+  extendBackground
+  align="center"
+      >
+        <div className="max-w-4xl mx-auto pb-20">
+          <div className="surface-glass-1 rounded-2xl p-8 shadow-2xl mb-8 border border-white/10">
             <h3 className="text-2xl font-serif text-white mb-6">Departure Day Schedule</h3>
             
             <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -164,26 +127,24 @@ export default function AdventureDay5() {
                 Safe travels to everyone, and thank you for making this wedding celebration so special! 💕
               </p>
 
-              <div className="flex justify-between items-center">
+              <div className="flex flex-col sm:flex-row justify-between gap-4 items-stretch">
                 <Link 
                   href="/adventure/day-4"
-                  className="btn-glass text-white py-2 px-4 rounded-lg transition-all duration-300"
+                  className="btn-glass text-white py-2 px-4 rounded-lg transition-all duration-300 focus-ring text-center"
                 >
                   ← Back to Yellowstone & BBQ Day
                 </Link>
-                
                 <button
                   onClick={handleComplete}
-                  className="btn-glass text-white py-3 px-8 rounded-lg font-medium transition-all duration-300"
+                  className="btn-glass text-white py-3 px-8 rounded-lg font-medium transition-all duration-300 focus-ring"
                 >
                   Complete Adventure Journey →
                 </button>
               </div>
             </div>
           </div>
-
         </div>
-      </div>
+      </HeroHeader>
     </div>
   );
 }
