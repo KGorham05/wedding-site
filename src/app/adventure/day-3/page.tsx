@@ -88,7 +88,7 @@ export default function AdventureDay3() {
             </p>
           </div>
 
-          <div className="bg-cream-100/95 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-2xl mb-8">
+          <div className="glass-dark rounded-2xl p-8 shadow-2xl mb-8">
             <h3 className="text-2xl font-serif text-white mb-6">Reception RSVP</h3>
             <div className="space-y-6">
               <div>
@@ -103,19 +103,18 @@ export default function AdventureDay3() {
                 ))}
               </select>
             </div>
-          </div>
-          </div>
 
-          <div className="flex justify-between items-center pt-6">
-            <Link href="/adventure/day-2" className="text-white/80 hover:text-white transition-colors">
-              ← Back to Day 2
-            </Link>
-            <button
-              onClick={handleContinue}
-              className="bg-sage-600 hover:bg-sage-700 text-white py-3 px-8 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              Continue to Day 4 →
-            </button>
+            <div className="flex justify-between items-center pt-6">
+              <Link href="/adventure/day-2" className="btn-glass text-white py-2 px-4 rounded-lg transition-all duration-300">
+                ← Back to Day 2
+              </Link>
+              <button
+                onClick={handleContinue}
+                className="btn-glass text-white py-3 px-8 rounded-lg font-medium transition-all duration-300"
+              >
+                Continue to Day 4 →
+              </button>
+            </div>
           </div>
 
         </div>

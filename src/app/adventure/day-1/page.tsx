@@ -114,10 +114,11 @@ export default function AdventureDay1() {
           </div>
 
           {/* Day Preview */}
+                    {/* Combined Day Preview and RSVP Form */}
           <div className="glass-dark rounded-2xl p-8 shadow-2xl mb-8">
             <h3 className="text-2xl font-serif text-white mb-6">What&apos;s Happening Monday</h3>
             
-            <div className="grid md:grid-cols-1 gap-6">
+            <div className="mb-8">
               <div className="glass-sage rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-white mb-3">✈️ Arrive in Style at Your Leisure</h4>
                 <p className="text-white/90 text-sm mb-4">
@@ -132,6 +133,85 @@ export default function AdventureDay1() {
                     serene wilderness that surrounds us.
                   </p>
                 </div>
+              </div>
+            </div>
+
+            <h4 className="text-xl font-serif text-white mb-4">Golden Hour Yoga & Sound Bowls RSVP</h4>
+            <p className="text-white/90 mb-6">How many from your party will be joining us for tonight&apos;s peaceful yoga and sound bowls experience?</p>
+            
+            <div className="glass-sage rounded-lg p-4 mb-6">
+              <p className="text-sm text-white/90">
+                <span className="font-medium">Your Party Limits:</span> Max {guestData.maxAdults || guestData.adults} adults, {guestData.maxChildren || guestData.children} children
+                <br />
+                <span className="text-white/80">You can only RSVP for the number of adults and children you registered during check-in.</span>
+              </p>
+            </div>
+            
+            <div className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Number of Adults
+                  </label>
+                  <select
+                    value={preferences.adults}
+                    onChange={(e) => {
+                      const adults = Number(e.target.value);
+                      setPreferences(prev => ({ ...prev, adults }));
+                    }}
+                    className="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white focus:border-white/50 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-200"
+                  >
+                    {Array.from({ length: (guestData.maxAdults || guestData.adults) + 1 }, (_, i) => (
+                      <option key={i} value={i}>{i}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Number of Children
+                  </label>
+                  <select
+                    value={preferences.children}
+                    onChange={(e) => {
+                      const children = Number(e.target.value);
+                      setPreferences(prev => ({ ...prev, children }));
+                    }}
+                    className="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white focus:border-white/50 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-200"
+                  >
+                    {Array.from({ length: (guestData.maxChildren || guestData.children) + 1 }, (_, i) => (
+                      <option key={i} value={i}>{i}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="text-center p-4 glass-sage rounded-lg">
+                {preferences.adults + preferences.children === 0 ? (
+                  <p className="text-white/90">No worries! Each adventure is completely optional. We&apos;ll miss you but hope to see you for other activities!</p>
+                ) : (
+                  <p className="text-white">
+                    <span className="font-semibold">Yoga & Sound Bowls Attendees:</span> {preferences.adults + preferences.children} {preferences.adults + preferences.children === 1 ? 'person' : 'people'}
+                    <br />
+                    <span className="text-white/80 text-sm">A perfect way to ease into your Montana adventure!</span>
+                  </p>
+                )}
+              </div>
+
+              <div className="flex justify-between items-center pt-6">
+                <Link 
+                  href="/guest-check-in"
+                  className="btn-glass text-white py-2 px-4 rounded-lg transition-all duration-300"
+                >
+                  ← Back to check-in
+                </Link>
+                
+                <button
+                  onClick={handleContinue}
+                  className="btn-glass text-white py-3 px-8 rounded-lg font-medium transition-all duration-300"
+                >
+                  Continue to River Adventures →
+                </button>
               </div>
             </div>
           </div>

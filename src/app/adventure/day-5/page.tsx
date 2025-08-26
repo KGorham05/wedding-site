@@ -117,69 +117,68 @@ export default function AdventureDay5() {
             </p>
           </div>
 
-          {/* Day Preview */}
-          <div className="bg-cream-100/95 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-2xl mb-8">
+          {/* Combined Departure Day Content */}
+          <div className="glass-dark rounded-2xl p-8 shadow-2xl mb-8">
             <h3 className="text-2xl font-serif text-white mb-6">Departure Day Schedule</h3>
             
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/30">
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="glass-sage rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-white mb-3">🌅 8:00 AM - Farewell Breakfast</h4>
                 <p className="text-white/90 text-sm">
                   Final group breakfast with sharing of favorite memories and contact exchanges.
                 </p>
               </div>
               
-              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/30">
+              <div className="glass-sage rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-white mb-3">🧳 10:00 AM - Check-out & Packing</h4>
                 <p className="text-white/90 text-sm">
                   Assistance with luggage, final photo opportunities, and departure coordination.
                 </p>
               </div>
               
-              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/30">
+              <div className="glass-sage rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-white mb-3">🚗 12:00 PM - Transportation</h4>
                 <p className="text-white/90 text-sm">
                   Coordinated transportation to airports and travel destinations.
                 </p>
               </div>
               
-              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/30">
+              <div className="glass-sage rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-white mb-3">💝 Until We Meet Again</h4>
                 <p className="text-white/90 text-sm">
                   Thank you for being part of Angela & Jeff&apos;s magical Montana wedding adventure!
                 </p>
               </div>
             </div>
-          </div>
 
-          {/* Farewell Message */}
-          <div className="bg-cream-100/95 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-2xl text-center">
-            <h3 className="text-2xl font-serif text-white mb-6">Thank You for an Amazing Adventure!</h3>
-            
-            <p className="text-lg text-white/90 mb-6">
-              What an incredible journey we&apos;ve shared together in beautiful Montana! From the sound bath under the stars 
-              to river adventures, celebrating Angela & Jeff&apos;s love, exploring Yellowstone, and enjoying cowboy BBQ - 
-              these memories will last a lifetime.
-            </p>
-            
-            <p className="text-white/80 mb-8">
-              Safe travels to everyone, and thank you for making this wedding celebration so special! 💕
-            </p>
-
-            <div className="flex justify-between items-center">
-              <Link 
-                href="/adventure/day-4"
-                className="text-white/80 hover:text-white transition-colors"
-              >
-                ← Back to Yellowstone & BBQ Day
-              </Link>
+            <div className="text-center border-t border-white/20 pt-8">
+              <h4 className="text-xl font-serif text-white mb-6">Thank You for an Amazing Adventure!</h4>
               
-              <button
-                onClick={handleComplete}
-                className="bg-sage-600 hover:bg-sage-700 text-white py-3 px-8 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-              >
-                Complete Adventure Journey →
-              </button>
+              <p className="text-lg text-white/90 mb-6">
+                What an incredible journey we&apos;ve shared together in beautiful Montana! From the sound bowls under the stars 
+                to river adventures, celebrating Angela & Jeff&apos;s love, exploring Yellowstone, and enjoying cowboy BBQ - 
+                these memories will last a lifetime.
+              </p>
+              
+              <p className="text-white/80 mb-8">
+                Safe travels to everyone, and thank you for making this wedding celebration so special! 💕
+              </p>
+
+              <div className="flex justify-between items-center">
+                <Link 
+                  href="/adventure/day-4"
+                  className="btn-glass text-white py-2 px-4 rounded-lg transition-all duration-300"
+                >
+                  ← Back to Yellowstone & BBQ Day
+                </Link>
+                
+                <button
+                  onClick={handleComplete}
+                  className="btn-glass text-white py-3 px-8 rounded-lg font-medium transition-all duration-300"
+                >
+                  Complete Adventure Journey →
+                </button>
+              </div>
             </div>
           </div>
 
