@@ -29,7 +29,7 @@ export const HeroHeader: React.FC<HeroHeaderProps> = ({
   return (
     <header className={`relative w-full ${className}`}>      
       {media?.type === 'image' && (
-        <div className={`hero-media-wrapper ${overlay === 'strong' ? 'overlay-strong' : ''} absolute inset-0 -z-10`}>          
+        <div className={`hero-media-wrapper ${overlay === 'strong' ? 'overlay-strong' : ''} absolute inset-0`}>
           <Image 
             src={media.src} 
             alt={media.alt || ''} 
@@ -40,7 +40,7 @@ export const HeroHeader: React.FC<HeroHeaderProps> = ({
           />
         </div>
       )}
-      <div className="mx-auto max-w-5xl px-4 pt-20 pb-14 md:pt-28 md:pb-20">
+      <div className="relative z-10 mx-auto max-w-5xl px-4 pt-20 pb-14 md:pt-28 md:pb-20">
         <div className="max-w-3xl">
           <p className="mb-3 inline-block rounded-full bg-black/40 px-4 py-1 text-xs uppercase tracking-wider text-white/80 backdrop-blur-md">Wedding Adventure</p>
           <h1 className="text-3xl font-serif tracking-tight text-white md:text-5xl">{title}</h1>

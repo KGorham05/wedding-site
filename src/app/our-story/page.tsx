@@ -13,8 +13,8 @@ export default function OurStory() {
       />
       <main className="flex-1 -mt-10 md:-mt-16 relative z-10 pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="surface-glass-1 rounded-2xl shadow-2xl p-8 md:p-12 border border-white/10">
-            <div className="space-y-8 text-base md:text-lg text-white/90 leading-relaxed">
+          <div className="rounded-2xl shadow-2xl p-8 md:p-12 border border-white/10 bg-white/85 backdrop-blur-md">
+            <div className="space-y-8 text-base md:text-lg text-warm-gray-900 leading-relaxed">
               <p>
                 Our story began at the Sheraton in Carlsbad too long ago to count, where we worked side by side for years. First came friendship, long shifts, late-night laughs, and teamwork that slowly turned into something more. Jeff says he first fell for my smile… but let’s be honest, it was my booty. His words, not mine!
               </p>
@@ -34,7 +34,7 @@ export default function OurStory() {
             <div className="text-center mt-12">
               <Link 
                 href="/guest-check-in" 
-                className="btn-glass text-white px-8 py-4 rounded-full font-medium text-lg transition-all duration-300 focus-ring"
+                className="inline-block bg-sage-600 text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-sage-700 transition-colors shadow-lg focus-ring"
               >
                 Join Our Adventure →
               </Link>
