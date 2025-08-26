@@ -12,6 +12,17 @@ body {
   font-family: var(--font-raleway), sans-serif;
 }
 
+/* CSS Variables for new design tokens (Phase 0) */
+:root {
+  --color-ink: #0F1412;
+  --color-surface-glass-1: rgba(18,22,20,0.55);
+  --color-surface-glass-2: rgba(18,22,20,0.72);
+  --color-border-glass-1: rgba(255,255,255,0.08);
+  --color-border-glass-2: rgba(255,255,255,0.12);
+  --color-overlay-soft: linear-gradient(180deg, rgba(12,16,14,0.05) 0%, rgba(12,16,14,0.55) 65%, rgba(12,16,14,0.82) 100%);
+  --color-overlay-strong: linear-gradient(180deg, rgba(12,16,14,0.25) 0%, rgba(12,16,14,0.7) 60%, rgba(12,16,14,0.92) 100%);
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-lora), serif;
 }
@@ -56,4 +67,41 @@ p, a, li, span, div {
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* New surface utilities */
+.surface-glass-1 {
+  background: var(--color-surface-glass-1);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--color-border-glass-1);
+}
+
+.surface-glass-2 {
+  background: var(--color-surface-glass-2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-glass-2);
+}
+
+/* Focus ring helper */
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(244,118,37,0.9), 0 0 0 4px rgba(0,0,0,0.4);
+}
+
+/* Hero image wrapper to ensure gradient overlay layering */
+.hero-media-wrapper {
+  position: relative;
+}
+.hero-media-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-overlay-soft);
+  pointer-events: none;
+  transition: background .4s ease;
+}
+.hero-media-wrapper.overlay-strong::after {
+  background: var(--color-overlay-strong);
 }

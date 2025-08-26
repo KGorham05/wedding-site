@@ -8,6 +8,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'hero-soft': 'linear-gradient(180deg, rgba(12,16,14,0.05) 0%, rgba(12,16,14,0.55) 65%, rgba(12,16,14,0.82) 100%)',
+        'hero-strong': 'linear-gradient(180deg, rgba(12,16,14,0.25) 0%, rgba(12,16,14,0.7) 60%, rgba(12,16,14,0.92) 100%)',
+      },
+      boxShadow: {
+        'focus-ring': '0 0 0 2px rgba(244,118,37,0.9), 0 0 0 4px rgba(0,0,0,0.4)',
+      },
+      opacity: {
+        15: '0.15',
+      },
+      spacing: {
+        '18': '4.5rem',
+      },
       fontFamily: {
         serif: ['var(--font-lora)', 'serif'],
         sans: ['var(--font-raleway)', 'sans-serif'],
