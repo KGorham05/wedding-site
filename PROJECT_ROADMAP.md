@@ -1,3 +1,33 @@
+## 🚀 CURRENT STATUS (AUGUST 26, 2025)
+
+### Summary
+Session delivered UI unification (homepage surface panels, countdown readability), removal of unused visual elements (photo credits + fallback hero image), Day 2 selection logic fix, and major Google Sheets robustness improvements (env validation, logging, metadata endpoint, retry & sheet name quoting). Remaining blocker for RSVP persistence is a configuration mismatch: sheet tab is spelled `RSPV_Responses` while code expects `RSVP_Responses` (now overrideable via `RSVP_RESPONSES_SHEET_NAME`).
+
+### Newly Completed (This Session)
+1. Homepage sections below hero converted to glass/surface styling
+2. Removed photo credits section & hero fallback image usage
+3. Replaced section background images with gradients (lighter, consistent contrast)
+4. Countdown timer text switched to white for accessibility
+5. Day 2 activity selection logic fixed (now uses immutable original party size)
+6. Google Sheets integration hardening:
+  - Environment validation + private key normalization
+  - Structured `[RSVP→Sheets]` logging with timing
+  - Sheet name sanitizing, quoting, retry on parse errors
+  - Added `/api/sheets/meta` endpoint to list sheet tab titles
+  - Added optional `RSVP_RESPONSES_SHEET_NAME` env override
+7. Identified root cause of append failures: tab name typo (`RSPV_Responses`)
+
+### Immediate Next Actions
+1. Rename sheet tab to `RSVP_Responses` OR set env `RSVP_RESPONSES_SHEET_NAME=RSPV_Responses` and redeploy
+2. Submit test RSVP; expect log `[RSVP→Sheets] Success appended ...`
+3. After confirmation, commit & deploy; optionally begin admin/report view planning
+
+### Risks / Notes
+- No additional code changes needed for basic persistence; remaining issue is configuration only.
+- Consider future enhancement: user-facing toast on submission failure with retry.
+
+---
+
 ## 🚀 NEXT SESSION PRIORITIES (READY TO START)
 
 ### **IMMEDIATE HIGH-PRIORITY FIXES - AUGUST 25, 2025 (UPDATED – ACCESSIBLE UI OVERHAUL APPROVED)**
@@ -129,14 +159,12 @@
 - **Compare**: Look at other adventure pages (day-1, day-2, etc.) for proper structure
 - **Test**: Complete the adventure flow to verify fix
 
-#### 🔧 **2. Google Sheets RSVP Submission Bug (CRITICAL - NO DATA BEING SAVED)** ✅ COMPLETED
-- **PRIORITY**: HIGH - Adventure completion forms are not saving user data to Google Sheets
-- **Current Status**: FIXED - Restructured data submission to match clear column structure
-- **Files**: `src/app/api/rsvp/route.ts`, `src/lib/google-sheets.ts`
-- **Error**: "Unable to parse range: RSVP_Responses!A:S" - RESOLVED
-- **Impact**: All user RSVP data from completed adventures is now properly saved
-- **Fix**: Updated range to A:V with proper column mapping and data structure
-- **Test**: Sheet headers provided for easy Google Sheets setup
+#### 🔧 **2. Google Sheets RSVP Submission (STRUCTURE FIXED / CONFIG BLOCKER)**
+- **Structural Status**: Range & column mapping implemented (A:V)
+- **Current Blocker**: Sheet tab misnamed `RSPV_Responses` causing parse errors
+- **Resolution Needed**: Rename tab or set `RSVP_RESPONSES_SHEET_NAME=RSPV_Responses`
+- **Verification Step**: After fix submit RSVP; expect `[RSVP→Sheets] Success` in logs
+- **Files**: `src/app/api/rsvp/route.ts`, `src/lib/google-sheets.ts`, `/api/sheets/meta`
 
 #### 🎨 **3. Complete Adventure Page Color Consistency** ✅ COMPLETED
 - **File**: `src/app/adventure/complete/page.tsx`
@@ -235,15 +263,16 @@ Based on the latest information from `angie_info_3.md`, we are initiating a new 
 - ✅ **Montana River Background**: Added beautiful Montana river image as background for rafting day (Day 2)
 - ✅ **Departure Day Simplification**: Removed unnecessary headcount form from Day 5, replaced with farewell message
 
-#### 📊 Google Sheets Integration (PARTIALLY COMPLETE - August 11, 2025)
-- ✅ **Dynamic Guest Authentication**: Guest check-in now fetches allowed guests from Google Sheets instead of hardcoded list
-- ❌ **Automatic RSVP Submission**: **BROKEN** - Complete adventure data fails to submit to Google Sheets due to range parsing error
-- ✅ **Comprehensive Data Collection**: All 5 days of adventure preferences captured in structured Google Sheet format (frontend working)
-- ✅ **Angela's Guest Management**: Easy guest list management through Google Sheets interface
-- ✅ **Production-Ready Integration**: Full Google Sheets API integration with service account authentication
-- ✅ **Environment Variable Management**: Complete Vercel CLI setup and production environment configuration
-- ❌ **Production Debugging Tools**: Debug API endpoint shows RSVP submission failing with range errors
-- ✅ **Production Debugging Tools**: Debug API endpoint for environment variable troubleshooting
+#### 📊 Google Sheets Integration (Updated - August 26, 2025)
+- ✅ **Dynamic Guest Authentication**: Guest check-in loads guest list from Sheets
+- ⚠️ **Automatic RSVP Submission**: Blocked only by tab name typo (`RSPV_Responses`) – code path otherwise ready
+- ✅ **Comprehensive Data Collection (Frontend)**: All day data assembled for submission
+- ✅ **Management via Sheets**: Guest list manageable in spreadsheet
+- ✅ **API Hardening**: Env validation, private key normalization, structured logging, retry logic
+- ✅ **Metadata Endpoint**: `/api/sheets/meta` lists tab titles for troubleshooting
+- ✅ **Override Support**: `RSVP_RESPONSES_SHEET_NAME` env enables non-standard tab names
+- 🔍 **Root Cause Identified**: Spelling mismatch of responses tab
+- ⏱️ **Next Step**: Correct tab or set override then re-test append
 
 #### 🔧 Infrastructure Fixes (Complete - August 13, 2025)
 - ✅ **Google Sheets Production Fix**: Resolved missing `GOOGLE_CLIENT_EMAIL` and `GOOGLE_CLIENT_ID` environment variables
@@ -390,20 +419,22 @@ Environment Variables (Vercel):
 GOOGLE_TYPE
 GOOGLE_PROJECT_ID
 GOOGLE_PRIVATE_KEY_ID
-GOOGLE_PRIVATE_KEY
+GOOGLE_PRIVATE_KEY   # Ensure correct newline handling; code normalizes \n
 GOOGLE_CLIENT_EMAIL
 GOOGLE_CLIENT_ID
-SHEET_ID
+RSVP_RESPONSES_SHEET_ID   # Spreadsheet ID for RSVP responses tab
+GUEST_LIST_SHEET_ID        # Spreadsheet ID for guest list (can match above)
+RSVP_RESPONSES_SHEET_NAME  # Optional override if tab name differs (e.g. RSPV_Responses)
 Session Checklist
 npm run dev → start dev server
 
 Push to main → triggers Vercel deployment
 
-Test RSVP form locally before pushing
+Test RSVP form locally before pushing (especially after env changes)
 
-Run npm run lint before commit
+Reference angie_info_3.md for up-to-date event/couple info
 
-Reference angie_info.md for up-to-date event/couple info
+Use /api/sheets/meta to verify sheet tab titles if append fails
 
 Completed Features
 (Update this section after each milestone)
