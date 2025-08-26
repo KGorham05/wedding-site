@@ -17,6 +17,8 @@ export default function GuestCheckIn() {
     adults: 1,
     children: 0,
     childrenAges: [] as number[],
+    adultNames: [] as string[],
+    childrenNames: [] as string[],
     dietaryRestrictions: '',
     specialRequests: ''
   });

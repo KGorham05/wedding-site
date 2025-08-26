@@ -42,6 +42,56 @@ const getGoogleSheetsClient = async (): Promise<sheets_v4.Sheets> => {
   return google.sheets({ version: 'v4', auth });
 };
 
+// Helper function to get the expected column headers for the Google Sheet
+export function getSheetHeaders(): string[] {
+  return [
+    'Timestamp', // A
+    'Guest ID', // B
+    'First Name', // C
+    'Last Name', // D
+    'Email', // E
+    'Total Guests', // F
+    'Adults', // G
+    'Children', // H
+    'Children Ages', // I
+    'Dietary Restrictions', // J
+    'Special Requests', // K
+    'Day 1 Attendees', // L
+    'Day 2 Whitewater Rafting', // M
+    'Day 2 Scenic Float', // N
+    'Day 2 Horseback Riding', // O
+    'Day 2 Hat Making', // P
+    'Day 3 Adults', // Q
+    'Day 3 Children', // R
+    'Day 4 Adults', // S
+    'Day 4 Children', // T
+    'Day 5 Departure Time', // U
+    'Completed At', // V
+  ];
+}
+
+// Helper function to initialize sheet with proper headers
+export async function initializeSheetHeaders(): Promise<void> {
+  try {
+    const sheets = await getGoogleSheetsClient();
+    const spreadsheetId = process.env.RSVP_RESPONSES_SHEET_ID;
+    
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: 'RSVP_Responses!A1:V1',
+      valueInputOption: 'RAW',
+      requestBody: {
+        values: [getSheetHeaders()],
+      },
+    });
+
+    console.log('Sheet headers initialized successfully');
+  } catch (error) {
+    console.error('Error initializing sheet headers:', error);
+    throw error;
+  }
+}
+
 // Guest List Management Functions
 export async function fetchGuestListFromSheets(): Promise<Guest[]> {
   try {
@@ -76,43 +126,54 @@ export async function submitRSVPToSheets(guestData: GuestData): Promise<void> {
     const sheets = await getGoogleSheetsClient();
     const spreadsheetId = process.env.RSVP_RESPONSES_SHEET_ID;
     
-    // Prepare the row data for RSVP responses
+    // Define the column structure for the Google Sheet
+    // Column headers should be:
+    // A: Timestamp, B: Guest ID, C: First Name, D: Last Name, E: Email
+    // F: Total Guests, G: Adults, H: Children, I: Children Ages, J: Dietary Restrictions
+    // K: Special Requests, L: Day 1 Attendees, M: Day 2 Whitewater Rafting
+    // N: Day 2 Scenic Float, O: Day 2 Horseback Riding, P: Day 2 Hat Making
+    // Q: Day 3 Adults, R: Day 3 Children, S: Day 4 Adults, T: Day 4 Children
+    // U: Day 5 Departure Time, V: Completed At
+    
     const rowData = [
-      new Date().toISOString(), // Timestamp
-      guestData.guest.id,
-      guestData.guest.firstName,
-      guestData.guest.lastName,
-      guestData.email,
-      guestData.totalGuests,
-      guestData.adults,
-      guestData.children,
-      guestData.childrenAges.join(', '),
-      guestData.dietaryRestrictions,
+      new Date().toISOString(), // A: Timestamp
+      guestData.guest.id, // B: Guest ID
+      guestData.guest.firstName, // C: First Name
+      guestData.guest.lastName, // D: Last Name
+      guestData.email, // E: Email
+      guestData.totalGuests, // F: Total Guests
+      guestData.adults, // G: Adults
+      guestData.children, // H: Children
+      guestData.childrenAges.join(', '), // I: Children Ages
+      guestData.dietaryRestrictions, // J: Dietary Restrictions
+      guestData.specialRequests || '', // K: Special Requests
       
       // Day 1 - Arrival & Welcome (yoga/sound bath attendees)
-      (guestData.day1?.adults || 0) + (guestData.day1?.children || 0),
+      (guestData.day1?.adults || 0) + (guestData.day1?.children || 0), // L: Day 1 Attendees
 
       // Day 2 - Adventures
-      guestData.day2?.whitewaterRafting || 0,
-      guestData.day2?.scenicFloat || 0,
-      guestData.day2?.horsebackRiding || 0,
-      guestData.day2?.hatMaking || 0,
+      guestData.day2?.whitewaterRafting || 0, // M: Day 2 Whitewater Rafting
+      guestData.day2?.scenicFloat || 0, // N: Day 2 Scenic Float
+      guestData.day2?.horsebackRiding || 0, // O: Day 2 Horseback Riding
+      guestData.day2?.hatMaking || 0, // P: Day 2 Hat Making
 
-      // Day 3 - Reception (TODO: Update when day3 structure is defined)
-      0, // guestData.day3?.receptionAttendees || 0,
+      // Day 3 - Wedding Reception
+      guestData.day3?.adults || 0, // Q: Day 3 Adults
+      guestData.day3?.children || 0, // R: Day 3 Children
 
-      // Day 4 - Yellowstone (TODO: Update when day4 structure is defined)
-      0, // guestData.day4?.yellowstoneAttendees || 0,
+      // Day 4 - Yellowstone & BBQ
+      guestData.day4?.adults || 0, // S: Day 4 Adults
+      guestData.day4?.children || 0, // T: Day 4 Children
 
-      // Day 5 - Farewell (TODO: Update when day5 structure is defined)
-      0, // guestData.day5?.farewellAttendees || 0,
+      // Day 5 - Farewell
+      guestData.day5?.departureTime || '', // U: Day 5 Departure Time
       
-      guestData.completedAt || '',
+      guestData.completedAt || '', // V: Completed At
     ];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'RSVP_Responses!A:S', // Adjusted range
+      range: 'RSVP_Responses!A:V', // Updated range to match new column structure
       valueInputOption: 'RAW',
       requestBody: {
         values: [rowData],
@@ -134,25 +195,24 @@ export async function fetchAllRSVPResponses(): Promise<RSVPResponse[]> {
     
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: 'RSVP_Responses!A2:S', // Adjusted range
+      range: 'RSVP_Responses!A2:V', // Updated range to match new column structure
     });
 
     const rows = response.data.values || [];
     
     return rows.map((row) => ({
-      timestamp: row[0] || '',
-      guestId: row[1] || '',
-      firstName: row[2] || '',
-      lastName: row[3] || '',
-      email: row[4] || '',
-      totalGuests: parseInt(row[5]) || 0,
-      adults: parseInt(row[6]) || 0,
-      children: parseInt(row[7]) || 0,
-      childrenAges: row[8]?.split(', ').filter(Boolean) || [],
-      dietaryRestrictions: row[9] || '',
-      specialRequests: row[10] || '',
-      // Add more fields as needed...
-      completedAt: row[43] || '', // Adjust index based on actual column count
+      timestamp: row[0] || '', // A
+      guestId: row[1] || '', // B
+      firstName: row[2] || '', // C
+      lastName: row[3] || '', // D
+      email: row[4] || '', // E
+      totalGuests: parseInt(row[5]) || 0, // F
+      adults: parseInt(row[6]) || 0, // G
+      children: parseInt(row[7]) || 0, // H
+      childrenAges: row[8]?.split(', ').filter(Boolean) || [], // I
+      dietaryRestrictions: row[9] || '', // J
+      specialRequests: row[10] || '', // K
+      completedAt: row[21] || '', // V: Completed At
     }));
   } catch (error) {
     console.error('Error fetching RSVP responses from sheets:', error);

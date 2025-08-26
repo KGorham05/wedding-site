@@ -76,7 +76,7 @@ export default function AdventureComplete() {
         />
         <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/25 to-black/35"></div>
       </div>
-      <div className="relative z-10 text-cream-100">Loading your adventure...</div>
+      <div className="relative z-10 text-white">Loading your adventure...</div>
     </div>;
   }
 
@@ -108,19 +108,19 @@ export default function AdventureComplete() {
         </div>
       </nav>
 
-      <div className="pt-24 pb-12">
+      <div className="pt-24 pb-12 relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           
           {/* Celebration Header */}
           <div className="text-center mb-12">
             <div className="text-6xl mb-6">🎉</div>
-            <h1 className="text-4xl md:text-6xl font-serif text-cream-100 mb-6">
+            <h1 className="text-4xl md:text-6xl font-serif text-white mb-6">
               Adventure Complete!
             </h1>
-            <h2 className="text-xl md:text-2xl text-sage-300 mb-8">
+            <h2 className="text-xl md:text-2xl text-white mb-8">
               Thank you for planning this incredible Montana celebration with us!
             </h2>
-            <p className="text-lg text-cream-200 max-w-3xl mx-auto">
+            <p className="text-lg text-white max-w-3xl mx-auto">
               {guestData.guest.firstName}, you&apos;ve successfully completed your adventure planning! 
               Your responses will help Angela & Jeff create the perfect Montana wedding experience 
               for everyone.
@@ -129,73 +129,73 @@ export default function AdventureComplete() {
 
           {/* Summary Stats */}
           <div className="bg-sage-900 rounded-2xl p-8 border border-sage-700 mb-8">
-            <h3 className="text-2xl font-serif text-cream-100 mb-6 text-center">Your Adventure Summary</h3>
+            <h3 className="text-2xl font-serif text-white mb-6 text-center">Your Adventure Summary</h3>
             
             <div className="grid md:grid-cols-4 gap-6 text-center">
               <div className="bg-sage-800 rounded-xl p-6 border border-sage-600">
-                <div className="text-3xl text-sage-300 mb-2">5</div>
-                <div className="text-cream-200 text-sm">Days Planned</div>
+                <div className="text-3xl text-white mb-2">5</div>
+                <div className="text-white text-sm">Days Planned</div>
               </div>
               
               <div className="bg-sage-800 rounded-xl p-6 border border-sage-600">
-                <div className="text-3xl text-sage-300 mb-2">{guestData.totalGuests}</div>
-                <div className="text-cream-200 text-sm">Party Size</div>
+                <div className="text-3xl text-white mb-2">{guestData.totalGuests}</div>
+                <div className="text-white text-sm">Party Size</div>
               </div>
               
               <div className="bg-sage-800 rounded-xl p-6 border border-sage-600">
-                <div className="text-3xl text-sage-300 mb-2">{guestData.day5?.finalRating || 'N/A'}/10</div>
-                <div className="text-cream-200 text-sm">Experience Rating</div>
+                <div className="text-3xl text-white mb-2">{guestData.day5?.finalRating || 'N/A'}/10</div>
+                <div className="text-white text-sm">Experience Rating</div>
               </div>
               
               <div className="bg-sage-800 rounded-xl p-6 border border-sage-600">
-                <div className="text-3xl text-sage-300 mb-2">✓</div>
-                <div className="text-cream-200 text-sm">All Set!</div>
+                <div className="text-3xl text-white mb-2">✓</div>
+                <div className="text-white text-sm">All Set!</div>
               </div>
             </div>
           </div>
 
           {/* Next Steps */}
           <div className="bg-dusty-rose-900 rounded-2xl p-8 border border-dusty-rose-700 mb-8">
-            <h3 className="text-2xl font-serif text-cream-100 mb-6">What Happens Next?</h3>
+            <h3 className="text-2xl font-serif text-white mb-6">What Happens Next?</h3>
             
             <div className="space-y-4">
               <div className="flex items-start">
                 <div className="bg-dusty-rose-700 rounded-full p-2 mr-4 mt-1">
-                  <span className="text-cream-100 text-sm">1</span>
+                  <span className="text-white text-sm">1</span>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-cream-100">Planning Review</h4>
-                  <p className="text-cream-200 text-sm">Angela & Jeff will review your preferences and start tailoring the experience.</p>
+                  <h4 className="text-lg font-semibold text-white">Planning Review</h4>
+                  <p className="text-white text-sm">Angela & Jeff will review your preferences and start tailoring the experience.</p>
                 </div>
               </div>
               
               <div className="flex items-start">
                 <div className="bg-dusty-rose-700 rounded-full p-2 mr-4 mt-1">
-                  <span className="text-cream-100 text-sm">2</span>
+                  <span className="text-white text-sm">2</span>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-cream-100">Personal Follow-up</h4>
-                  <p className="text-cream-200 text-sm">You&apos;ll receive a personal message with specific details and any clarifying questions.</p>
+                  <h4 className="text-lg font-semibold text-white">Personal Follow-up</h4>
+                  <p className="text-white text-sm">You&apos;ll receive a personal message with specific details and any clarifying questions.</p>
                 </div>
               </div>
               
               <div className="flex items-start">
                 <div className="bg-dusty-rose-700 rounded-full p-2 mr-4 mt-1">
-                  <span className="text-cream-100 text-sm">3</span>
+                  <span className="text-white text-sm">3</span>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-cream-100">Detailed Itinerary</h4>
-                  <p className="text-cream-200 text-sm">A customized day-by-day itinerary will be sent to you 2 weeks before the wedding.</p>
+                  <h4 className="text-lg font-semibold text-white">Detailed Itinerary</h4>
+                  <p className="text-white text-sm">A customized day-by-day itinerary will be sent to you 2 weeks before the wedding.</p>
                 </div>
               </div>
               
               <div className="flex items-start">
                 <div className="bg-dusty-rose-700 rounded-full p-2 mr-4 mt-1">
-                  <span className="text-cream-100 text-sm">4</span>
+                  <span className="text-white text-sm">4</span>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-cream-100">Adventure Time!</h4>
-                  <p className="text-cream-200 text-sm">Arrive in Montana ready for an incredible, perfectly planned celebration.</p>
+                  <h4 className="text-lg font-semibold text-white">Adventure Time!</h4>
+                  <p className="text-white text-sm">Arrive in Montana ready for an incredible, perfectly planned celebration.</p>
                 </div>
               </div>
             </div>
@@ -203,7 +203,7 @@ export default function AdventureComplete() {
 
           {/* Action Buttons */}
           <div className="bg-warm-gray-800 rounded-2xl p-8 border border-warm-gray-600">
-            <h3 className="text-2xl font-serif text-cream-100 mb-6 text-center">Keep Your Information</h3>
+            <h3 className="text-2xl font-serif text-white mb-6 text-center">Keep Your Information</h3>
             
             <div className="flex flex-col md:flex-row gap-4 justify-center">
               <button
@@ -237,8 +237,8 @@ export default function AdventureComplete() {
 
             {showData && (
               <div className="mt-8 bg-warm-gray-900 rounded-lg p-6 border border-warm-gray-500">
-                <h4 className="text-lg font-semibold text-cream-100 mb-4">Your Complete Adventure Data</h4>
-                <pre className="text-cream-200 text-xs overflow-auto max-h-96 whitespace-pre-wrap">
+                <h4 className="text-lg font-semibold text-white mb-4">Your Complete Adventure Data</h4>
+                <pre className="text-white text-xs overflow-auto max-h-96 whitespace-pre-wrap">
                   {JSON.stringify(guestData, null, 2)}
                 </pre>
               </div>
@@ -248,15 +248,15 @@ export default function AdventureComplete() {
           {/* Final Message */}
           <div className="text-center mt-12">
             <div className="bg-gradient-to-r from-sage-900 to-dusty-rose-900 rounded-2xl p-8 border border-sage-600">
-              <h3 className="text-2xl font-serif text-cream-100 mb-4">
+              <h3 className="text-2xl font-serif text-white mb-4">
                 From Angela & Jeff
               </h3>
-              <p className="text-lg text-cream-200 italic">
+              <p className="text-lg text-white italic">
                 &quot;We can&apos;t wait to share this incredible Montana adventure with you! Your thoughtful responses 
                 will help us create memories that will last a lifetime. Thank you for being such an important 
                 part of our journey together.&quot;
               </p>
-              <div className="mt-6 text-cream-100">
+              <div className="mt-6 text-white">
                 💕 With love and excitement 💕
               </div>
             </div>

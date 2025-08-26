@@ -114,20 +114,20 @@ export default function AdventureDay1() {
           </div>
 
           {/* Day Preview */}
-          <div className="bg-cream-100/95 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-2xl mb-8">
+          <div className="glass-dark rounded-2xl p-8 shadow-2xl mb-8">
             <h3 className="text-2xl font-serif text-white mb-6">What&apos;s Happening Monday</h3>
             
             <div className="grid md:grid-cols-1 gap-6">
-              <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/30">
+              <div className="glass-sage rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-white mb-3">✈️ Arrive in Style at Your Leisure</h4>
                 <p className="text-white/90 text-sm mb-4">
                   Travel arrangements are entirely up to you - arrive whenever works best for your schedule! 
                   Get settled into your accommodations, meet other guests, and get oriented with the beautiful ranch area.
                 </p>
                 <div className="border-t border-white/30 pt-4 mt-4">
-                  <h4 className="text-lg font-semibold text-white mb-3">🧘‍♀️ Golden Hour Sound Bath & Yoga (6-9 PM)</h4>
+                  <h4 className="text-lg font-semibold text-white mb-3">🧘‍♀️ Golden Hour Sound Bowls & Yoga (6-9 PM)</h4>
                   <p className="text-white/90 text-sm">
-                    Join us for a magical evening of sound bath nature yoga with crystal bowls as the Montana sun sets 
+                    Join us for a magical evening of sound bowls nature yoga with crystal bowls as the Montana sun sets 
                     over the ranch. This peaceful gathering will help you unwind from travel and connect with the 
                     serene wilderness that surrounds us.
                   </p>
@@ -137,11 +137,11 @@ export default function AdventureDay1() {
           </div>
 
           {/* Guest Count Form */}
-          <div className="bg-cream-100/95 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-2xl">
-            <h3 className="text-2xl font-serif text-white mb-4">Golden Hour Yoga & Sound Bath</h3>
-            <p className="text-white/90 mb-6">How many from your party will be joining us for tonight&apos;s peaceful yoga and sound bath experience?</p>
+          <div className="glass-dark rounded-2xl p-8 shadow-2xl">
+            <h3 className="text-2xl font-serif text-white mb-4">Golden Hour Yoga & Sound Bowls</h3>
+            <p className="text-white/90 mb-6">How many from your party will be joining us for tonight&apos;s peaceful yoga and sound bowls experience?</p>
             
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4 mb-6 border border-white/30">
+            <div className="glass-sage rounded-lg p-4 mb-6">
               <p className="text-sm text-white/90">
                 <span className="font-medium">Your Party Limits:</span> Max {guestData.maxAdults || guestData.adults} adults, {guestData.maxChildren || guestData.children} children
                 <br />
@@ -193,12 +193,12 @@ export default function AdventureDay1() {
                 </div>
               </div>
 
-              <div className="text-center p-4 bg-white/20 backdrop-blur-sm rounded-lg border border-white/30">
+              <div className="text-center p-4 glass-sage rounded-lg">
                 {preferences.adults + preferences.children === 0 ? (
                   <p className="text-white/90">No worries! Each adventure is completely optional. We&apos;ll miss you but hope to see you for other activities!</p>
                 ) : (
                   <p className="text-white">
-                    <span className="font-semibold">Yoga & Sound Bath Attendees:</span> {preferences.adults + preferences.children} {preferences.adults + preferences.children === 1 ? 'person' : 'people'}
+                    <span className="font-semibold">Yoga & Sound Bowls Attendees:</span> {preferences.adults + preferences.children} {preferences.adults + preferences.children === 1 ? 'person' : 'people'}
                     <br />
                     <span className="text-white/80 text-sm">A perfect way to ease into your Montana adventure!</span>
                   </p>

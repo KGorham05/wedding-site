@@ -120,7 +120,7 @@ export default function AdventureDay2() {
             </p>
           </div>
 
-          <div className="bg-cream-100/95 backdrop-blur-sm rounded-2xl p-8 border border-white/30 shadow-2xl mb-8">
+          <div className="glass-dark rounded-2xl p-8 shadow-2xl mb-8">
             <h3 className="text-2xl font-serif text-white mb-6">Choose Your Adventures</h3>
             <p className="text-white/90 mb-6">Adventures are optional. Reserve your spots now, and we&apos;ll settle up on costs later via Venmo. Your party has a total of {totalGuests} guest(s).</p>
             
@@ -129,19 +129,19 @@ export default function AdventureDay2() {
               {renderActivitySelector("scenicFloat", "Scenic River Float (kid-friendly)", "$75–$100 per guest")}
               {renderActivitySelector("horsebackRiding", "Horseback Riding", "Pricing TBD")}
               {renderActivitySelector("hatMaking", "Custom Cowboy Hat-Making", "$150–$200 per hat")}
-              </div>
-          </div>
+            </div>
 
-          <div className="flex justify-between items-center pt-6">
-            <Link href="/adventure/day-1" className="text-white/80 hover:text-white transition-colors">
-              ← Back to Day 1
-            </Link>
-            <button
-              onClick={handleContinue}
-              className="bg-sage-600 hover:bg-sage-700 text-white py-3 px-8 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              Continue to Day 3 →
-            </button>
+            <div className="flex justify-between items-center pt-6">
+              <Link href="/adventure/day-1" className="btn-glass text-white py-2 px-4 rounded-lg transition-all duration-300">
+                ← Back to Day 1
+              </Link>
+              <button
+                onClick={handleContinue}
+                className="btn-glass text-white py-3 px-8 rounded-lg font-medium transition-all duration-300"
+              >
+                Continue to Day 3 →
+              </button>
+            </div>
           </div>
 
         </div>

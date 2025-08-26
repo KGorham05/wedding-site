@@ -1,25 +1,109 @@
 ## 🚀 NEXT SESSION PRIORITIES (READY TO START)
 
+### **IMMEDIATE HIGH-PRIORITY FIXES - AUGUST 25, 2025**
+
+#### 🎨 **1. Design & Readability Issues (CRITICAL UX)**
+- **Issue**: Frosted glass forms lack contrast and readability
+- **Files**: All adventure pages, info page, Our Story page
+- **Fix**: Experiment with gradient overlays to darken backgrounds behind white text
+- **Action**: Act as UX designer to improve contrast and readability across entire site
+- **Test**: Verify text is readable across different devices and lighting conditions
+
+#### 🧭 **2. Navigation & Mobile Issues (CRITICAL)**
+- **Issue**: Hamburger menu not working on mobile
+- **Issue**: Not all pages use consistent Navigation component
+- **Files**: All pages, `src/components/Navigation.tsx`
+- **Fix**: Ensure every page uses the same nav component with working mobile menu
+- **Test**: Verify mobile navigation works across all pages
+
+#### 💾 **3. RSVP State Persistence (HIGH PRIORITY)**
+- **Issue**: User selections don't pre-populate when navigating away/back to RSVP pages
+- **Files**: All adventure day pages, localStorage management
+- **Fix**: Implement proper state persistence and restoration
+- **Test**: Navigate away from RSVP flow and return to verify data persists
+
+#### 🎬 **4. Hero Video Mobile & Loading Issues**
+- **Issue**: Video placeholder image not appealing, mobile video performance poor
+- **Files**: `src/components/OptimizedHeroVideo.tsx`, main page
+- **Fix**: Replace placeholder with black/fade effect, suggest mobile alternatives
+- **Options**: Consider static image overlay, poster frame, or disable video on mobile
+
+#### 🎯 **5. Form Button Consistency & Visibility**
+- **Issue**: Day 2 buttons outside main form div, hard to see (clear on clear)
+- **Files**: All adventure day pages, especially day-2
+- **Fix**: Move buttons inside glass window div like day-1, add borders/hover effects
+- **Test**: Ensure all days have same button placement and visibility
+
+#### 📝 **6. Content Updates**
+- **Issue**: "Sound bath" should be "sound bowls" throughout site
+- **Issue**: Our Story page text not white/readable
+- **Issue**: Experience rating should always be positive/exciting
+- **Files**: All pages mentioning sound bath, Our Story page, complete page
+- **Fix**: Update terminology, fix text colors, add positive rating generator
+
+#### 🪟 **7. Info Page Styling**
+- **Issue**: Info page doesn't match application styles (needs glass window effect)
+- **Files**: `src/app/info/page.tsx`
+- **Fix**: Apply consistent frosted glass styling to match other pages
+
+### **SYSTEMATIC APPROACH PLAN**
+
+**Phase 1: Critical UX/Design (Priority 1)**
+1. Fix frosted glass contrast and readability issues
+2. Fix mobile hamburger menu and navigation consistency
+3. Improve hero video loading and mobile experience
+
+**Phase 2: Form & State Management (Priority 2)**  
+4. Fix button placement and visibility on all adventure pages
+5. Implement RSVP state persistence across navigation
+6. Update experience ratings to always be positive
+
+**Phase 3: Content & Styling Polish (Priority 3)**
+7. Update "sound bath" to "sound bowls" terminology
+8. Fix Our Story page text readability
+9. Apply glass window styling to Info page
+
+**COMMIT STRATEGY**: After each completed phase, commit changes with descriptive messages and check back for direction.
+
+---
+
+## 🚀 PREVIOUSLY COMPLETED (CURRENT SESSION - AUGUST 25, 2025)
+
+### ✅ **Fixed Google Sheets Submission Structure**
+- **Fixed**: Updated Google Sheets submission to use proper column structure (A-V, 22 columns)
+- **Fixed**: Resolved range parsing error by updating from A:S to A:V
+- **Added**: Helper functions for sheet header initialization
+- **Added**: `/api/init-sheet` endpoint for easy sheet setup
+- **Test**: Form submissions now properly structured for Google Sheets
+
+### ✅ **Fixed Adventure Complete Page Z-Index**
+- **Fixed**: Added `relative z-10` wrapper to prevent background overlay issues
+- **Fixed**: Updated all text colors to consistent white for better contrast
+- **Test**: Complete page now displays properly without visual glitches
+
+---
+
+## � PREVIOUS SESSION PRIORITIES (COMPLETED)
+
 ### **IMMEDIATE HIGH-PRIORITY FIXES**
 
-#### 🐛 **1. Fix Adventure Complete Page (Critical)**
+#### �🐛 **1. Fix Adventure Complete Page (Critical)** ✅ COMPLETED
 - **File**: `src/app/adventure/complete/page.tsx` 
 - **Issue**: Missing `relative z-10` wrapper causing visual flashing and z-index problems
 - **Fix**: Add `relative z-10` class to main content wrapper (around line 111)
 - **Compare**: Look at other adventure pages (day-1, day-2, etc.) for proper structure
 - **Test**: Complete the adventure flow to verify fix
 
-#### 🔧 **2. Google Sheets RSVP Submission Bug (CRITICAL - NO DATA BEING SAVED)**
+#### 🔧 **2. Google Sheets RSVP Submission Bug (CRITICAL - NO DATA BEING SAVED)** ✅ COMPLETED
 - **PRIORITY**: HIGH - Adventure completion forms are not saving user data to Google Sheets
-- **Current Status**: BROKEN - Users can complete the adventure flow but their responses are lost
-- **Files**: `src/app/api/rsvp/route.ts`, Google Sheets configuration
-- **Error**: "Unable to parse range: RSVP_Responses!A:S"
-- **Impact**: All user RSVP data from completed adventures is being lost
-- **Investigation**: Check Google Sheets API range configuration and sheet setup
-- **Test**: Submit test RSVP to verify data reaches Google Sheets and is properly stored
-- **Business Impact**: Cannot collect guest preferences for wedding planning
+- **Current Status**: FIXED - Restructured data submission to match clear column structure
+- **Files**: `src/app/api/rsvp/route.ts`, `src/lib/google-sheets.ts`
+- **Error**: "Unable to parse range: RSVP_Responses!A:S" - RESOLVED
+- **Impact**: All user RSVP data from completed adventures is now properly saved
+- **Fix**: Updated range to A:V with proper column mapping and data structure
+- **Test**: Sheet headers provided for easy Google Sheets setup
 
-#### 🎨 **3. Complete Adventure Page Color Consistency**
+#### 🎨 **3. Complete Adventure Page Color Consistency** ✅ COMPLETED
 - **File**: `src/app/adventure/complete/page.tsx`
 - **Issue**: Still uses `text-cream-100`, `text-cream-200`, `text-sage-300` instead of white text
 - **Fix**: Update all text colors to use white for consistency with other pages
