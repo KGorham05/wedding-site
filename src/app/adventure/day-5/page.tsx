@@ -122,28 +122,28 @@ export default function AdventureDay5() {
             <h3 className="text-2xl font-serif text-white mb-6">Departure Day Schedule</h3>
             
             <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="glass-sage rounded-xl p-6">
+              <div className="border border-white/20 rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-white mb-3">🌅 8:00 AM - Farewell Breakfast</h4>
                 <p className="text-white/90 text-sm">
                   Final group breakfast with sharing of favorite memories and contact exchanges.
                 </p>
               </div>
               
-              <div className="glass-sage rounded-xl p-6">
+              <div className="border border-white/20 rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-white mb-3">🧳 10:00 AM - Check-out & Packing</h4>
                 <p className="text-white/90 text-sm">
                   Assistance with luggage, final photo opportunities, and departure coordination.
                 </p>
               </div>
               
-              <div className="glass-sage rounded-xl p-6">
+              <div className="border border-white/20 rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-white mb-3">🚗 12:00 PM - Transportation</h4>
                 <p className="text-white/90 text-sm">
                   Coordinated transportation to airports and travel destinations.
                 </p>
               </div>
               
-              <div className="glass-sage rounded-xl p-6">
+              <div className="border border-white/20 rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-white mb-3">💝 Until We Meet Again</h4>
                 <p className="text-white/90 text-sm">
                   Thank you for being part of Angela & Jeff&apos;s magical Montana wedding adventure!
