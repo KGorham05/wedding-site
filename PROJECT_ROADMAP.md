@@ -1,13 +1,48 @@
 ## 🚀 NEXT SESSION PRIORITIES (READY TO START)
 
-### **IMMEDIATE HIGH-PRIORITY FIXES - AUGUST 25, 2025**
+### **IMMEDIATE HIGH-PRIORITY FIXES - AUGUST 25, 2025 (UPDATED – ACCESSIBLE UI OVERHAUL APPROVED)**
 
-#### 🎨 **1. Design & Readability Issues (CRITICAL UX)**
-- **Issue**: Frosted glass forms lack contrast and readability
-- **Files**: All adventure pages, info page, Our Story page
-- **Fix**: Experiment with gradient overlays to darken backgrounds behind white text
-- **Action**: Act as UX designer to improve contrast and readability across entire site
-- **Test**: Verify text is readable across different devices and lighting conditions
+#### 🎨 **1. Accessible UI Overhaul & Readability (CRITICAL UX)**
+- **Status**: APPROVED PLAN – Begin Phase 0 (tokens + component scaffolding)
+- **Core Problems**: Floating white text over inconsistent images; insufficient structured surfaces; mixed button placement; dark text still unreadable on some pages (e.g. Our Story, main page content area)
+- **Scope (Pages)**: `/` (below-hero content), `/guest-check-in`, `/adventure/day-1..5`, `/adventure/complete`, `/our-story`, `/info` (forthcoming), any legacy RSVP-related forms
+- **Components To Introduce**: `HeroHeader`, `FormLayout`, `FieldGroup`, `ProgressSteps`, `StickyActionBar`
+- **Styling System Updates**: Tailwind design tokens for new palette (lilac, blush, sunset, prairie blue, bloom yellow, sage, wildflower white, ink); glass surface tiers (surface-1, surface-2); soft chromatic gradient scrims; action button variants (primary, secondary, subtle)
+- **Accessibility Enhancements**: Contrast guard fallback (escalate overlay if < required ratio), focus management (H1 focus on step change), sticky mobile action bar with consistent nav labels, larger tappable targets
+- **Form Cohesion Goals**: Unified spacing scale (4/8/16), consistent FieldGroup cards, bottom sticky actions on mobile, progress indicator across entire RSVP journey
+- **Deliverables Phase 0–1**:
+  1. Tailwind token extension + utilities (colors, gradients, surfaces)
+  2. `HeroHeader` (variants: image-full, framed, split) applied to Day 2 as pilot
+  3. Replace Our Story dark body text with accessible surface + white/ink contrast per rules
+  4. Normalize homepage below-hero sections onto surface panels (no raw text on imagery)
+  5. Adventure Complete page: new hero + positive rating banner placeholder
+  6. Define positive rating list & deterministic selection approach
+- **Validation**: Automated contrast ratio check script for hero headings + manual large-text (200%) / dark-mode illusions test (even though site theme fixed)
+- **Exit Criteria for Overhaul Epic**: All listed pages use new components; zero contrast violations (axe / manual); consistent progress & action placement; roadmap sections updated.
+
+#### 🧪 **Overhaul Phases (Summary)**
+- **Phase 0 (Setup)**: Tokens, utilities, base component stubs
+- **Phase 1 (Hero Replacement)**: Implement `HeroHeader` across all target pages
+- **Phase 2 (Form Layout Refactor)**: Introduce `FormLayout`, `FieldGroup`, `StickyActionBar` into RSVP flow & guest check-in
+- **Phase 3 (Progress & Interaction)**: Add `ProgressSteps`, unify navigation logic, seed positive rating
+- **Phase 4 (Contrast Guard + Polishing)**: Dynamic overlay escalation, motion/data preference fallbacks, finalize completion page
+- **Phase 5 (Accessibility QA)**: Axe scan, keyboard traversal audit, high zoom, color-blind simulation, final contrast report
+
+#### 🔍 **Immediate Page-Specific Styling Corrections (Folded Into Phases)**
+- `/our-story`: Dark unreadable text → wrap content in surface-1 panels + enforce white headings / ink body on solid backgrounds for contrast
+- `/` (homepage): Sections below hero to adopt surface panels (avoid raw floating text) and consistent heading hierarchy
+- `/adventure/complete`: Add new hero + positive rating + card-based summaries with consistent surfaces
+- RSVP Flow Pages (guest check-in + days 1–5): Replace current floating headers with `HeroHeader` + restructure forms under `FormLayout`
+- `/info`: Build directly with new components (no legacy styling) ensuring quick adoption of system
+
+#### ✅ **Definition of Done (UI Overhaul)**
+- All specified pages use standardized hero & form components
+- No heading or paragraph text placed directly over un-scrimmed image
+- Minimum contrast 4.5:1 body / 3:1 large text verified and logged
+- Mobile sticky action bar present on all multi-step forms
+- Progress indicator accurate & accessible (list semantics) across steps
+- Positive rating generator integrated on completion page
+- Roadmap updated & OVERHAUL epic marked complete upon QA pass
 
 #### 🧭 **2. Navigation & Mobile Issues (CRITICAL)**
 - **Issue**: Hamburger menu not working on mobile
