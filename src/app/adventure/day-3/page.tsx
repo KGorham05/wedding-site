@@ -98,10 +98,11 @@ export default function AdventureDay3() {
                   onChange={(e) => setAttendees(parseInt(e.target.value))}
                   className="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white focus:border-white/50 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-200"
                 >
-                {Array.from({ length: totalGuests + 1 }, (_, i) => (
-                  <option key={i} value={i}>{i}</option>
-                ))}
-              </select>
+                  {Array.from({ length: totalGuests + 1 }, (_, i) => (
+                    <option key={i} value={i}>{i}</option>
+                  ))}
+                </select>
+              </div>
             </div>
 
             <div className="flex justify-between items-center pt-6">
