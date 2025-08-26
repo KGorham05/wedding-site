@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { Navigation } from '@/components';
+import { Navigation, HeroHeader } from '@/components';
 import { type Guest } from "@/lib/guest-list";
 
 export default function GuestCheckIn() {
@@ -112,37 +111,22 @@ export default function GuestCheckIn() {
   };
 
   return (
-    <div className="min-h-screen relative">
-      {/* Background Image with Dark Overlay */}
-      <div className="absolute inset-0 z-0">
-        <Image 
-          src="/montana-river.jpg"
-          alt="Montana river landscape"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
-        {/* 20% Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/25 to-black/35"></div>
-      </div>
-      {/* Navigation */}
-      <Navigation dark transparent />
-
-      <div className="pt-24 pb-12 relative z-10">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 relative z-20">
-          
+    <div className="min-h-screen flex flex-col relative">
+      <Navigation dark />
+      <HeroHeader
+        title="Guest Check-In"
+        subtitle="Find your invitation and register your party for the Montana wedding adventure week."
+        media={{ type: 'image', src: '/montana-river.jpg', alt: 'Montana river landscape', priority: true }}
+        overlay="strong"
+      />
+      <main className="flex-1 -mt-10 md:-mt-16 relative z-10 pb-16">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6">
           {step === 'lookup' && (
-            <div className="bg-cream-100/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl relative z-30">
+            <div className="surface-glass-1 rounded-2xl p-8 shadow-2xl border border-white/10">
               <div className="text-center mb-8">
-                <h1 className="text-3xl md:text-4xl font-serif text-white mb-4">
-                  Welcome to Your Montana Adventure!
-                </h1>
-                <p className="text-lg text-white/90">
-                  Let&apos;s start by finding you on our guest list
-                </p>
+                <h2 className="text-2xl md:text-3xl font-serif text-white mb-3">Welcome to Your Montana Adventure</h2>
+                <p className="text-base md:text-lg text-white/85">Let&apos;s start by finding you on our guest list.</p>
               </div>
-
               <form onSubmit={handleGuestLookup} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
@@ -181,25 +165,20 @@ export default function GuestCheckIn() {
 
                 <button
                   type="submit"
-                  className="w-full bg-sage-600 hover:bg-sage-700 text-white py-3 px-6 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="w-full btn-glass text-white py-3 px-6 rounded-lg font-medium transition-all duration-300 focus-ring"
                 >
-                  Find My Invitation
+                  Find My Invitation →
                 </button>
               </form>
             </div>
           )}
 
           {step === 'party-details' && guest && (
-            <div className="bg-cream-100/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl relative z-30">
+            <div className="surface-glass-1 rounded-2xl p-8 shadow-2xl border border-white/10">
               <div className="text-center mb-8">
-                <h1 className="text-3xl md:text-4xl font-serif text-white mb-4">
-                  Great! Hi {guest.firstName}! 🎉
-                </h1>
-                <p className="text-lg text-white/90">
-                  Now let&apos;s get your adventure party details
-                </p>
+                <h2 className="text-2xl md:text-3xl font-serif text-white mb-3">Hi {guest.firstName}! 🎉</h2>
+                <p className="text-base md:text-lg text-white/85">Let&apos;s capture your party details for the week.</p>
               </div>
-
               <form onSubmit={handlePartyDetails} className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-white mb-2">
@@ -312,16 +291,15 @@ export default function GuestCheckIn() {
 
                 <button
                   type="submit"
-                  className="w-full bg-sage-600 hover:bg-sage-700 text-white py-3 px-6 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="w-full btn-glass text-white py-3 px-6 rounded-lg font-medium transition-all duration-300 focus-ring"
                 >
-                  Start Planning Our Adventures! 🏔️
+                  Start Planning Our Adventures →
                 </button>
               </form>
             </div>
           )}
-
         </div>
-      </div>
+      </main>
     </div>
   );
 }
