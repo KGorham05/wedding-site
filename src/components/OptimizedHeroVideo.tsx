@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 // Removed placeholder Image fallback per design update
 
 interface NavigatorWithConnection extends Navigator {
@@ -59,11 +60,23 @@ export default function OptimizedHeroVideo({ children }: OptimizedHeroVideoProps
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Removed static hero image fallback; using solid dark background until video loads */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
+      {/* Background Layer: static image for md+ (desktop/tablet) and gradient overlay; mobile stays gradient only since it uses separate static hero on home */}
+      <div className="absolute inset-0 z-0">
+        <div className="hidden md:block absolute inset-0">
+          <Image
+            src="/glacier-national-park-7443329.jpg"
+            alt="Montana mountain landscape backdrop"
+            fill
+            priority
+            sizes="(min-width: 768px) 100vw"
+            className={`object-cover transition-opacity duration-700 ${videoLoaded ? 'opacity-0' : 'opacity-100'}`}
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
+      </div>
 
       {/* Video Layer - Only loads when appropriate */}
-      {showVideo && userPreference === 'auto' && (
+  {showVideo && userPreference === 'auto' && (
         <div className="absolute inset-0 z-[1]">
           <iframe
             ref={videoRef}

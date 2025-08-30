@@ -99,12 +99,6 @@ export default function AdventureDay5() {
                 </p>
               </div>
               
-              <div className="border border-white/20 rounded-xl p-6">
-                <h4 className="text-lg font-semibold text-white mb-3">🚗 12:00 PM - Transportation</h4>
-                <p className="text-white/90 text-sm">
-                  Coordinated transportation to airports and travel destinations.
-                </p>
-              </div>
               
               <div className="border border-white/20 rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-white mb-3">💝 Until We Meet Again</h4>
