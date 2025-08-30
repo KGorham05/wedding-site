@@ -21,6 +21,7 @@ export default function GuestCheckIn() {
     dietaryRestrictions: '',
     specialRequests: ''
   });
+  const [declined, setDeclined] = useState(false);
   const [guest, setGuest] = useState<Guest | null>(null);
   const [error, setError] = useState('');
   const [guestList, setGuestList] = useState<Guest[]>([]);
@@ -97,6 +98,9 @@ export default function GuestCheckIn() {
       maxChildren: formData.children,
       checkedInAt: new Date().toISOString()
     };
+    if (declined) {
+      (guestData as typeof guestData & { declined: boolean }).declined = true;
+    }
     
     localStorage.setItem('montana-adventure-guest', JSON.stringify(guestData));
     
@@ -286,15 +290,34 @@ export default function GuestCheckIn() {
                     onChange={(e) => setFormData(prev => ({ ...prev, dietaryRestrictions: e.target.value }))}
                     rows={3}
                     className="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white placeholder-white/60 focus:border-white/50 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-200 resize-none"
-                    placeholder="Please list any dietary restrictions, allergies, or special meal requirements..."
+                    placeholder="Dietary restrictions, allergies, special meal needs, or leave a note / reasons if you can’t attend..."
                   />
+                </div>
+
+                <div className="space-y-4">
+                  <button
+                    type="button"
+                    onClick={() => setDeclined(d => !d)}
+                    className={`w-full flex items-center justify-between px-4 py-3 rounded-lg border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 backdrop-blur-sm ${declined ? 'bg-red-600/50 border-red-300/40 text-white shadow-lg scale-[1.01]' : 'bg-white/10 border-white/30 text-white/90 hover:bg-white/20'}`}
+                    aria-pressed={declined}
+                  >
+                    <span className="text-left text-sm md:text-base font-medium">
+                      {declined ? "Changed your mind? Tap to say you'll attend" : "Can’t make it? Tap to let us know (leave a note below)"}
+                    </span>
+                    <span className={`ml-4 inline-flex items-center justify-center w-6 h-6 rounded-md border text-xs ${declined ? 'bg-white text-red-600 border-white' : 'border-white/50 text-white/70'}`}>{declined ? '✕' : '✓'}</span>
+                  </button>
+                  {declined && (
+                    <p className="text-white/80 text-xs md:text-sm text-center">
+                      We’ll miss you! You can still explore the adventure flow later—this just helps us plan. You can toggle this off anytime.
+                    </p>
+                  )}
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full btn-glass text-white py-3 px-6 rounded-lg font-medium transition-all duration-300 focus-ring"
+                  className={`w-full relative overflow-hidden btn-glass text-white py-3 px-6 rounded-lg font-medium transition-all duration-500 focus-ring ${declined ? 'animate-pulse ring-2 ring-red-400/50' : ''}`}
                 >
-                  Start Planning Our Adventures →
+                  {declined ? 'See What You’d Be Missing →' : 'Start Planning Our Adventures →'}
                 </button>
               </form>
             </div>

@@ -17,6 +17,7 @@ Previous session delivered UI unification (homepage surface panels, countdown re
   - Added optional `RSVP_RESPONSES_SHEET_NAME` env override
 7. Identified root cause of append failures: tab name typo (`RSPV_Responses`)
 8. (Aug 29) Mobile hamburger menu now functional (accessible toggle, focus states, auto-close on navigation & resize)
+9. (Aug 29) Guest decline RSVP option added at check-in (toggle with sheet column `Declined RSVP`)
 
 ### Immediate Next Actions
 1. Rename sheet tab to `RSVP_Responses` OR set env `RSVP_RESPONSES_SHEET_NAME=RSPV_Responses` and redeploy

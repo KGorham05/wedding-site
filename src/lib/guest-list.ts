@@ -26,6 +26,8 @@ export interface GuestData {
   childrenAges: number[];
   dietaryRestrictions: string;
   specialRequests: string;
+  // Whether guest has declined attending (can toggle back later)
+  declined?: boolean;
   checkedInAt: string;
   lastCompletedDay?: number;
   completedAt?: string;

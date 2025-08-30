@@ -83,7 +83,8 @@ export function getSheetHeaders(): string[] {
     'Day 4 Adults', // S
     'Day 4 Children', // T
     'Day 5 Departure Time', // U
-    'Completed At', // V
+  'Completed At', // V
+  'Declined RSVP', // W (NEW)
   ];
 }
 
@@ -95,7 +96,7 @@ export async function initializeSheetHeaders(): Promise<void> {
     
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: 'RSVP_Responses!A1:V1',
+  range: 'RSVP_Responses!A1:W1',
       valueInputOption: 'RAW',
       requestBody: {
         values: [getSheetHeaders()],
@@ -171,13 +172,14 @@ export async function submitRSVPToSheets(guestData: GuestData): Promise<void> {
       guestData.day3?.children || 0,
       guestData.day4?.adults || 0,
       guestData.day4?.children || 0,
-      guestData.day5?.departureTime || '',
-      guestData.completedAt || ''
+  guestData.day5?.departureTime || '',
+  guestData.completedAt || '',
+  guestData.declined ? 'TRUE' : 'FALSE',
     ];
 
   const escapedName = sheetName.replace(/'/g, "''").trim();
   const sheetRef = /[\s!]/.test(escapedName) ? `'${escapedName}'` : escapedName; // quote if spaces or special
-  const primaryRange = `${sheetRef}!A:V`;
+    const primaryRange = `${sheetRef}!A:W`;
     try {
       await sheets.spreadsheets.values.append({
         spreadsheetId,
@@ -230,7 +232,7 @@ export async function fetchAllRSVPResponses(): Promise<RSVPResponse[]> {
     
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: 'RSVP_Responses!A2:V', // Updated range to match new column structure
+  range: 'RSVP_Responses!A2:W', // Updated range to match new column structure (+ Declined)
     });
 
     const rows = response.data.values || [];
@@ -248,6 +250,7 @@ export async function fetchAllRSVPResponses(): Promise<RSVPResponse[]> {
       dietaryRestrictions: row[9] || '', // J
       specialRequests: row[10] || '', // K
       completedAt: row[21] || '', // V: Completed At
+  declined: row[22] || '', // W: Declined RSVP
     }));
   } catch (error) {
     console.error('Error fetching RSVP responses from sheets:', error);
