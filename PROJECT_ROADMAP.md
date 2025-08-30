@@ -1,7 +1,7 @@
-## 🚀 CURRENT STATUS (AUGUST 26, 2025)
+## 🚀 CURRENT STATUS (AUGUST 29, 2025)
 
 ### Summary
-Session delivered UI unification (homepage surface panels, countdown readability), removal of unused visual elements (photo credits + fallback hero image), Day 2 selection logic fix, and major Google Sheets robustness improvements (env validation, logging, metadata endpoint, retry & sheet name quoting). Remaining blocker for RSVP persistence is a configuration mismatch: sheet tab is spelled `RSPV_Responses` while code expects `RSVP_Responses` (now overrideable via `RSVP_RESPONSES_SHEET_NAME`).
+Previous session delivered UI unification (homepage surface panels, countdown readability), removal of unused visual elements, Day 2 selection logic fix, and Google Sheets robustness improvements. NEW this session: Mobile hamburger navigation menu implemented with accessible toggle + animated panel; foundation laid for full navigation consistency pass. Remaining blocker for RSVP persistence is still a configuration mismatch: sheet tab spelled `RSPV_Responses` while code expects `RSVP_Responses` (overrideable via `RSVP_RESPONSES_SHEET_NAME`).
 
 ### Newly Completed (This Session)
 1. Homepage sections below hero converted to glass/surface styling
@@ -16,6 +16,7 @@ Session delivered UI unification (homepage surface panels, countdown readability
   - Added `/api/sheets/meta` endpoint to list sheet tab titles
   - Added optional `RSVP_RESPONSES_SHEET_NAME` env override
 7. Identified root cause of append failures: tab name typo (`RSPV_Responses`)
+8. (Aug 29) Mobile hamburger menu now functional (accessible toggle, focus states, auto-close on navigation & resize)
 
 ### Immediate Next Actions
 1. Rename sheet tab to `RSVP_Responses` OR set env `RSVP_RESPONSES_SHEET_NAME=RSPV_Responses` and redeploy
@@ -75,10 +76,10 @@ Session delivered UI unification (homepage surface panels, countdown readability
 - Roadmap updated & OVERHAUL epic marked complete upon QA pass
 
 #### 🧭 **2. Navigation & Mobile Issues (CRITICAL)**
-- **Issue**: Hamburger menu not working on mobile
-- **Issue**: Not all pages use consistent Navigation component
+- **Status Update (Aug 29)**: Hamburger menu functionality delivered (toggle, animation, accessibility). NEXT: Replace legacy inline nav markup on `/venue`, `/schedule`, `/rsvp` redirect page with shared component.
+- **Remaining Issue**: Not all pages use consistent Navigation component
 - **Files**: All pages, `src/components/Navigation.tsx`
-- **Fix**: Ensure every page uses the same nav component with working mobile menu
+- **Next Fix**: Ensure every page uses the same nav component
 - **Test**: Verify mobile navigation works across all pages
 
 #### 💾 **3. RSVP State Persistence (HIGH PRIORITY)**

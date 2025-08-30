@@ -10,35 +10,57 @@ export default function Home() {
   {/* Navigation (overlay for consistent style over media) */}
   <Navigation variant="overlay" />
 
-      {/* Hero Section */}
-  <OptimizedHeroVideo>
-        <div className="text-center px-4 sm:px-6">
-          <div className="mb-6">
-            <h1 className="text-3xl md:text-4xl font-serif text-white mb-2 drop-shadow-2xl" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.6)'}}>
-              Join us for an
-            </h1>
-            <h2 className="text-5xl md:text-7xl font-serif text-white mb-4 drop-shadow-2xl" style={{textShadow: '3px 3px 6px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.7)'}}>
-              Epic Montana Wedding Week
-            </h2>
+      {/* Hero Section: Static image on mobile, video on md+ (iPad and larger) */}
+      {(() => {
+        const heroContent = (
+          <div className="text-center px-4 sm:px-6">
+            <div className="mb-6">
+              <h1 className="text-3xl md:text-4xl font-serif text-white mb-2 drop-shadow-2xl" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.6)' }}>
+                Join us for an
+              </h1>
+              <h2 className="text-5xl md:text-7xl font-serif text-white mb-4 drop-shadow-2xl" style={{ textShadow: '3px 3px 6px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.7)' }}>
+                Epic Montana Wedding Week
+              </h2>
+            </div>
+            <p className="text-xl md:text-2xl text-white mb-2 drop-shadow-xl" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.6)' }}>
+              August 19 - 23, 2026
+            </p>
+            <p className="text-lg md:text-xl text-white mb-8 drop-shadow-xl" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.6)' }}>
+              Sanctuary at Crow Hollow Ranch • Livingston, MT
+            </p>
+            <Link
+              href="/guest-check-in"
+              className="inline-block bg-sage-600 text-white px-10 py-4 rounded-full font-medium text-xl hover:bg-sage-700 hover:scale-105 transition-all duration-300 shadow-2xl border-2 border-white/20 hover:shadow-3xl hover:border-sage-300/40"
+              style={{ transition: 'all 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease' }}
+            >
+              RSVP & Plan Your Adventure
+            </Link>
           </div>
-          <p className="text-xl md:text-2xl text-white mb-2 drop-shadow-xl" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.6)'}}>
-            August 19 - 23, 2026
-          </p>
-          <p className="text-lg md:text-xl text-white mb-8 drop-shadow-xl" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.6)'}}>
-            Sanctuary at Crow Hollow Ranch • Livingston, MT
-          </p>
-          
-          <Link 
-            href="/guest-check-in"
-            className="inline-block bg-sage-600 text-white px-10 py-4 rounded-full font-medium text-xl hover:bg-sage-700 hover:scale-105 transition-all duration-300 shadow-2xl border-2 border-white/20 hover:shadow-3xl hover:border-sage-300/40"
-            style={{
-              transition: 'all 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease'
-            }}
-          >
-            RSVP & Plan Your Adventure
-          </Link>
-        </div>
-  </OptimizedHeroVideo>
+        );
+
+        return (
+          <>
+            {/* Mobile (no video) */}
+            <section className="relative h-screen flex items-center justify-center overflow-hidden md:hidden">
+              <Image
+                src="/glacier-national-park-7443329.jpg"
+                alt="Montana mountain landscape"
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-black/65" />
+              <div className="relative z-10">{heroContent}</div>
+            </section>
+
+            {/* Desktop / iPad+ with video */}
+            <div className="hidden md:block">
+              <OptimizedHeroVideo>{heroContent}</OptimizedHeroVideo>
+            </div>
+          </>
+        );
+      })()}
 
       {/* Schedule of Events (glass styling) */}
       <section className="relative py-24">
