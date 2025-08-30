@@ -20,6 +20,7 @@ Added accessible mobile hamburger menu, unified navigation across all pages, int
 9. (Aug 29) Guest decline RSVP option added at check-in (toggle with sheet column `Declined RSVP`)
 10. (Aug 30) Desktop hero now shows static image fallback before video loads; Day 5 transportation block removed per content update
 11. (Aug 30) Corrected weekday label on Adventure Day 1 (Monday -> Wednesday) to match 2026 calendar
+12. (Aug 30) Added children names capture in guest check-in and extended Google Sheets schema (new column J; headers now A:X)
 
 ### Immediate Next Actions
 1. Rename sheet tab to `RSVP_Responses` OR set env `RSVP_RESPONSES_SHEET_NAME=RSPV_Responses` and redeploy

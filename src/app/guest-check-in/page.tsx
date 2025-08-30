@@ -114,6 +114,12 @@ export default function GuestCheckIn() {
     setFormData(prev => ({ ...prev, childrenAges: newAges }));
   };
 
+  const updateChildName = (index: number, name: string) => {
+    const newNames = [...formData.childrenNames];
+    newNames[index] = name;
+    setFormData(prev => ({ ...prev, childrenNames: newNames }));
+  };
+
   return (
     <div className="min-h-screen flex flex-col relative">
       <Navigation variant="overlay" />
@@ -276,6 +282,26 @@ export default function GuestCheckIn() {
                             <option key={age + 1} value={age + 1}>{age + 1}</option>
                           ))}
                         </select>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {formData.children > 0 && (
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2 mt-6">
+                      Children&apos;s First Names (optional, helps us personalize)
+                    </label>
+                    <div className="space-y-2">
+                      {Array.from({ length: formData.children }, (_, i) => (
+                        <input
+                          key={i}
+                          type="text"
+                          value={formData.childrenNames[i] || ''}
+                          onChange={(e) => updateChildName(i, e.target.value)}
+                          placeholder={`Child ${i + 1} name`}
+                          className="w-full px-4 py-2 rounded-lg border border-white/30 bg-white/15 backdrop-blur-sm text-white placeholder-white/50 focus:border-white/50 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-200"
+                        />
                       ))}
                     </div>
                   </div>

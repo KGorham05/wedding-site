@@ -72,6 +72,7 @@ export function getSheetHeaders(): string[] {
     'Adults', // G
     'Children', // H
     'Children Ages', // I
+  'Children Names', // J (NEW)
     'Dietary Restrictions', // J
     'Special Requests', // K
     'Day 1 Attendees', // L
@@ -97,7 +98,7 @@ export async function initializeSheetHeaders(): Promise<void> {
     
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-  range: 'RSVP_Responses!A1:W1',
+  range: 'RSVP_Responses!A1:X1',
       valueInputOption: 'RAW',
       requestBody: {
         values: [getSheetHeaders()],
@@ -162,8 +163,9 @@ export async function submitRSVPToSheets(guestData: GuestData): Promise<void> {
       guestData.adults,
       guestData.children,
       safeChildrenAges.join(', '),
-      guestData.dietaryRestrictions || '',
-      guestData.specialRequests || '',
+  (guestData.childrenNames || []).join(', '),
+  guestData.dietaryRestrictions || '',
+  guestData.specialRequests || '',
       (guestData.day1?.adults || 0) + (guestData.day1?.children || 0),
       guestData.day2?.whitewaterRafting || 0,
       guestData.day2?.scenicFloat || 0,
@@ -180,7 +182,7 @@ export async function submitRSVPToSheets(guestData: GuestData): Promise<void> {
 
   const escapedName = sheetName.replace(/'/g, "''").trim();
   const sheetRef = /[\s!]/.test(escapedName) ? `'${escapedName}'` : escapedName; // quote if spaces or special
-    const primaryRange = `${sheetRef}!A:W`;
+  const primaryRange = `${sheetRef}!A:X`;
     try {
       await sheets.spreadsheets.values.append({
         spreadsheetId,
@@ -233,7 +235,7 @@ export async function fetchAllRSVPResponses(): Promise<RSVPResponse[]> {
     
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-  range: 'RSVP_Responses!A2:W', // Updated range to match new column structure (+ Declined)
+  range: 'RSVP_Responses!A2:X', // Updated range to match new column structure (+ Children Names + Declined)
     });
 
     const rows = response.data.values || [];
@@ -248,10 +250,10 @@ export async function fetchAllRSVPResponses(): Promise<RSVPResponse[]> {
       adults: parseInt(row[6]) || 0, // G
       children: parseInt(row[7]) || 0, // H
       childrenAges: row[8]?.split(', ').filter(Boolean) || [], // I
-      dietaryRestrictions: row[9] || '', // J
-      specialRequests: row[10] || '', // K
-      completedAt: row[21] || '', // V: Completed At
-      declined: (row[22] || '').toString().toLowerCase() === 'true', // W
+  dietaryRestrictions: row[10] || '', // K (shifted by one due to Children Names)
+  specialRequests: row[11] || '', // L
+  completedAt: row[22] || '', // W: Completed At
+  declined: (row[23] || '').toString().toLowerCase() === 'true', // X
     }));
   } catch (error) {
     console.error('Error fetching RSVP responses from sheets:', error);

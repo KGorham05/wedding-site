@@ -24,6 +24,8 @@ export interface GuestData {
   adults: number;
   children: number;
   childrenAges: number[];
+  // Names of children in the party (parallel to children count)
+  childrenNames: string[];
   dietaryRestrictions: string;
   specialRequests: string;
   // Whether guest has declined attending (can toggle back later)
