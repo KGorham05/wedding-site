@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { Navigation } from '@/components';
 
 export default function RSVP() {
   const router = useRouter();
@@ -12,9 +13,12 @@ export default function RSVP() {
   }, [router]);
 
   return (
-    <div className="min-h-screen bg-cream-100 flex items-center justify-center">
+    <div className="min-h-screen bg-cream-100 flex flex-col">
+      <Navigation variant="light" />
+      <div className="flex-1 flex items-center justify-center px-4">
       <div className="text-center">
         <p className="text-warm-gray-700">Redirecting to our new RSVP experience...</p>
+      </div>
       </div>
     </div>
   );

@@ -1,41 +1,10 @@
 import Link from "next/link";
+import { Navigation } from '@/components';
 
 export default function Schedule() {
   return (
     <div className="min-h-screen bg-warm-gray-900">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="flex justify-between items-center py-4">
-            <Link href="/" className="text-2xl font-serif text-gray-800">
-              Angela & Jeff
-            </Link>
-            <div className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-gray-900 transition-colors">
-                Home
-              </Link>
-              <Link href="/our-story" className="text-gray-700 hover:text-gray-900 transition-colors">
-                Our Story
-              </Link>
-              <Link href="/schedule" className="text-gray-900 font-medium">
-                Schedule
-              </Link>
-              <Link href="/venue" className="text-gray-700 hover:text-gray-900 transition-colors">
-                Venue & Travel
-              </Link>
-              <Link href="/rsvp" className="text-gray-700 hover:text-gray-900 transition-colors">
-                RSVP
-              </Link>
-            </div>
-            {/* Mobile menu button */}
-            <button className="md:hidden text-gray-700">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </nav>
+      <Navigation variant="overlay" />
 
       {/* Hero Section */}
       <section className="pt-24 pb-8 bg-gradient-to-br from-sage-900 to-warm-gray-900">
