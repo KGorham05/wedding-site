@@ -1,7 +1,7 @@
-## 🚀 CURRENT STATUS (AUGUST 29, 2025)
+## 🚀 CURRENT STATUS (AUGUST 30, 2025)
 
 ### Summary
-Previous session delivered UI unification (homepage surface panels, countdown readability), removal of unused visual elements, Day 2 selection logic fix, and Google Sheets robustness improvements. NEW this session: Mobile hamburger navigation menu implemented with accessible toggle + animated panel; foundation laid for full navigation consistency pass. Remaining blocker for RSVP persistence is still a configuration mismatch: sheet tab spelled `RSPV_Responses` while code expects `RSVP_Responses` (overrideable via `RSVP_RESPONSES_SHEET_NAME`).
+Added accessible mobile hamburger menu, unified navigation across all pages, introduced guest decline RSVP toggle with new Google Sheets column (W: Declined RSVP), added desktop hero static image fallback (improved perceived performance prior to video load), and removed Day 5 transportation block per updated content direction. Remaining data persistence blocker is purely sheet tab naming (`RSPV_Responses` vs `RSVP_Responses`) until renamed or env override applied. Next major focus: RSVP state persistence & UI Overhaul Phase 0 tokenization.
 
 ### Newly Completed (This Session)
 1. Homepage sections below hero converted to glass/surface styling
