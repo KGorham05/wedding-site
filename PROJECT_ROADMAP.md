@@ -19,6 +19,7 @@ Added accessible mobile hamburger menu, unified navigation across all pages, int
 8. (Aug 29) Mobile hamburger menu now functional (accessible toggle, focus states, auto-close on navigation & resize)
 9. (Aug 29) Guest decline RSVP option added at check-in (toggle with sheet column `Declined RSVP`)
 10. (Aug 30) Desktop hero now shows static image fallback before video loads; Day 5 transportation block removed per content update
+11. (Aug 30) Corrected weekday label on Adventure Day 1 (Monday -> Wednesday) to match 2026 calendar
 
 ### Immediate Next Actions
 1. Rename sheet tab to `RSVP_Responses` OR set env `RSVP_RESPONSES_SHEET_NAME=RSPV_Responses` and redeploy

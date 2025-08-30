@@ -71,7 +71,7 @@ export default function AdventureDay1() {
     <div className="min-h-screen relative flex flex-col">
       <Navigation variant="overlay" />
       <HeroHeader
-        title="Monday, Aug 19: Arrival & Golden Hour Sound Bowls"
+    title="Wednesday, Aug 19: Arrival & Golden Hour Sound Bowls"
         subtitle={`The adventure begins, ${guestData.guest.firstName}! Let's smooth your arrival and settle you in for an amazing week.`}
   media={{ type: 'image', src: '/montana-1829251.jpg', alt: 'Montana landscape welcome scene', priority: true }}
   extendBackground
@@ -79,7 +79,7 @@ export default function AdventureDay1() {
       >
         <div className="max-w-4xl mx-auto pb-20">
           <div className="surface-glass-1 rounded-2xl p-8 shadow-2xl mb-8 border border-white/10">
-            <h3 className="text-2xl font-serif text-white mb-6">What&apos;s Happening Monday</h3>
+      <h3 className="text-2xl font-serif text-white mb-6">What&apos;s Happening Wednesday</h3>
             
             <div className="mb-8">
               <div className="border border-white/20 rounded-xl p-6">
