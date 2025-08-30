@@ -281,19 +281,6 @@ export default function GuestCheckIn() {
                   </div>
                 )}
 
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Dietary Restrictions or Allergies
-                  </label>
-                  <textarea
-                    value={formData.dietaryRestrictions}
-                    onChange={(e) => setFormData(prev => ({ ...prev, dietaryRestrictions: e.target.value }))}
-                    rows={3}
-                    className="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white placeholder-white/60 focus:border-white/50 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-200 resize-none"
-                    placeholder="Dietary restrictions, allergies, special meal needs, or leave a note / reasons if you can’t attend..."
-                  />
-                </div>
-
                 <div className="space-y-4">
                   <button
                     type="button"
@@ -311,6 +298,19 @@ export default function GuestCheckIn() {
                       We’ll miss you! You can still explore the adventure flow later—this just helps us plan. You can toggle this off anytime.
                     </p>
                   )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Dietary Restrictions / Message
+                  </label>
+                  <textarea
+                    value={formData.dietaryRestrictions}
+                    onChange={(e) => setFormData(prev => ({ ...prev, dietaryRestrictions: e.target.value }))}
+                    rows={3}
+                    className="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/20 backdrop-blur-sm text-white placeholder-white/60 focus:border-white/50 focus:ring-2 focus:ring-white/30 focus:outline-none transition-all duration-200 resize-none"
+                    placeholder={declined ? "Leave us a note, well-wishes, or let us know why you can't make it (plus any dietary info just in case)..." : "Dietary restrictions, allergies, special meal needs, or any note you'd like to share..."}
+                  />
                 </div>
 
                 <button

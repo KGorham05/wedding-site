@@ -15,6 +15,7 @@ interface RSVPResponse {
   dietaryRestrictions: string;
   specialRequests: string;
   completedAt: string;
+  declined?: boolean;
 }
 
 // Initialize Google Sheets API
@@ -250,7 +251,7 @@ export async function fetchAllRSVPResponses(): Promise<RSVPResponse[]> {
       dietaryRestrictions: row[9] || '', // J
       specialRequests: row[10] || '', // K
       completedAt: row[21] || '', // V: Completed At
-  declined: row[22] || '', // W: Declined RSVP
+      declined: (row[22] || '').toString().toLowerCase() === 'true', // W
     }));
   } catch (error) {
     console.error('Error fetching RSVP responses from sheets:', error);
