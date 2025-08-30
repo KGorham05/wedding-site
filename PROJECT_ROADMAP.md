@@ -78,7 +78,8 @@ Previous session delivered UI unification (homepage surface panels, countdown re
 
 #### 🧭 **2. Navigation & Mobile Issues (CRITICAL)**
 - **Status Update (Aug 29)**: Hamburger menu functionality delivered (toggle, animation, accessibility). NEXT: Replace legacy inline nav markup on `/venue`, `/schedule`, `/rsvp` redirect page with shared component.
-- **Remaining Issue**: Not all pages use consistent Navigation component
+- **Status Update (Aug 30)**: Legacy inline nav removed on `/venue`, `/schedule`, `/rsvp`; all pages now use shared component.
+- **Remaining Issue**: Confirm any future new pages adopt shared `Navigation` automatically; consider extracting variant choice to layout.
 - **Files**: All pages, `src/components/Navigation.tsx`
 - **Next Fix**: Ensure every page uses the same nav component
 - **Test**: Verify mobile navigation works across all pages
