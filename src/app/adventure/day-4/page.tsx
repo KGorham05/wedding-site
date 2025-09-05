@@ -29,7 +29,7 @@ export default function AdventureDay4() {
   const handleContinue = () => {
     if (!guestData) return;
 
-    const totalGuests = (guestData.adults || 0) + (guestData.children || 0);
+    const totalGuests = (guestData.maxAdults ?? guestData.adults ?? 0) + (guestData.maxChildren ?? guestData.children ?? 0);
     if (attendees > totalGuests) {
       alert(`You cannot have more attendees than the total number of guests in your party.`);
       return;
@@ -48,7 +48,7 @@ export default function AdventureDay4() {
     return <div className="min-h-screen bg-cream-100 flex items-center justify-center"><div className="text-warm-gray-800">Loading your adventure...</div></div>;
   }
 
-  const totalGuests = (guestData.adults || 0) + (guestData.children || 0);
+  const totalGuests = (guestData.maxAdults ?? guestData.adults ?? 0) + (guestData.maxChildren ?? guestData.children ?? 0);
 
   return (
     <div className="min-h-screen relative flex flex-col">

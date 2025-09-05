@@ -75,8 +75,9 @@ export default function OptimizedHeroVideo({ children }: OptimizedHeroVideoProps
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
       </div>
 
-      {/* Video Layer - Only loads when appropriate */}
-  {showVideo && userPreference === 'auto' && (
+      {/* Video Layer - Temporarily disabled due to source unavailability */}
+      {/* Note: Original Vimeo video (903803526) no longer exists - need new video source */}
+      {showVideo && userPreference === 'auto' && false && (
         <div className="absolute inset-0 z-[1]">
           <iframe
             ref={videoRef}
@@ -93,8 +94,8 @@ export default function OptimizedHeroVideo({ children }: OptimizedHeroVideoProps
         </div>
       )}
 
-      {/* Mobile Video Enable Button */}
-      {isMobile && !showVideo && userPreference === 'auto' && (
+      {/* Mobile Video Enable Button - Hidden while video source unavailable */}
+      {isMobile && !showVideo && userPreference === 'auto' && false && (
         <button
           onClick={enableVideo}
           className="absolute top-4 right-4 z-20 bg-black/50 text-white px-3 py-2 rounded-lg text-sm hover:bg-black/70 transition-colors"
@@ -103,8 +104,8 @@ export default function OptimizedHeroVideo({ children }: OptimizedHeroVideoProps
         </button>
       )}
 
-      {/* Reduced Motion Alternative */}
-      {userPreference === 'reduced' && (
+      {/* Reduced Motion Alternative - Hidden while video source unavailable */}
+      {userPreference === 'reduced' && false && (
         <button
           onClick={enableVideo}
           className="absolute bottom-4 right-4 z-20 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm hover:bg-white/30 transition-colors"
