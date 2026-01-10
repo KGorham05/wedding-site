@@ -19,6 +19,35 @@
 
 ---
 
+## Styling Exploration (Parked)
+
+**Branch:** `styling/romantic-wilderness-exploration`
+
+A partial styling refactor inspired by Lovable.app's "Romantic Wilderness" template is saved on a feature branch. The work is functional but incomplete.
+
+### What's in that branch
+- New Tailwind colors: `botanical-gold`, `romantic-cream`, `sage-soft/medium/deep`
+- New CSS classes: `.romantic-card`, `.btn-romantic-primary/secondary`, `.decorative-divider`
+- Homepage redesigned with cream/sage/gold palette
+- CountdownTimer, Navigation, Registry, Accommodations pages updated
+
+### What still needs doing (if continuing)
+- **More nature imagery** - Only one small image on homepage; want larger hero images throughout
+- **Update remaining pages** - `/our-story`, `/info`, `/guest-check-in`, all `/adventure/*`
+- **Explore other Lovable styles** - Mix elements from other templates, not just Romantic Wilderness
+
+### Commands
+```bash
+# To resume
+git checkout styling/romantic-wilderness-exploration
+
+# To discard
+git branch -D styling/romantic-wilderness-exploration
+git push origin --delete styling/romantic-wilderness-exploration
+```
+
+---
+
 ## Pending Tasks
 
 ### High Priority (Angela's Latest Requests - angie-4.md)
