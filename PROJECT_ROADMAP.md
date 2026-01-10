@@ -19,6 +19,39 @@
 
 ---
 
+## Styling Exploration (Parked)
+
+**Branch:** `styling/romantic-wilderness-exploration`
+
+This branch contains an incomplete styling refactor inspired by Lovable.app's "Romantic Wilderness" template. The work is functional but was paused before completion.
+
+### What Was Done
+- Updated `tailwind.config.ts` with new colors: `botanical-gold`, `romantic-cream`, `sage-soft/medium/deep`
+- Updated `globals.css` with utility classes: `.romantic-card`, `.btn-romantic-primary/secondary`, `.decorative-divider`, `.label-elegant`
+- Rewrote homepage (`page.tsx`) with cream/sage/gold palette and elegant typography
+- Updated `CountdownTimer.tsx` to match new palette
+- Updated `Navigation.tsx` light variant for new colors
+- Converted `/registry` and `/accommodations` pages to new design
+
+### What Needs Finishing (If Continuing)
+1. **Add more nature imagery** - Currently only one small image on homepage. Want larger hero images, more Montana nature photos integrated throughout
+2. **Update remaining pages** - `/our-story`, `/info`, `/guest-check-in`, all `/adventure/*` pages
+3. **Explore other Lovable styles** - The preview had 4 different wedding templates; consider mixing elements from others (not just Romantic Wilderness)
+4. **Lovable preview reference:** Screenshots saved in conversation - cream backgrounds, soft sage sections, gold/bronze accents, decorative vertical dividers
+
+### To Resume
+```bash
+git checkout styling/romantic-wilderness-exploration
+yarn dev
+```
+
+### To Discard
+```bash
+git branch -D styling/romantic-wilderness-exploration
+```
+
+---
+
 ## Pending Tasks
 
 ### High Priority (Angela's Latest Requests - angie-4.md)

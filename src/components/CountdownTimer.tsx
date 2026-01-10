@@ -43,40 +43,40 @@ const CountdownTimer = () => {
   }, []);
 
   return (
-    <div className="bg-warm-gray-800/50 backdrop-blur-sm rounded-xl p-6 mb-8 border border-warm-gray-700">
-      <h3 className="text-lg font-semibold text-white text-center mb-4">
-        Adventure Begins In:
+    <div className="romantic-card p-8">
+      <h3 className="label-elegant text-sage-deep text-center mb-6">
+        The Adventure Begins In
       </h3>
-      <div className="grid grid-cols-4 gap-4 text-center">
-        <div className="bg-sage-800/30 rounded-lg p-3">
-          <div className="text-2xl md:text-3xl font-bold text-white">
+      <div className="grid grid-cols-4 gap-3 md:gap-6 text-center">
+        <div className="bg-sage-soft/50 rounded-lg p-3 md:p-4">
+          <div className="text-2xl md:text-4xl font-serif font-light text-sage-deep">
             {timeLeft.days}
           </div>
-          <div className="text-sm text-white/70">
+          <div className="text-xs md:text-sm text-sage-medium uppercase tracking-wide">
             Day{timeLeft.days !== 1 ? 's' : ''}
           </div>
         </div>
-        <div className="bg-sage-800/30 rounded-lg p-3">
-          <div className="text-2xl md:text-3xl font-bold text-white">
+        <div className="bg-sage-soft/50 rounded-lg p-3 md:p-4">
+          <div className="text-2xl md:text-4xl font-serif font-light text-sage-deep">
             {timeLeft.hours}
           </div>
-          <div className="text-sm text-white/70">
+          <div className="text-xs md:text-sm text-sage-medium uppercase tracking-wide">
             Hour{timeLeft.hours !== 1 ? 's' : ''}
           </div>
         </div>
-        <div className="bg-sage-800/30 rounded-lg p-3">
-          <div className="text-2xl md:text-3xl font-bold text-white">
+        <div className="bg-sage-soft/50 rounded-lg p-3 md:p-4">
+          <div className="text-2xl md:text-4xl font-serif font-light text-sage-deep">
             {timeLeft.minutes}
           </div>
-          <div className="text-sm text-white/70">
+          <div className="text-xs md:text-sm text-sage-medium uppercase tracking-wide">
             Minute{timeLeft.minutes !== 1 ? 's' : ''}
           </div>
         </div>
-        <div className="bg-sage-800/30 rounded-lg p-3">
-          <div className="text-2xl md:text-3xl font-bold text-white">
+        <div className="bg-sage-soft/50 rounded-lg p-3 md:p-4">
+          <div className="text-2xl md:text-4xl font-serif font-light text-sage-deep">
             {timeLeft.seconds}
           </div>
-          <div className="text-sm text-white/70">
+          <div className="text-xs md:text-sm text-sage-medium uppercase tracking-wide">
             Second{timeLeft.seconds !== 1 ? 's' : ''}
           </div>
         </div>

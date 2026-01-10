@@ -7,13 +7,25 @@
 }
 
 body {
-  background-color: #FAF8F5;
-  color: #312F2E;
+  background-color: #F5F1E8;
+  color: #4A5240;
   font-family: var(--font-raleway), sans-serif;
 }
 
-/* CSS Variables for new design tokens (Phase 0) */
+/* CSS Variables for Romantic Wilderness design */
 :root {
+  --color-cream: #F5F1E8;
+  --color-cream-light: #FAF8F3;
+  --color-sage: #B8C4A8;
+  --color-sage-dark: #8A9A78;
+  --color-sage-muted: #C8D4BC;
+  --color-gold: #C4A962;
+  --color-gold-dark: #A68B4B;
+  --color-gold-light: #D4BE82;
+  --color-text-dark: #4A5240;
+  --color-text-light: #6B7A5E;
+  
+  /* Legacy variables for backwards compatibility */
   --color-ink: #0F1412;
   --color-surface-glass-1: rgba(18,22,20,0.55);
   --color-surface-glass-2: rgba(18,22,20,0.72);
@@ -104,4 +116,111 @@ p, a, li, span, div {
 }
 .hero-media-wrapper.overlay-strong::after {
   background: var(--color-overlay-strong);
+}
+
+/* ============================================
+   ROMANTIC WILDERNESS DESIGN SYSTEM
+   ============================================ */
+
+/* Cream card on sage background */
+.card-romantic {
+  background-color: var(--color-cream);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  border: 1px solid rgba(138, 154, 120, 0.2);
+}
+
+/* Gold accent button */
+.btn-gold {
+  background-color: var(--color-gold);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-gold:hover {
+  background-color: var(--color-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(196, 169, 98, 0.3);
+}
+
+/* Gold outline button */
+.btn-gold-outline {
+  background-color: transparent;
+  color: var(--color-gold);
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  border: 2px solid var(--color-gold);
+}
+
+.btn-gold-outline:hover {
+  background-color: var(--color-gold);
+  color: white;
+}
+
+/* Diamond icon accent */
+.diamond-icon {
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--color-gold);
+  transform: rotate(45deg);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diamond-icon svg {
+  transform: rotate(-45deg);
+  color: white;
+}
+
+/* Vertical gold divider */
+.divider-gold {
+  width: 2px;
+  height: 3rem;
+  background-color: var(--color-gold);
+}
+
+/* Section backgrounds */
+.bg-romantic-cream {
+  background-color: var(--color-cream);
+}
+
+.bg-romantic-sage {
+  background-color: var(--color-sage);
+}
+
+/* Spaced uppercase label */
+.label-uppercase {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Romantic text colors */
+.text-romantic-dark {
+  color: var(--color-text-dark);
+}
+
+.text-romantic-light {
+  color: var(--color-text-light);
+}
+
+/* Arch-shaped image container */
+.arch-image {
+  border-radius: 9999px 9999px 0.5rem 0.5rem;
+  overflow: hidden;
 }
