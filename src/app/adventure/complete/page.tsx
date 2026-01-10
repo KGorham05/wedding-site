@@ -3,13 +3,14 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { HeroHeader, Navigation } from "@/components";
+import { HeroHeader, Navigation, useToast } from "@/components";
 import { type GuestData } from "@/lib/guest-list";
 
 export default function AdventureComplete() {
   const router = useRouter();
   const [guestData, setGuestData] = useState<GuestData | null>(null);
   const [showData, setShowData] = useState(false);
+  const { success, error, ToastContainer } = useToast();
 
   useEffect(() => {
     const stored = localStorage.getItem('montana-adventure-guest');
@@ -50,16 +51,16 @@ export default function AdventureComplete() {
         body: JSON.stringify(guestData),
       });
       
-      const result = await response.json();
+      await response.json();
       
-      if (result.success) {
-        alert('Your adventure planning has been submitted successfully!');
+      if (response.ok) {
+        success('Your adventure planning has been submitted successfully!');
       } else {
-        alert('There was an error submitting your data. Please try again.');
+        error('There was an error submitting your data. Please try again.');
       }
-    } catch (error) {
-      console.error('Error submitting to sheets:', error);
-      alert('There was an error submitting your data. Please try again.');
+    } catch (err) {
+      console.error('Failed to submit RSVP:', err);
+      error('There was an error submitting your data. Please try again.');
     }
   };
 
@@ -68,7 +69,8 @@ export default function AdventureComplete() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col relative">
+    <div className="min-h-screen relative flex flex-col">
+      <ToastContainer />
       <Navigation variant="overlay" />
       <HeroHeader
         title="Adventure Complete!"

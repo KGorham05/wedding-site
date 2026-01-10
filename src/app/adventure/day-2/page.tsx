@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { HeroHeader, Navigation } from "@/components";
+import { HeroHeader, Navigation, useToast } from "@/components";
 import { type GuestData } from "@/lib/guest-list";
 
 interface AdventureSelections {
@@ -22,6 +22,7 @@ export default function AdventureDay2() {
     horsebackRiding: 0,
     hatMaking: 0,
   });
+  const { error, ToastContainer } = useToast();
 
   useEffect(() => {
     const stored = localStorage.getItem('montana-adventure-guest');
@@ -48,7 +49,7 @@ export default function AdventureDay2() {
 
     // Basic validation, can be enhanced
     if (selections.whitewaterRafting > totalGuests || selections.scenicFloat > totalGuests || selections.horsebackRiding > totalGuests || selections.hatMaking > totalGuests) {
-        alert(`You cannot have more participants in an activity than the total number of guests in your party.`);
+        error(`You cannot have more participants in an activity than the total number of guests in your party.`);
         return;
     }
 
@@ -85,6 +86,7 @@ export default function AdventureDay2() {
 
   return (
     <div className="min-h-screen relative flex flex-col">
+      <ToastContainer />
       <Navigation variant="overlay" />
       <HeroHeader
         title="Thursday, Aug 20: Adventure Day + Ranch BBQ"

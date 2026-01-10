@@ -3,13 +3,14 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { HeroHeader, Navigation } from "@/components";
+import { HeroHeader, Navigation, useToast } from "@/components";
 import { type GuestData } from "@/lib/guest-list";
 
 export default function AdventureDay4() {
   const router = useRouter();
   const [guestData, setGuestData] = useState<GuestData | null>(null);
   const [attendees, setAttendees] = useState(0);
+  const { error, ToastContainer } = useToast();
 
   useEffect(() => {
     const stored = localStorage.getItem('montana-adventure-guest');
@@ -31,7 +32,7 @@ export default function AdventureDay4() {
 
     const totalGuests = (guestData.maxAdults ?? guestData.adults ?? 0) + (guestData.maxChildren ?? guestData.children ?? 0);
     if (attendees > totalGuests) {
-      alert(`You cannot have more attendees than the total number of guests in your party.`);
+      error(`You cannot have more attendees than the total number of guests in your party.`);
       return;
     }
 
@@ -52,6 +53,7 @@ export default function AdventureDay4() {
 
   return (
     <div className="min-h-screen relative flex flex-col">
+      <ToastContainer />
       <Navigation variant="overlay" />
       <HeroHeader
         title="Saturday, Aug 22: Yellowstone Adventure"

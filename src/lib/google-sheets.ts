@@ -61,32 +61,33 @@ const getGoogleSheetsClient = async (): Promise<sheets_v4.Sheets> => {
 };
 
 // Helper function to get the expected column headers for the Google Sheet
+// IMPORTANT: These must match the actual Google Sheet column order exactly!
 export function getSheetHeaders(): string[] {
   return [
-    'Timestamp', // A
-    'Guest ID', // B
-    'First Name', // C
-    'Last Name', // D
-    'Email', // E
-    'Total Guests', // F
-    'Adults', // G
-    'Children', // H
-    'Children Ages', // I
-  'Children Names', // J (NEW)
-    'Dietary Restrictions', // J
-    'Special Requests', // K
-    'Day 1 Attendees', // L
-    'Day 2 Whitewater Rafting', // M
-    'Day 2 Scenic Float', // N
-    'Day 2 Horseback Riding', // O
-    'Day 2 Hat Making', // P
-    'Day 3 Adults', // Q
-    'Day 3 Children', // R
-    'Day 4 Adults', // S
-    'Day 4 Children', // T
-    'Day 5 Departure Time', // U
-  'Completed At', // V
-  'Declined RSVP', // W (NEW)
+    'Timestamp',              // A
+    'Guest ID',               // B
+    'First Name',             // C
+    'Last Name',              // D
+    'Email',                  // E
+    'Total Guests',           // F
+    'Adults',                 // G
+    'Children',               // H
+    'Children Ages',          // I
+    'Children Names',         // J
+    'Dietary Restrictions',   // K
+    'Special Requests',       // L
+    'Day 1 Attendees',        // M
+    'Day 2 Whitewater Rafting', // N
+    'Day 2 Scenic Float',     // O
+    'Day 2 Horseback Riding', // P
+    'Day 2 Hat Making',       // Q
+    'Day 3 Adults',           // R
+    'Day 3 Children',         // S
+    'Day 4 Adults',           // T
+    'Day 4 Children',         // U
+    'Day 5 Departure Time',   // V
+    'Completed At',           // W
+    'Declined RSVP',          // X
   ];
 }
 

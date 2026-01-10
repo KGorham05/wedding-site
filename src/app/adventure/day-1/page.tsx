@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { HeroHeader, Navigation } from "@/components";
+import { HeroHeader, Navigation, useToast } from "@/components";
 import { type GuestData } from "@/lib/guest-list";
 
 export default function AdventureDay1() {
@@ -13,6 +13,7 @@ export default function AdventureDay1() {
     adults: 1,
     children: 0
   });
+  const { error, ToastContainer } = useToast();
 
   useEffect(() => {
     const stored = localStorage.getItem('montana-adventure-guest');
@@ -39,12 +40,12 @@ export default function AdventureDay1() {
     const maxChildrenAllowed = guestData.maxChildren || guestData.children || 0;
     
     if (preferences.adults > maxAdultsAllowed) {
-      alert(`You can only RSVP for up to ${maxAdultsAllowed} ${maxAdultsAllowed === 1 ? 'adult' : 'adults'}.`);
+      error(`You can only RSVP for up to ${maxAdultsAllowed} ${maxAdultsAllowed === 1 ? 'adult' : 'adults'}.`);
       return;
     }
     
     if (preferences.children > maxChildrenAllowed) {
-      alert(`You can only RSVP for up to ${maxChildrenAllowed} ${maxChildrenAllowed === 1 ? 'child' : 'children'}.`);
+      error(`You can only RSVP for up to ${maxChildrenAllowed} ${maxChildrenAllowed === 1 ? 'child' : 'children'}.`);
       return;
     }
     
@@ -69,6 +70,7 @@ export default function AdventureDay1() {
 
   return (
     <div className="min-h-screen relative flex flex-col">
+      <ToastContainer />
       <Navigation variant="overlay" />
       <HeroHeader
     title="Wednesday, Aug 19: Arrival & Golden Hour Sound Bowls"
