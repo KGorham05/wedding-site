@@ -64,6 +64,7 @@ export const Navigation = ({ variant = 'light' }: NavigationProps) => {
       <Link href="/info" className={linkClasses} onClick={close}>Info</Link>
       <Link href="/accommodations" className={linkClasses} onClick={close}>Accommodations</Link>
       <Link href="/registry" className={linkClasses} onClick={close}>Registry</Link>
+      <Link href="/contact" className={linkClasses} onClick={close}>Contact</Link>
       <Link href="/guest-check-in" className={linkClasses} onClick={close}>RSVP</Link>
     </>
   );
@@ -104,14 +105,14 @@ export const Navigation = ({ variant = 'light' }: NavigationProps) => {
           aria-hidden={!open}
         >
           <div className={`border-t ${panelBg} backdrop-blur-sm rounded-b px-2 pt-2 pb-6 flex flex-col gap-2`}>
-            {['/', '/our-story', '/info', '/accommodations', '/registry', '/guest-check-in'].map((href, i) => (
+            {['/', '/our-story', '/info', '/accommodations', '/registry', '/contact', '/guest-check-in'].map((href, i) => (
               <Link
                 key={href}
                 href={href}
                 onClick={close}
                 className={`${linkClasses} px-3 py-2 rounded-md text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 ${variant === 'light' ? 'focus:ring-warm-gray-700/40' : 'focus:ring-white/50'}`}
               >
-                {['Home', 'Our Story', 'Info', 'Accommodations', 'Registry', 'RSVP'][i]}
+                {['Home', 'Our Story', 'Info', 'Accommodations', 'Registry', 'Contact', 'RSVP'][i]}
               </Link>
             ))}
           </div>

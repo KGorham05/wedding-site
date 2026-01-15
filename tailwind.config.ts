@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'hero-soft': 'linear-gradient(180deg, rgba(12,16,14,0.05) 0%, rgba(12,16,14,0.55) 65%, rgba(12,16,14,0.82) 100%)',
-        'hero-strong': 'linear-gradient(180deg, rgba(12,16,14,0.25) 0%, rgba(12,16,14,0.7) 60%, rgba(12,16,14,0.92) 100%)',
+        'hero-soft': 'linear-gradient(180deg, rgba(62,50,42,0.05) 0%, rgba(45,38,32,0.50) 65%, rgba(32,26,22,0.78) 100%)',
+        'hero-strong': 'linear-gradient(180deg, rgba(62,50,42,0.20) 0%, rgba(45,38,32,0.62) 60%, rgba(32,26,22,0.88) 100%)',
       },
       boxShadow: {
         'focus-ring': '0 0 0 2px rgba(244,118,37,0.9), 0 0 0 4px rgba(0,0,0,0.4)',

@@ -59,7 +59,7 @@ export default function OptimizedHeroVideo({ children }: OptimizedHeroVideoProps
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-[#201a16]">
       {/* Background Layer: static image for md+ (desktop/tablet) and gradient overlay; mobile stays gradient only since it uses separate static hero on home */}
       <div className="absolute inset-0 z-0">
         <div className="hidden md:block absolute inset-0">
@@ -90,7 +90,7 @@ export default function OptimizedHeroVideo({ children }: OptimizedHeroVideoProps
             style={{ border: 'none' }}
           />
           {/* Video overlay */}
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-[#2d2620]/50"></div>
         </div>
       )}
 
@@ -98,7 +98,7 @@ export default function OptimizedHeroVideo({ children }: OptimizedHeroVideoProps
       {isMobile && !showVideo && userPreference === 'auto' && false && (
         <button
           onClick={enableVideo}
-          className="absolute top-4 right-4 z-20 bg-black/50 text-white px-3 py-2 rounded-lg text-sm hover:bg-black/70 transition-colors"
+          className="absolute top-4 right-4 z-20 bg-[#2d2620]/60 text-white px-3 py-2 rounded-lg text-sm hover:bg-[#2d2620]/80 transition-colors"
         >
           ▶ Enable Video
         </button>

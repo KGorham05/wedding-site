@@ -58,7 +58,7 @@ export const HeroHeader: React.FC<HeroHeaderProps> = ({
       <div className={`relative z-10 w-full ${extendBackground ? 'px-4 pt-24 md:pt-36 pb-12 md:pb-16' : 'mx-auto max-w-5xl px-4 pt-24 pb-14 md:pt-36 md:pb-24'}`}>
         <div className={`max-w-3xl ${align === 'center' ? 'mx-auto text-center' : ''}`}>
           {badge && (
-            <p className={`mb-3 rounded-full bg-black/40 px-4 py-1 text-xs uppercase tracking-wider text-white/80 backdrop-blur-md inline-block`}>{badge}</p>
+            <p className={`mb-3 rounded-full bg-[#2d2620]/50 px-4 py-1 text-xs uppercase tracking-wider text-white/80 backdrop-blur-md inline-block`}>{badge}</p>
           )}
           <h1 className={`text-3xl font-serif tracking-tight text-white md:text-5xl ${align === 'center' ? 'mx-auto' : ''}`}>{title}</h1>
           {subtitle && <p className={`mt-4 text-base text-white/85 md:text-lg ${align === 'center' ? 'mx-auto' : ''}`}>{subtitle}</p>}
@@ -88,7 +88,7 @@ export const HeroHeader: React.FC<HeroHeaderProps> = ({
       <div className="relative z-10 mx-auto max-w-5xl px-4 pt-24 pb-14 md:pt-36 md:pb-24 w-full">
         <div className={`max-w-3xl ${align === 'center' ? 'mx-auto text-center' : ''}`}>
           {badge && (
-            <p className={`mb-3 rounded-full bg-black/40 px-4 py-1 text-xs uppercase tracking-wider text-white/80 backdrop-blur-md inline-block`}>{badge}</p>
+            <p className={`mb-3 rounded-full bg-[#2d2620]/50 px-4 py-1 text-xs uppercase tracking-wider text-white/80 backdrop-blur-md inline-block`}>{badge}</p>
           )}
           <h1 className={`text-3xl font-serif tracking-tight text-white md:text-5xl ${align === 'center' ? 'mx-auto' : ''}`}>{title}</h1>
           {subtitle && <p className={`mt-4 text-base text-white/85 md:text-lg ${align === 'center' ? 'mx-auto' : ''}`}>{subtitle}</p>}
