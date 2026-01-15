@@ -72,7 +72,7 @@ export default function OptimizedHeroVideo({ children }: OptimizedHeroVideoProps
             className={`object-cover transition-opacity duration-700 ${videoLoaded ? 'opacity-0' : 'opacity-100'}`}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-warm-gray-900/50 via-warm-gray-900/45 to-warm-gray-900/60" />
       </div>
 
       {/* Video Layer - Temporarily disabled due to source unavailability */}

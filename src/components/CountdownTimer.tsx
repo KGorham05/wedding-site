@@ -43,41 +43,38 @@ const CountdownTimer = () => {
   }, []);
 
   return (
-    <div className="bg-warm-gray-800/50 backdrop-blur-sm rounded-xl p-6 mb-8 border border-warm-gray-700">
-      <h3 className="text-lg font-semibold text-white text-center mb-4">
-        Adventure Begins In:
-      </h3>
-      <div className="grid grid-cols-4 gap-4 text-center">
-        <div className="bg-sage-800/30 rounded-lg p-3">
-          <div className="text-2xl md:text-3xl font-bold text-white">
+    <div className="rounded-xl p-6">
+      <div className="grid grid-cols-4 gap-3 md:gap-6 text-center">
+        <div className="bg-white/10 rounded-lg p-3 md:p-4 border border-white/10">
+          <div className="text-3xl md:text-4xl font-serif font-light text-white">
             {timeLeft.days}
           </div>
-          <div className="text-sm text-white/70">
+          <div className="text-xs md:text-sm text-white/60 uppercase tracking-wider mt-1">
             Day{timeLeft.days !== 1 ? 's' : ''}
           </div>
         </div>
-        <div className="bg-sage-800/30 rounded-lg p-3">
-          <div className="text-2xl md:text-3xl font-bold text-white">
+        <div className="bg-white/10 rounded-lg p-3 md:p-4 border border-white/10">
+          <div className="text-3xl md:text-4xl font-serif font-light text-white">
             {timeLeft.hours}
           </div>
-          <div className="text-sm text-white/70">
+          <div className="text-xs md:text-sm text-white/60 uppercase tracking-wider mt-1">
             Hour{timeLeft.hours !== 1 ? 's' : ''}
           </div>
         </div>
-        <div className="bg-sage-800/30 rounded-lg p-3">
-          <div className="text-2xl md:text-3xl font-bold text-white">
+        <div className="bg-white/10 rounded-lg p-3 md:p-4 border border-white/10">
+          <div className="text-3xl md:text-4xl font-serif font-light text-white">
             {timeLeft.minutes}
           </div>
-          <div className="text-sm text-white/70">
-            Minute{timeLeft.minutes !== 1 ? 's' : ''}
+          <div className="text-xs md:text-sm text-white/60 uppercase tracking-wider mt-1">
+            Min{timeLeft.minutes !== 1 ? 's' : ''}
           </div>
         </div>
-        <div className="bg-sage-800/30 rounded-lg p-3">
-          <div className="text-2xl md:text-3xl font-bold text-white">
+        <div className="bg-white/10 rounded-lg p-3 md:p-4 border border-white/10">
+          <div className="text-3xl md:text-4xl font-serif font-light text-white">
             {timeLeft.seconds}
           </div>
-          <div className="text-sm text-white/70">
-            Second{timeLeft.seconds !== 1 ? 's' : ''}
+          <div className="text-xs md:text-sm text-white/60 uppercase tracking-wider mt-1">
+            Sec{timeLeft.seconds !== 1 ? 's' : ''}
           </div>
         </div>
       </div>

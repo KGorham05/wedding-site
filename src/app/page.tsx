@@ -30,8 +30,7 @@ export default function Home() {
             </p>
             <Link
               href="/guest-check-in"
-              className="inline-block bg-sage-600 text-white px-10 py-4 rounded-full font-medium text-xl hover:bg-sage-700 hover:scale-105 transition-all duration-300 shadow-2xl border-2 border-white/20 hover:shadow-3xl hover:border-sage-300/40"
-              style={{ transition: 'all 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease' }}
+              className="inline-block bg-white/95 text-warm-gray-900 px-10 py-4 rounded-full font-medium text-xl hover:bg-white hover:scale-105 transition-all duration-300 shadow-2xl border-2 border-gold-400 hover:shadow-3xl"
             >
               RSVP & Plan Your Adventure
             </Link>
@@ -50,7 +49,7 @@ export default function Home() {
                 sizes="100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-black/65" />
+              <div className="absolute inset-0 bg-gradient-to-b from-warm-gray-900/40 via-warm-gray-900/35 to-warm-gray-900/50" />
               <div className="relative z-10">{heroContent}</div>
             </section>
 
@@ -72,11 +71,13 @@ export default function Home() {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/55 to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-warm-gray-900/45 via-warm-gray-900/40 to-warm-gray-900/55" />
         </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="surface-glass-1 rounded-2xl p-10 md:p-14 shadow-2xl border border-white/10 text-center mb-14">
-            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Week Schedule of Events</h2>
+            <p className="label-elegant text-gold-300 mb-4">August 19-23, 2026</p>
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-4">Week of Events</h2>
+            <div className="divider-gold mb-6"></div>
             <p className="text-lg md:text-xl text-white/85 max-w-3xl mx-auto">The heart of our wedding week will be at Sanctuary at Crow Hollow Ranch. Feel free to come by throughout the week to relax, play, and hang out. Think of it as our shared Montana home base.</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 mb-14">
@@ -106,7 +107,7 @@ export default function Home() {
             <p className="text-lg text-white/85 mb-8 max-w-3xl mx-auto">Use our RSVP form to pick which adventures you&apos;d like to join. We&apos;ll handle the group reservations!</p>
             <Link
               href="/guest-check-in"
-              className="btn-glass text-white px-10 py-4 rounded-full font-medium text-lg focus-ring"
+              className="inline-block bg-white/95 text-warm-gray-900 px-10 py-4 rounded-full font-medium text-lg hover:bg-white transition-all duration-300 shadow-lg border-2 border-gold-400"
             >
               RSVP Now
             </Link>
@@ -114,23 +115,27 @@ export default function Home() {
         </div>
       </section>
       
+      {/* Countdown & Adventure Costs Section */}
       <section className="relative py-20">
         {/* Solid / gradient background (no image) */}
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black via-black/90 to-black" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <div className="surface-glass-1 rounded-2xl p-10 md:p-14 shadow-2xl border border-white/10">
-            <h2 className="text-3xl md:text-4xl font-serif text-white mb-6">A Note on Adventure Costs</h2>
-            <p className="text-lg text-white/85 mb-10 max-w-3xl mx-auto">Adventures are optional! Save your spot in the RSVP flow. We&apos;ll confirm details & costs, then you can Venmo us for your share—simple and stress-free.</p>
+            <p className="label-elegant text-gold-200 mb-4">Mark Your Calendar</p>
+            <h2 className="text-3xl md:text-4xl font-serif text-white mb-4">The Adventure Begins</h2>
+            <div className="divider-gold mb-8"></div>
             <CountdownTimer />
+            <p className="text-lg text-white/85 max-w-3xl mx-auto mt-6">Adventures are optional! Save your spot in the RSVP flow. We&apos;ll confirm details & costs, then you can Venmo us for your share—simple and stress-free.</p>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-warm-gray-900 text-cream-100 py-8 border-t border-warm-gray-800">
+      <footer className="bg-warm-gray-900 text-cream-100 py-10 border-t border-warm-gray-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <p className="text-lg font-serif mb-2">Angela & Jeff&apos;s Montana Adventure</p>
-          <p className="text-cream-300 text-sm">August 19 - 23, 2026 • Sanctuary at Crow Hollow Ranch</p>
+          <p className="text-xl font-serif mb-2">Angela & Jeff</p>
+          <p className="text-cream-300 text-sm mb-4">August 19 - 23, 2026 • Sanctuary at Crow Hollow Ranch</p>
+          <p className="text-gold-400 text-sm font-medium tracking-wide">#angelaandjeff2026</p>
         </div>
       </footer>
     </div>

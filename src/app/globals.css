@@ -105,3 +105,24 @@ p, a, li, span, div {
 .hero-media-wrapper.overlay-strong::after {
   background: var(--color-overlay-strong);
 }
+
+/* Elegant label styling */
+.label-elegant {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Gold accent divider */
+.divider-gold {
+  width: 2px;
+  height: 3rem;
+  background-color: #C4A962;
+  margin: 0 auto;
+}
+
+/* Gold accent text */
+.text-gold-accent {
+  color: #C4A962;
+}
