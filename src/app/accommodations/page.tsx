@@ -51,7 +51,9 @@ const AccommodationsPage = () => {
             </p>
             <div className="bg-white/10 rounded-xl p-6 border border-white/20 mb-6">
               <a
-                href="#"
+                href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1760724689465&key=GRP&dtt=true&app=resvlink"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-white/90 hover:text-white underline underline-offset-4 font-semibold"
               >
                 Book at Block Rate for Pinamonti Schweizer Wedding
@@ -67,11 +69,11 @@ const AccommodationsPage = () => {
             </p>
             <ol className="list-decimal list-inside space-y-2 text-white/85 mb-4">
               <li>Book at least one of the main block nights through the link above.</li>
-              <li>Email Carrie your confirmation number and the extra dates you&apos;d like added.</li>
-              <li>Carrie will modify the reservation for you.</li>
+              <li>Email Gina your confirmation number and the extra dates you&apos;d like added.</li>
+              <li>Gina will modify the reservation for you.</li>
             </ol>
             <p className="text-white/85">
-              Email: <a href="mailto:carrie@invigoratehospitality.com" className="text-white underline underline-offset-4 hover:text-white/80">carrie@invigoratehospitality.com</a>
+              Email: <a href="mailto:gina.cortez@lodgingdynamics.com" className="text-white underline underline-offset-4 hover:text-white/80">gina.cortez@lodgingdynamics.com</a>
             </p>
             <p className="text-yellow-300 font-semibold mt-4">
               Room Block Cutoff Date: July 20, 2026
