@@ -11,7 +11,7 @@ Thank you for supporting the next chapter of our home and life together. Your lo
 ACCOMMODATIONS
 Key Montana Vacation Rentals
 Beautiful Airbnb-style cabins and homes throughout Livingston & Paradise Valley.
-✨ 10% Off Code: AngelaandJeff2026
+✨ 10% Off Code: ANGELAANDJEFF2026
 Browse rentals: https://keymontana.com/rentals
 
 Hotel Room Block — Fairfield Inn & Suites Livingston
