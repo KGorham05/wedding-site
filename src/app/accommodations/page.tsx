@@ -25,7 +25,7 @@ const AccommodationsPage = () => {
             </p>
             <div className="bg-white/10 rounded-xl p-6 border border-white/20">
               <p className="text-white font-semibold text-lg mb-2">
-                10% Off Code: <span className="text-yellow-300">AngelaandJeff2026</span>
+                10% Off Code: <span className="text-yellow-300">ANGELAANDJEFF2026</span>
               </p>
               <a
                 href="https://keymontana.com/rentals"
