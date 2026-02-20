@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Navigation, HeroHeader } from '@/components';
 import { type Guest } from "@/lib/guest-list";
+import { saveRSVPPage } from "@/lib/save-rsvp";
 
 export default function GuestCheckIn() {
   const router = useRouter();
@@ -103,7 +104,10 @@ export default function GuestCheckIn() {
     }
     
     localStorage.setItem('montana-adventure-guest', JSON.stringify(guestData));
-    
+
+    // Fire-and-forget: save check-in data to Google Sheets
+    saveRSVPPage(guestData as import("@/lib/guest-list").GuestData, 'check-in');
+
     // Redirect to first day of adventure
     router.push('/adventure/day-1');
   };

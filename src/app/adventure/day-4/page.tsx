@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { HeroHeader, Navigation, useToast } from "@/components";
 import { type GuestData } from "@/lib/guest-list";
+import { saveRSVPPage } from "@/lib/save-rsvp";
 
 export default function AdventureDay4() {
   const router = useRouter();
@@ -42,6 +43,7 @@ export default function AdventureDay4() {
       lastCompletedDay: 4,
     };
     localStorage.setItem('montana-adventure-guest', JSON.stringify(updatedData));
+    saveRSVPPage(updatedData as unknown as GuestData, 'day-4');
     router.push('/adventure/day-5');
   };
 

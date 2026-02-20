@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { HeroHeader, Navigation, useToast } from "@/components";
 import { type GuestData } from "@/lib/guest-list";
+import { saveRSVPPage } from "@/lib/save-rsvp";
 
 interface AdventureSelections {
   whitewaterRafting: number;
@@ -59,6 +60,7 @@ export default function AdventureDay2() {
       lastCompletedDay: 2,
     };
     localStorage.setItem('montana-adventure-guest', JSON.stringify(updatedData));
+    saveRSVPPage(updatedData as GuestData, 'day-2');
     router.push('/adventure/day-3');
   };
 

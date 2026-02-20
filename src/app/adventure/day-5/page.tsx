@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { HeroHeader, Navigation } from "@/components";
 import { type GuestData } from "@/lib/guest-list";
+import { saveRSVPPage } from "@/lib/save-rsvp";
 
 export default function AdventureDay5() {
   const router = useRouter();
@@ -24,43 +25,22 @@ export default function AdventureDay5() {
     setGuestData(data);
   }, [router]);
 
-  const handleComplete = async () => {
+  const handleComplete = () => {
     if (!guestData) return;
-    
+
     const updatedData = {
       ...guestData,
       day5: { completed: true },
       lastCompletedDay: 5,
       completedAt: new Date().toISOString()
     };
-    
-    try {
-      // Submit RSVP data to Google Sheets
-      console.log('Submitting RSVP data to Google Sheets...');
-      const response = await fetch('/api/rsvp', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedData),
-      });
 
-      const result = await response.json();
-      
-      if (!result.success) {
-        console.error('Failed to submit RSVP:', result.message);
-        // Still proceed to completion page even if submission fails
-        // The data is saved locally and can be manually retrieved
-      } else {
-        console.log('RSVP submitted successfully to Google Sheets!');
-      }
-    } catch (error) {
-      console.error('Error submitting RSVP:', error);
-      // Still proceed to completion page even if submission fails
-    }
-    
     // Update local storage and proceed to completion
     localStorage.setItem('montana-adventure-guest', JSON.stringify(updatedData));
+
+    // Fire-and-forget: save day-5 columns to Google Sheets
+    saveRSVPPage(updatedData as unknown as GuestData, 'day-5');
+
     router.push('/adventure/complete');
   };
 

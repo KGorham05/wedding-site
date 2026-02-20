@@ -262,6 +262,193 @@ export async function fetchAllRSVPResponses(): Promise<RSVPResponse[]> {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Per-page upsert helpers
+// ---------------------------------------------------------------------------
+
+export type RSVPPage = 'check-in' | 'day-1' | 'day-2' | 'day-3' | 'day-4' | 'day-5';
+
+/**
+ * Scan column B of the RSVP sheet for a matching guest ID.
+ * Returns the 1-indexed row number, or null if not found.
+ */
+async function findRowByGuestId(
+  sheets: sheets_v4.Sheets,
+  spreadsheetId: string,
+  sheetRef: string,
+  guestId: string,
+): Promise<number | null> {
+  const res = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `${sheetRef}!B:B`,
+  });
+  const rows = res.data.values || [];
+  for (let i = 0; i < rows.length; i++) {
+    if (rows[i][0] === guestId) return i + 1; // 1-indexed
+  }
+  return null;
+}
+
+/** Build the A:X row used when creating a brand-new entry (check-in). */
+function buildFullRow(guestData: GuestData): (string | number)[] {
+  const safeChildrenAges = Array.isArray(guestData.childrenAges) ? guestData.childrenAges : [];
+  return [
+    new Date().toISOString(),                            // A  Timestamp
+    guestData.guest.id,                                  // B  Guest ID
+    guestData.guest.firstName,                           // C  First Name
+    guestData.guest.lastName,                            // D  Last Name
+    guestData.email,                                     // E  Email
+    guestData.totalGuests,                               // F  Total Guests
+    guestData.adults,                                    // G  Adults
+    guestData.children,                                  // H  Children
+    safeChildrenAges.join(', '),                         // I  Children Ages
+    (guestData.childrenNames || []).join(', '),           // J  Children Names
+    guestData.dietaryRestrictions || '',                  // K  Dietary Restrictions
+    guestData.specialRequests || '',                      // L  Special Requests
+    '',                                                  // M  Day 1 Attendees
+    '',                                                  // N  Day 2 Whitewater
+    '',                                                  // O  Day 2 Scenic Float
+    '',                                                  // P  Day 2 Horseback
+    '',                                                  // Q  Day 2 Hat Making
+    '',                                                  // R  Day 3 Adults
+    '',                                                  // S  Day 3 Children
+    '',                                                  // T  Day 4 Adults
+    '',                                                  // U  Day 4 Children
+    '',                                                  // V  Day 5 Departure
+    '',                                                  // W  Completed At
+    guestData.declined ? 'TRUE' : 'FALSE',               // X  Declined RSVP
+  ];
+}
+
+/** Return the column values for a given page (excluding check-in which uses the full row). */
+function columnsForPage(guestData: GuestData, page: RSVPPage): { range: string; values: (string | number)[] } {
+  switch (page) {
+    case 'check-in': {
+      const safeChildrenAges = Array.isArray(guestData.childrenAges) ? guestData.childrenAges : [];
+      return {
+        range: 'A{row}:L{row}',
+        values: [
+          new Date().toISOString(),
+          guestData.guest.id,
+          guestData.guest.firstName,
+          guestData.guest.lastName,
+          guestData.email,
+          guestData.totalGuests,
+          guestData.adults,
+          guestData.children,
+          safeChildrenAges.join(', '),
+          (guestData.childrenNames || []).join(', '),
+          guestData.dietaryRestrictions || '',
+          guestData.specialRequests || '',
+        ],
+      };
+    }
+    case 'day-1':
+      return {
+        range: 'M{row}:M{row}',
+        values: [(guestData.day1?.adults || 0) + (guestData.day1?.children || 0)],
+      };
+    case 'day-2':
+      return {
+        range: 'N{row}:Q{row}',
+        values: [
+          guestData.day2?.whitewaterRafting || 0,
+          guestData.day2?.scenicFloat || 0,
+          guestData.day2?.horsebackRiding || 0,
+          guestData.day2?.hatMaking || 0,
+        ],
+      };
+    case 'day-3': {
+      // Actual stored value is { receptionAttendees: number }
+      const receptionAttendees = (guestData.day3 as { receptionAttendees?: number } | undefined)?.receptionAttendees
+        ?? guestData.day3?.adults ?? 0;
+      return {
+        range: 'R{row}:S{row}',
+        values: [receptionAttendees, 0],
+      };
+    }
+    case 'day-4': {
+      // Actual stored value is { yellowstoneAttendees: number }
+      const yellowstoneAttendees = (guestData.day4 as { yellowstoneAttendees?: number } | undefined)?.yellowstoneAttendees
+        ?? guestData.day4?.adults ?? 0;
+      return {
+        range: 'T{row}:U{row}',
+        values: [yellowstoneAttendees, 0],
+      };
+    }
+    case 'day-5':
+      return {
+        range: 'V{row}:W{row}',
+        values: [
+          guestData.day5?.departureTime || '',
+          guestData.completedAt || new Date().toISOString(),
+        ],
+      };
+  }
+}
+
+/**
+ * Upsert a single page's worth of RSVP data for the given guest.
+ * - check-in + no existing row → append full A:X row
+ * - existing row → update only the columns owned by this page
+ * - non-check-in + no existing row (edge case) → create row first, then update
+ */
+export async function upsertRSVPPage(guestData: GuestData, page: RSVPPage): Promise<void> {
+  const startedAt = Date.now();
+  const spreadsheetId = process.env.RSVP_RESPONSES_SHEET_ID;
+  if (!spreadsheetId) throw new Error('Missing RSVP_RESPONSES_SHEET_ID env var');
+
+  const sheetName = process.env.RSVP_RESPONSES_SHEET_NAME || 'RSVP_Responses';
+  const escapedName = sheetName.replace(/'/g, "''").trim();
+  const sheetRef = /[\s!]/.test(escapedName) ? `'${escapedName}'` : escapedName;
+  const sheets = await getGoogleSheetsClient();
+
+  let rowNum = await findRowByGuestId(sheets, spreadsheetId, sheetRef, guestData.guest.id);
+
+  if (rowNum === null) {
+    // No existing row — append a full row (works for check-in & edge-case non-check-in)
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: `${sheetRef}!A:X`,
+      valueInputOption: 'RAW',
+      requestBody: { values: [buildFullRow(guestData)] },
+    });
+
+    // If this is check-in we're done (the full row already has check-in data).
+    if (page === 'check-in') {
+      console.log(`[RSVP upsert] Created row for ${guestData.guest.id} (check-in) in ${Date.now() - startedAt}ms`);
+      return;
+    }
+
+    // For non-check-in edge case, re-find the row so we can update the page columns.
+    rowNum = await findRowByGuestId(sheets, spreadsheetId, sheetRef, guestData.guest.id);
+    if (rowNum === null) throw new Error('Failed to locate newly appended row');
+  }
+
+  // Existing row (or just-created row for non-check-in) — update the relevant columns
+  const { range: rangeTemplate, values } = columnsForPage(guestData, page);
+  const targetRange = `${sheetRef}!${rangeTemplate.replace(/\{row\}/g, String(rowNum))}`;
+
+  await sheets.spreadsheets.values.update({
+    spreadsheetId,
+    range: targetRange,
+    valueInputOption: 'RAW',
+    requestBody: { values: [values] },
+  });
+
+  // Also update column X (Declined) on check-in re-edits
+  if (page === 'check-in') {
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `${sheetRef}!X${rowNum}`,
+      valueInputOption: 'RAW',
+      requestBody: { values: [[guestData.declined ? 'TRUE' : 'FALSE']] },
+    });
+  }
+
+  console.log(`[RSVP upsert] Updated ${page} for ${guestData.guest.id} (row ${rowNum}) in ${Date.now() - startedAt}ms`);
+}
+
 // Utility: list sheet titles for a spreadsheet (troubleshooting aid)
 export async function listSheetTitles(spreadsheetId: string): Promise<string[]> {
   const sheets = await getGoogleSheetsClient();
