@@ -59,7 +59,7 @@ export default function AdventureDay3() {
       <Navigation variant="overlay" />
       <HeroHeader
         title="Friday, Aug 21: The Big Celebration"
-        subtitle={`Please confirm how many from your party of ${totalGuests} will be joining us for the reception.`}
+        subtitle={`The celebration starts at 4 PM. Please confirm how many from your party of ${totalGuests} will be joining us for the reception.`}
   media={{ type: 'image', src: '/bear-7113542.jpg', alt: 'Montana bear in wilderness', priority: true }}
   extendBackground
   align="center"

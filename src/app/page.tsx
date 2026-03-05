@@ -75,9 +75,8 @@ export default function Home() {
         </div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="surface-glass-1 rounded-2xl p-10 md:p-14 shadow-2xl border border-white/10 text-center mb-14">
-            <p className="label-elegant text-gold-300 mb-4">August 19-23, 2026</p>
+            <p className="label-elegant text-white mb-4">August 19-23, 2026</p>
             <h2 className="text-4xl md:text-5xl font-serif text-white mb-4">Week of Events</h2>
-            <div className="divider-gold mb-6"></div>
             <p className="text-lg md:text-xl text-white/85 max-w-3xl mx-auto">The heart of our wedding week will be at Sanctuary at Crow Hollow Ranch. Feel free to come by throughout the week to relax, play, and hang out. Think of it as our shared Montana home base.</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 mb-14">
@@ -91,7 +90,7 @@ export default function Home() {
             </div>
             <div className="surface-glass-1 rounded-xl p-6 shadow-xl border border-white/10">
               <h3 className="text-xl font-serif text-white mb-2">Friday, Aug 21: The Big Celebration</h3>
-              <p className="text-white/85 text-sm md:text-base">Morning: Free time to explore. Evening: Reception at the ranch with dinner, dancing, and celebration under the stars.</p>
+              <p className="text-white/85 text-sm md:text-base">Morning: Free time to explore. 4 PM: Reception at the ranch with dinner, dancing, and celebration under the stars.</p>
             </div>
             <div className="surface-glass-1 rounded-xl p-6 shadow-xl border border-white/10">
               <h3 className="text-xl font-serif text-white mb-2">Saturday, Aug 22: Yellowstone Adventure</h3>
@@ -121,9 +120,8 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black via-black/90 to-black" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <div className="surface-glass-1 rounded-2xl p-10 md:p-14 shadow-2xl border border-white/10">
-            <p className="label-elegant text-gold-200 mb-4">Mark Your Calendar</p>
+            <p className="label-elegant text-white mb-4">Mark Your Calendar</p>
             <h2 className="text-3xl md:text-4xl font-serif text-white mb-4">The Adventure Begins</h2>
-            <div className="divider-gold mb-8"></div>
             <CountdownTimer />
             <p className="text-lg text-white/85 max-w-3xl mx-auto mt-6">Adventures are optional! Save your spot in the RSVP flow. We&apos;ll confirm details & costs, then you can Venmo us for your share—simple and stress-free.</p>
           </div>

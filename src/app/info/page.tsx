@@ -22,7 +22,7 @@ const InfoPage = () => {
               <ul className="list-disc list-inside space-y-2 text-white/85">
                 <li><strong className="text-white">Daytime + Adventures:</strong> Keep it casual and comfy—swimsuits for the lake, shorts and tees for lounging at the ranch, and activewear for rafting, floating, or hiking. Don&apos;t forget water shoes or sandals you can get wet.</li>
                 <li><strong className="text-white">BBQ Cowboy Night at the Ranch:</strong> This one calls for Montana chic with a western twist. Boots, denim, hats, flowy skirts, or casual dresses all fit right in.</li>
-                <li><strong className="text-white">Reception Night – Montana Cocktail:</strong> Our reception is outdoors on the grass. Think cocktail hour meets the mountains: flowy dresses, jumpsuits, chinos, boots, or nice shirts. Skip the stilettos - flats, boots, sandals, or block heels will keep you happy.</li>
+                <li><strong className="text-white">Reception Night – Montana Cocktail (4 PM):</strong> Our reception is outdoors on the grass. Think cocktail hour meets the mountains: flowy dresses, jumpsuits, chinos, boots, or nice shirts. Skip the stilettos - flats, boots, sandals, or block heels will keep you happy.</li>
                 <li><strong className="text-white">Montana Nights:</strong> Even in August, the evenings can cool down. Bring a sweater, shawl, or jacket.</li>
               </ul>
             </section>

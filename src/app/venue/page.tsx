@@ -333,12 +333,6 @@ export default function Venue() {
             >
               RSVP Now
             </Link>
-            <Link 
-              href="/schedule"
-              className="border border-gray-300 text-gray-700 px-8 py-3 rounded-full font-medium hover:bg-gray-50 transition-colors"
-            >
-              View Full Schedule
-            </Link>
           </div>
         </div>
       </section>
